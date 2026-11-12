@@ -24,6 +24,9 @@ dist/
 # Rust / Tauri build artifacts
 src-tauri/target/
 src-tauri/gen/
+# Phase 1 PoC projects also contain Rust/Tauri trees (experiments/p1-*/src-tauri/)
+**/src-tauri/target/
+**/src-tauri/gen/
 
 # Downloaded AI models (Whisper etc.) - user-managed, not versioned
 models/

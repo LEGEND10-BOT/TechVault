@@ -1,0 +1,19 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "P1-A PoC capability: dialog for user-picked files; fs read-text strictly scoped to the PoC fixture directory (validates the permission-scope model; no broad filesystem access).",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    "dialog:default",
+    {
+      "identifier": "fs:allow-read-text-file",
+      "allow": [
+        {
+          "path": "D:\\TechVault\\experiments\\p1-a\\fixtures\\allowed\\**"
+        }
+      ]
+    }
+  ]
+}

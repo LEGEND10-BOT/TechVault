@@ -1,0 +1,43 @@
+{
+  "started_at": "2026-11-12T18:37:37.719Z",
+  "finished_at": "2026-11-12T18:37:38.083Z",
+  "sysinfo": {
+    "os": "windows",
+    "arch": "x86_64",
+    "family": "windows",
+    "app_version": "0.1.0",
+    "timestamp_ms": 1794508657743
+  },
+  "sysinfo_event": {
+    "received": true,
+    "latency_ms": 1.899999976158142
+  },
+  "ipc_ping": {
+    "calls": 200,
+    "ok": 200,
+    "failed": 0,
+    "median_ms": 1.5999999046325684,
+    "p95_ms": 2,
+    "min_ms": 1.2999999523162842,
+    "max_ms": 7.899999976158142
+  },
+  "scoped_read": {
+    "path": "D:\\TechVault\\experiments\\p1-a\\fixtures\\allowed\\sample.txt",
+    "ok": true,
+    "content_match": true,
+    "error": null
+  },
+  "negative_tests": [
+    {
+      "path": "C:\\Windows\\win.ini",
+      "rejected": true,
+      "error": "forbidden path: C:\\Windows\\win.ini"
+    },
+    {
+      "path": "C:\\Windows\\system.ini",
+      "rejected": true,
+      "error": "forbidden path: C:\\Windows\\system.ini"
+    }
+  ],
+  "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0"
+}

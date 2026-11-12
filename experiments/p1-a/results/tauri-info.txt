@@ -1,0 +1,35 @@
+
+[✔] Environment
+    - OS: Windows 10.0.26200 x86_64 (X64)
+    ✔ WebView2: 157.0.4341.46
+    ✔ MSVC: Visual Studio Build Tools 2022
+    ✔ rustc: 1.99.1 (58cf8f9c3 2026-10-13)
+    ✔ cargo: 1.99.1 (5f94df478 2026-08-27)
+    ✔ rustup: 1.29.3 (edbc831ce 2026-11-02)
+    ✔ Rust toolchain: stable-x86_64-pc-windows-msvc (default)
+    - node: 24.20.0
+    - npm: 11.19.0
+
+[-] Packages
+    - tauri 🦀: 2.12.5
+    - tauri-build 🦀: 2.7.4
+    - wry 🦀: 0.57.2
+    - tao 🦀: 0.37.2
+    - @tauri-apps/api  ⱼₛ: 2.12.4
+    - @tauri-apps/cli  ⱼₛ: 2.12.4
+
+[-] Plugins
+    - tauri-plugin-opener 🦀: 2.7.3
+    - @tauri-apps/plugin-opener  ⱼₛ: 2.7.3
+    - tauri-plugin-fs 🦀: 2.7.1
+    - @tauri-apps/plugin-fs  ⱼₛ: 2.7.1
+    - tauri-plugin-dialog 🦀: 2.8.4
+    - @tauri-apps/plugin-dialog  ⱼₛ: 2.8.4
+
+[-] App
+    - build-type: bundle
+    - CSP: unset
+    - frontendDist: ../build
+    - devUrl: http://localhost:1420/
+    - framework: SvelteKit
+    - bundler: Vite

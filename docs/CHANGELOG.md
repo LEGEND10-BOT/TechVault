@@ -56,6 +56,8 @@ Do not record every minor code edit. Use Git history for detailed implementation
 - Phase 1 feasibility plan (`docs/PHASE_1_FEASIBILITY_PLAN.md` with experiment specifications F1-01..F1-06 under `docs/phase1-plan/`).
 - Documentation consistency audit findings (F-01..F-09) recorded and dispositioned (2026-11-12).
 - Decision records D-014..D-017 (2026-11-12).
+- Phase 1 package P1-A (F1-01a desktop PoC): throwaway Tauri 2 + Svelte 5 + strict TypeScript validation shell under `experiments/p1-a/` with automated IPC, permission-scope, and measurement suite (`docs/phase1-results/F1-01/RESULTS.md`) (2026-11-12).
+- Phase 0 baseline checkpoint commit (P0-T06) created after owner-supplied repo-local Git identity (2026-11-12).
 
 ### Changed
 - Established a documentation-first workflow before implementation.
@@ -65,7 +67,7 @@ Do not record every minor code edit. Use Git history for detailed implementation
 - Repository initialized on branch `main` with `.gitignore`; baseline commit pending Git identity.
 
 ### Validated
-- No technical feasibility results are recorded yet.
+- P1-A / F1-01a (desktop, 2026-11-12, i5-10310U reference machine, evidence in `docs/phase1-results/F1-01/RESULTS.md`): Tauri 2 + Rust + Svelte 5 + Vite + strict TS builds and runs on Windows 11 (dev + release + NSIS/MSI installers); IPC round-trip median 1.60 ms release / 2.50 ms dev, 200/200 calls stable (target ≤10 ms); HMR functional; warm startup median 74.5 ms; idle RAM tree working set 327.14 MB / private 135.97 MB (measure-then-decide vs ≤150 MB planning target); installers 1.51–2.23 MB (below 20–60 MB planning range); **fs permission scope rejected `C:\Windows\win.ini` and `C:\Windows\system.ini` reads (mandatory security negative test passed)**. Android half (F1-01b / P1-B) not executed — deferred per owner instruction.
 
 ### Known Limitations
 - Application implementation has not started.
@@ -79,6 +81,9 @@ Do not record every minor code edit. Use Git history for detailed implementation
 - Exact release and packaging strategy remains pending.
 - Approved logo asset and TSX UI reference are not yet in the repository (D-012 delivery pending).
 - Reference-machine RAM capacity unconfirmed (required for performance baselines, P0-T09 / P1-J).
+  - Update 2026-11-12: the active reference machine measures 32 GB RAM with an i5-10310U CPU; owner confirmed this machine as the reference (documents naming i5-6300U await Main Controller correction). Idle-RAM working-set budget outcome is a measure-then-decide item for the owner (P-022).
+- P1-A PoC records CSP unset (template default, throwaway shell) — any real application must define a CSP.
+- Dialog-based file-pick flow of P1-A implemented but not yet exercised by a human (A5 human half pending owner verification).
 
 ---
 
