@@ -79,6 +79,7 @@ async function testLocal(file) {
     rec.duration_s = Math.round(v.duration * 100) / 100;
     await v.play();
     rec.muted_play = true;
+    const t0wall = performance.now();
     const t0 = v.currentTime;
     await new Promise((res) => {
       const iv = setInterval(() => {
@@ -86,8 +87,10 @@ async function testLocal(file) {
       }, 100);
       setTimeout(() => { clearInterval(iv); res(); }, 6000);
     });
+    const elapsedS = (performance.now() - t0wall) / 1000;
     rec.time_advanced = v.currentTime > t0 + 0.15;
-    rec.playback_rate_measured = Math.round((v.currentTime - t0) / 2 * 100) / 100;
+    rec.playback_rate_measured = Math.round((v.currentTime - t0) / Math.max(elapsedS, 0.001) * 100) / 100;
+    rec.rate_measurement_window_s = Math.round(elapsedS * 100) / 100;
     v.currentTime = Math.min(rec.duration_s - 0.5, v.currentTime + 1.0);
     await new Promise((res) => { v.addEventListener("seeked", res, { once: true }); setTimeout(res, 3000); });
     rec.seek = Math.abs(v.currentTime - 0) > 0;

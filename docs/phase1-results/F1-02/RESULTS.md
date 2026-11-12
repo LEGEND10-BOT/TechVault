@@ -5,7 +5,7 @@
 **Environment:** Windows 11 Pro, i5-10310U/32 GB reference machine; **WebView2 Runtime 157.0.4341.46** hosting the p1-h test shell (no-IPC WebView2 host; results extracted via CDP on localhost); playback page served from `http://127.0.0.1:4180` (localhost-only harness server)
 **Fixtures (NOT committed — media only; manifest committed):** `flower.mp4` (1.13 MB, ISO MP4 v2, CC0, MDN shared-assets), `flower.webm` (554 KB, WebM, CC0, MDN shared-assets), `broken.mp4` (60-byte controlled decode-failure fixture, synthetic)
 
-**Method note (honest):** the run executed in an **occluded** WebView2 window (the owner was actively using the display; the test deliberately does not seize the foreground). Media playback and player events continue in occluded windows, but DOM-timer throttling made the wall-clock playback-rate measurement unreliable (apparent 0.08×), and no screencast/smoothness recording was possible. Playback **operations** (play/pause/seek/rate acceptance, decode, state/error events) are fully evidenced; visible-window smoothness confirmation is pending display time.
+**Method note (honest):** the first run executed in an **occluded** WebView2 window (the owner was actively using the display; the test deliberately does not seize the foreground). A **visible-window confirmation run** in the owner-approved display session reproduced identical outcomes. An initial harness metric bug (fixed 2026-11-13: wall-clock denominator) had mislabeled playback rate as "0.08×"; the corrected measurement shows near-real-time advance (≈0.8× over the 0.2 s startup window, threshold crossed almost immediately) with **no material difference between occluded and visible runs** — media playback and player events are unaffected by occlusion.
 
 ## Capability matrix (measured in WebView2 157.0.4341.46)
 
@@ -38,13 +38,13 @@ A4's per-video curated cases (embedding-disabled, age-restricted) require the ow
 
 | # | Criterion | Verdict |
 |---|---|---|
-| A1 | Local MP4/H.264+AAC plays with programmatic control in WebView2 | **PASS** (controls verified; visible-window smoothness + reliable rate measurement pending display time) |
+| A1 | Local MP4/H.264+AAC plays with programmatic control in WebView2 | **PASS** — confirmed in both occluded and visible-window runs; corrected rate metric shows near-real-time advance |
 | A2 | Local playback on Android WebView | **N-A** (P1-B deferred per owner, D-018/D-019) |
-| A3 | Embeddable YouTube plays via IFrame API in WebView2 with state/error events | **PASS** (states −1→3→1 received) |
+| A3 | Embeddable YouTube plays via IFrame API in WebView2 with state/error events | **PASS** (states −1→3→1 received, reproduced in the visible run) |
 | A4 | Restricted videos produce detectable error events | **PARTIAL** — detection mechanism proven (error 150 observed); curated restriction cases need the owner URL list |
 | A5 | Handoff only on explicit action; disallowed schemes rejected | **PARTIAL** — allowlist logic pass; shell-opener path is Phase 2 wiring |
 | A6 | Android embed usability | **N-A** (P1-B deferred) |
-| A7 | Startup/memory overhead of video page vs empty page | **Recorded, noisy** (heap delta −8.3 MB, GC variance dominates; re-measure in visible confirmation run) |
+| A7 | Startup/memory overhead of video page vs empty page | **Recorded, noisy** (heap delta −8.3 MB, GC variance dominates — not a stable signal; re-measure with the production player in Phase 2) |
 
 ## Verdict for P-004 (playback strategy input)
 
