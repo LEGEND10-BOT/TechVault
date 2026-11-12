@@ -1,0 +1,29 @@
+{
+  "$comment": "TechVault F1-06 extraction output schema. Candidate shape follows docs/API_POLICY.md section 19; discovery_type enum enforces the D-008 separation; verification_status must not be 'verified' without dataset-sanctioned evidence (A6). The root envelope is required so partial/garbage output is detectable.",
+  "type": "object",
+  "required": ["candidates"],
+  "additionalProperties": false,
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["name", "resource_type", "short_description", "official_url", "discovery_type", "timestamp", "evidence", "confidence", "verification_status"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "resource_type": { "enum": ["tool", "library", "service", "repository", "website", "concept", "hardware", "other"] },
+          "short_description": { "type": "string", "maxLength": 400 },
+          "official_url": { "type": ["string", "null"], "maxLength": 500 },
+          "discovery_type": { "enum": ["explicitly_mentioned", "ai_discovered", "related_suggestion"] },
+          "timestamp": { "type": ["string", "null"], "maxLength": 12 },
+          "evidence": { "type": "string", "maxLength": 600 },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "verification_status": { "enum": ["unverified", "suggested", "verified"] },
+          "related": { "type": "array", "items": { "type": "string", "maxLength": 120 }, "maxItems": 10 }
+        }
+      }
+    }
+  }
+}

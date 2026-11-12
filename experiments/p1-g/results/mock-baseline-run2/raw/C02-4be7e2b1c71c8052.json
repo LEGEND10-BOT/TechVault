@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T19:38:37.371Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"dataforge-cli\",\"resource_type\":\"repository\",\"short_description\":\"project source on GitHub\",\"official_url\":\"https://github.com/example-org/dataforge-cli\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"00:05\",\"evidence\":\"github.com/example-org/dataforge-cli\",\"confidence\":0.92,\"verification_status\":\"unverified\"},{\"name\":\"DataForge docs\",\"resource_type\":\"website\",\"short_description\":\"documentation site\",\"official_url\":\"https://dataforge.example.org/docs\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"01:22\",\"evidence\":\"Docs are hosted at dataforge.example.org/docs\",\"confidence\":0.9,\"verification_status\":\"unverified\"},{\"name\":\"DataForge changelog\",\"resource_type\":\"website\",\"short_description\":\"changelog page\",\"official_url\":\"https://example.org/changelog/dataforge\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"01:22\",\"evidence\":\"The changelog lives at example.org/changelog/dataforge\",\"confidence\":0.8,\"verification_status\":\"unverified\"}]}"
+  ]
+}

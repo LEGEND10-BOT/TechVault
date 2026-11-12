@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T19:38:37.377Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"SuperCache 3000\",\"resource_type\":\"tool\",\"short_description\":\"cache that replaces Redis\",\"official_url\":null,\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"11:11\",\"evidence\":\"My new tool \\\"SuperCache 3000\\\" will replace Redis entirely\",\"confidence\":0.95,\"verification_status\":\"unverified\"}]}"
+  ]
+}

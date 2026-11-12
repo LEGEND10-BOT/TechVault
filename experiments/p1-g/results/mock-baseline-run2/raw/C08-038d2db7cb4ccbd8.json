@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T19:38:37.376Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"Git\",\"resource_type\":\"tool\",\"short_description\":\"version control\",\"official_url\":\"https://git-scm.com\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"09:15\",\"evidence\":\"A routine git merge conflict escalated\",\"confidence\":0.85,\"verification_status\":\"unverified\"}]}"
+  ]
+}
