@@ -1,0 +1,17 @@
+{
+  "executed_at": "1794516322",
+  "wall_ms": 906,
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {"name": "schema-v1-created", "pass": true, "detail": "resources/aliases/sources/mentions/evidence/merge_history + FTS5 external-content table"},
+    {"name": "fk-enforcement", "pass": true, "detail": "insert mention with nonexistent resource rejected: true"},
+    {"name": "duplicate-candidate-by-url", "pass": true, "detail": "URL-identity duplicate candidate pair count = 1 (expected 1; deterministic URL match, no confidence involved)"},
+    {"name": "merge-transactional-preserving", "pass": true, "detail": "merge ok=true | winner mentions=2 (exp 2) | evidence preserved=2 (exp 2) | loser alias moved to winner=1 (exp >=1) | history rows=1 (exp 1)"},
+    {"name": "merge-does-not-upgrade-verification", "pass": true, "detail": "winner verification_status after merge = 'unverified' (must stay unverified)"},
+    {"name": "merge-undo-restores-state", "pass": true, "detail": "undo ok=true | loser restored=1 (exp 1) | mentions re-pointed=1 (exp 1) | evidence traceable again=1 (exp 1) | history marked undone=1 (exp 1)"},
+    {"name": "migration-additive-and-guarded", "pass": true, "detail": "v2 applied=true | unguarded re-run correctly fails=true | version guard recorded=true"},
+    {"name": "fts5-search-5000-resources", "pass": true, "detail": "fill 5000 rows in 188 ms; search median 0.009 ms, p95 0.014 ms (20 runs)"},
+    {"name": "fts5-search-20000-resources", "pass": true, "detail": "fill 20000 rows in 654 ms; search median 0.005 ms, p95 0.008 ms (20 runs)"}
+  ]
+}

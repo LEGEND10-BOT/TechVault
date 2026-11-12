@@ -1,0 +1,11 @@
+[package]
+name = "p1-f-db-harness"
+version = "0.1.0"
+edition = "2021"
+description = "F1-04 (P1-F) SQLite identity/merge/undo/FTS5 validation harness - throwaway Phase 1 tooling"
+
+[dependencies]
+rusqlite = { version = "0.32.1", features = ["bundled"] }
+
+[profile.release]
+strip = true
