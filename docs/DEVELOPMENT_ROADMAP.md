@@ -652,7 +652,7 @@ Updated 2026-11-13 (Phase 0 closure + Phase 1 execution sprint):
 - Phase handoff: prepared; current record updated 2026-11-13.
 - Changelog: maintained; sprint entries added 2026-11-13.
 - Phase 0 execution plan, Phase 1 task packages, Phase 1 feasibility plan: prepared 2026-11-12; Phase 0 closed 2026-11-13 (`docs/PHASE_0_CLOSURE.md`).
-- **Phase 1 status: IN_PROGRESS (Gate-1 readiness: READY WITH APPROVED DEFERRALS — see `docs/PHASE_1_GATE1_READINESS.md`)** — P1-A, P1-F, P1-H (desktop legs; formal R-008 verdict: ADOPT), P1-I complete; P1-E complete on the desktop leg (curated restriction cases pending owner URL list); P1-G dataset/harness complete with live run owner-deferred (D-019 "LATER"); P1-J consolidated (transcription items NOT RUN per hold); P1-B deferred, P1-C/P1-D held (owner, D-018/D-019). See `docs/PHASE_1_STATUS_MATRIX.md`.
+- **Phase 1 status: IN_PROGRESS (Gate-1 readiness report consolidated 2026-11-13: GATE-1 READY WITH EXPLICIT DEFERRALS — owner approval outstanding; see `docs/PHASE_1_GATE1_READINESS.md`)** — P1-A, P1-F, P1-H (desktop legs; formal R-008 verdict: ADOPT), P1-I complete; P1-E complete on the desktop leg (curated restriction cases pending owner URL list); P1-G dataset/harness complete with live run owner-deferred (D-019 "LATER"); P1-J consolidated (transcription items NOT RUN per hold); P1-B deferred, P1-C/P1-D held pending the owner's R-025 resolution choice; API configuration structure and Whisper Core plan added as Phase 1 closure deliverables (R-023/R-024). See `docs/PHASE_1_STATUS_MATRIX.md` §9.
 
 Documentation completion does not mean technical validation is complete.
 

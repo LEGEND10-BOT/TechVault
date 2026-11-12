@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://techvault.local/schemas/provider-config-v1.json",
+  "title": "TechVault provider configuration record (v1)",
+  "description": "Structural schema for Phase 1 closure (directive 82417). Placeholders only - never contains credentials. api_key_ref is an OS-keychain REFERENCE, never a key value.",
+  "type": "object",
+  "required": ["provider", "display_name", "enabled", "base_url", "api_key_ref", "default_model", "capabilities", "connection_status", "validation_status"],
+  "additionalProperties": false,
+  "properties": {
+    "provider": {
+      "type": "string",
+      "description": "Registry ID of the provider adapter.",
+      "enum": ["openrouter", "gemini", "zai_glm", "ollama", "openai_compatible"]
+    },
+    "display_name": { "type": "string", "minLength": 1, "maxLength": 60 },
+    "enabled": { "type": "boolean", "description": "Enable/disable status. Placeholder records must be false." },
+    "base_url": {
+      "type": "string",
+      "pattern": "^https://|(^http://127\\.0\\.0\\.1|^http://\\[::1\\]|^http://localhost)",
+      "description": "HTTPS for cloud providers; plain HTTP allowed only for loopback (local providers such as Ollama)."
+    },
+    "api_key_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Opaque reference to the credential in OS secure storage. NEVER the key material itself. Literal placeholder: OS_KEYCHAIN_REFERENCE."
+    },
+    "default_model": { "type": "string", "minLength": 1, "maxLength": 120, "description": "Placeholder value: YOUR_MODEL_ID." },
+    "task_models": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resource_extraction": { "type": "string" },
+        "research": { "type": "string" },
+        "summarization": { "type": "string" },
+        "tts": { "type": "string", "description": "Text-to-speech capability model (same provider integration, separate capability - API_POLICY 12.2)." },
+        "vision": { "type": "string" }
+      },
+      "additionalProperties": { "type": "string", "description": "Future task slots use the same string form." }
+    },
+    "capabilities": {
+      "type": "object",
+      "required": ["text_generation", "vision", "tool_calling", "json_output", "embedding", "streaming"],
+      "additionalProperties": false,
+      "properties": {
+        "text_generation": { "type": "boolean" },
+        "vision": { "type": "boolean" },
+        "tool_calling": { "type": "boolean" },
+        "json_output": { "type": "boolean" },
+        "embedding": { "type": "boolean", "description": "Embeddings are out of the initial release (R-011); flag exists for later phases." },
+        "streaming": { "type": "boolean" }
+      }
+    },
+    "connection_status": {
+      "enum": ["unconfigured", "unverified", "ok", "error"],
+      "description": "Changes only on an explicit user-triggered connection test; never probed automatically."
+    },
+    "validation_status": {
+      "type": "object",
+      "required": ["state"],
+      "additionalProperties": false,
+      "properties": {
+        "state": { "enum": ["unvalidated", "valid", "invalid"] },
+        "validation_errors": { "type": "array", "items": { "type": "string" }, "maxItems": 20 },
+        "validated_at": { "type": ["string", "null"] }
+      }
+    },
+    "notes": { "type": "string", "maxLength": 500 }
+  }
+}

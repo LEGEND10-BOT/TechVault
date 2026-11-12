@@ -1,0 +1,114 @@
+{
+  "$comment": "TechVault Phase 1 closure (directive 82417) - PLACEHOLDER provider configuration records. Every api_key_ref is a literal placeholder reference (never a key), every enabled=false, every model is YOUR_MODEL_ID. No live calls are authorized; this file must never contain real credentials (SECURITY.md 6.4, API_POLICY.md 12.1).",
+  "version": "placeholder-v1",
+  "providers": [
+    {
+      "provider": "openrouter",
+      "display_name": "OpenRouter (default)",
+      "enabled": false,
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_ref": "OS_KEYCHAIN_REFERENCE",
+      "default_model": "YOUR_MODEL_ID",
+      "task_models": {
+        "resource_extraction": "YOUR_MODEL_ID",
+        "research": "YOUR_MODEL_ID",
+        "summarization": "YOUR_MODEL_ID",
+        "tts": "YOUR_MODEL_ID"
+      },
+      "capabilities": {
+        "text_generation": true,
+        "vision": true,
+        "tool_calling": true,
+        "json_output": true,
+        "embedding": false,
+        "streaming": true
+      },
+      "connection_status": "unconfigured",
+      "validation_status": { "state": "unvalidated", "validation_errors": [], "validated_at": null },
+      "notes": "Default provider (D-003). Capability flags are structural declarations, not verified compatibility; verify per model at the later live-configuration stage."
+    },
+    {
+      "provider": "gemini",
+      "display_name": "Google Gemini (optional)",
+      "enabled": false,
+      "base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "api_key_ref": "OS_KEYCHAIN_REFERENCE",
+      "default_model": "YOUR_MODEL_ID",
+      "task_models": {},
+      "capabilities": {
+        "text_generation": true,
+        "vision": true,
+        "tool_calling": false,
+        "json_output": true,
+        "embedding": false,
+        "streaming": true
+      },
+      "connection_status": "unconfigured",
+      "validation_status": { "state": "unvalidated", "validation_errors": [], "validated_at": null },
+      "notes": "Optional alternative provider (D-004)."
+    },
+    {
+      "provider": "zai_glm",
+      "display_name": "Z.ai / GLM (optional)",
+      "enabled": false,
+      "base_url": "https://YOUR_ZAI_GLM_ENDPOINT_PLACEHOLDER",
+      "api_key_ref": "OS_KEYCHAIN_REFERENCE",
+      "default_model": "YOUR_MODEL_ID",
+      "task_models": {},
+      "capabilities": {
+        "text_generation": true,
+        "vision": false,
+        "tool_calling": false,
+        "json_output": true,
+        "embedding": false,
+        "streaming": true
+      },
+      "connection_status": "unconfigured",
+      "validation_status": { "state": "unvalidated", "validation_errors": [], "validated_at": null },
+      "notes": "Optional alternative provider (D-004). Endpoint placeholder pending provider documentation at live-configuration stage."
+    },
+    {
+      "provider": "ollama",
+      "display_name": "Ollama (local)",
+      "enabled": false,
+      "base_url": "http://127.0.0.1:11434",
+      "api_key_ref": "OS_KEYCHAIN_REFERENCE",
+      "default_model": "YOUR_MODEL_ID",
+      "task_models": {},
+      "capabilities": {
+        "text_generation": true,
+        "vision": false,
+        "tool_calling": false,
+        "json_output": false,
+        "embedding": true,
+        "streaming": true
+      },
+      "connection_status": "unconfigured",
+      "validation_status": { "state": "unvalidated", "validation_errors": [], "validated_at": null },
+      "notes": "Local provider (D-004, API_POLICY 22): runs on user hardware, no cloud egress. Loopback HTTP is the schema-sanctioned exception."
+    },
+    {
+      "provider": "openai_compatible",
+      "display_name": "Custom (OpenAI-compatible)",
+      "enabled": false,
+      "base_url": "https://YOUR_CUSTOM_ENDPOINT_PLACEHOLDER",
+      "api_key_ref": "OS_KEYCHAIN_REFERENCE",
+      "default_model": "YOUR_MODEL_ID",
+      "task_models": {},
+      "capabilities": {
+        "text_generation": true,
+        "vision": false,
+        "tool_calling": false,
+        "json_output": true,
+        "embedding": false,
+        "streaming": true
+      },
+      "connection_status": "unconfigured",
+      "validation_status": { "state": "unvalidated", "validation_errors": [], "validated_at": null },
+      "notes": "User-supplied OpenAI-compatible endpoint; user declares the capability subset."
+    }
+  ],
+  "future_providers": {
+    "$comment": "New providers are added as new adapter records implementing the same schema; the registry and abstraction do not change (modular adapter requirement, directive 82417 section 3)."
+  }
+}

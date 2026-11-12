@@ -120,6 +120,35 @@ No subtest of these packages was executed in this sprint, and none is silently m
 | VS Build Tools | `C:\Program Files (x86)\Microsoft Visual Studio` | 3.6 GB | **Documented exception** — system-managed toolchain required by the MSVC Rust host (directive rule 5); stays |
 | WebView2 Runtime | `C:\Program Files (x86)\Microsoft\EdgeWebView` | 2.6 GB | **Documented exception** — Windows system component (Evergreen runtime); stays |
 | Docker data | `C:\Users\REDEYE\AppData\Local\Docker` | 2.9 GB | Owner-managed app (Docker Desktop program files not found — app appears uninstalled, data remains); outside project scope; owner decision on cleanup/move |
+| Windows SDK | `C:\Program Files (x86)\Windows Kits\10` (inside the VS Build Tools install) | (part of the 3.6 GB above) | **Documented exception** — system-managed MSVC toolchain component; stays (rule 5) |
+| Temp files (project processing) | none exist (no processing pipeline) | — | Future temp media directed to `D:\Temp` per plan; nothing to audit |
+| Model storage | `D:\Models` (empty) | — | Created; designated home for future Whisper models (consent-gated; `WHISPER_CORE_PLAN.md` §1.1) |
 | New D: skeleton | `D:\Apps`, `D:\DevTools`, `D:\Models`, `D:\Temp`, `D:\Builds\cargo-target` | empty | Created empty per the D-019 separation; future artifacts directed accordingly |
+
+### 8.1 D:\dev-caches reconciliation with the approved structure (directive 82417 §7)
+
+`D:\dev-caches` (2.1 GB: cargo, rustup, npm-cache, _downloads) predates the directive's `D:\DevCache` naming and is **live**: `RUSTUP_HOME`/`CARGO_HOME` point into it and the working Rust 1.99.1 toolchain resolves through it. Reconciliation performed as **documentation, not migration** (no move/delete without approval):
+
+- `D:\dev-caches` is mapped to the approved **DevCache** role. The name differs (lowercase, hyphenated); the function, disk, and separation-from-repo are exactly what the policy requires.
+- Migrating (directory move + env-var update) is technically supported by cargo/rustup but risks a broken toolchain for zero functional gain; recorded as an **optional owner-approved follow-up** (move + re-verify `cargo --version`/`rustc --version`), not performed.
+- **Compliance statement (evidence-based):** all project-generated caches and build outputs verified on D: (npm cache → `D:\dev-caches\npm-cache` — the C: user cache is 0 MB; cargo builds → `D:\Builds\cargo-target` from now on; PoC `node_modules/` inside the repo are gitignored dependency installs required to re-run harnesses). System-managed components (VS Build Tools, Windows SDK, WebView2, Node.js MSI) remain on C: as documented exceptions. **Claim: D-drive compliance is verified for everything the project generates; 100% C:-eviction of Windows-managed components is NOT claimed.**
+
+## 9. Closure statuses (directive 82417 §9 vocabulary, 2026-11-13)
+
+Statuses: COMPLETE / PARTIAL / BLOCKED / DEFERRED / HOLD / NOT STARTED. Verification types: **T**=tested, **BV**=build verified, **CI**=code inspected, **MT**=mock tested, **NT**=not tested, **OD**=owner-deferred.
+
+| Task | Status | Work performed | Expected → Actual | Evidence | Limitations / dependencies | Next action | Verified via |
+|---|---|---|---|---|---|---|---|
+| P1-ENV | COMPLETE | Node 24.20/Rust 1.99.1/MSVC installed, homes on D: | working toolchain → working | F1-01 RESULTS §Env | Android toolchain absent (deferred) | none | T, BV |
+| P1-A | COMPLETE (A5 human half pending) | shell + suite + installers + measurements + closure addendum | criteria A1–A6 pass → pass | F1-01 RESULTS + ADDENDUM | dialog human pass pending (automation not reproducible in-session — attempted 8+ ways incl. free display) | owner records the 2 amber lines | T, BV |
+| P1-B | DEFERRED (owner) | none | — | F1-01 RESULTS scope note | no device/SDK | owner decision at Gate 1 | NT, OD |
+| P1-C | HOLD (owner) | none — architecture planned (`WHISPER_CORE_PLAN.md`) | — | WHISPER_CORE_PLAN §2 | tiers 2–4 unverified | owner chooses option A/B/C (R-025) | NT, OD |
+| P1-D | HOLD (owner) | none | — | WHISPER_CORE_PLAN §3 | needs P1-B + P1-C | recommend stay held | NT, OD |
+| P1-E | COMPLETE (desktop leg; A4 PARTIAL) | capability page + WebView2 runs (occluded + visible) + CC0 fixtures | A1/A3/A5-logic pass → pass; A4 mechanism pass, curated cases absent | F1-02 RESULTS | curated restriction URLs (owner list); A6 mobile deferred | optional P-004 closure | T |
+| P1-F | COMPLETE | Rust+SQLite harness | invariants hold → 9/9 twice | F1-04 RESULTS | URL-identity only; no concurrency test | none | T |
+| P1-G | COMPLETE (offline); live run **LATER (owner)** | dataset v0 (14 cases) + harness + 4 deterministic mock runs (2 prompts) | catch-rate 100% offline → pass | F1-06 RESULTS | live-model metrics owner-deferred | owner schedules live run (post-revocation key) | T, MT |
+| P1-H | COMPLETE (desktop legs) | page + shell + CDP harness; full 8×2 matrix + 10-min soak | A1–A5, A7, A8 targets → all pass; ≈60 FPS @ 20k+50k both envs | F1-05 RESULTS | A6 mobile deferred with P1-B | none — R-008 verdict ADOPT recorded | T |
+| P1-I | COMPLETE | artifact review + architecture-preservation review (addendum 2) | no high/critical → confirmed | P1-I RESULTS + ADDENDUM-2 | carry-forwards (CSP etc.) | none | CI |
+| P1-J | PARTIAL (consolidated; transcription items NOT RUN) | consolidation of all executable measurements | private-bytes target met (135.97/150 MB) → pass | P1-J RESULTS | transcription CPU/RTF unmeasured (P1-C hold) | Phase 2 re-measure active workloads | T (cited) |
 
 **End of PHASE_1_STATUS_MATRIX.md**
