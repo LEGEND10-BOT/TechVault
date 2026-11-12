@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechVault P1-H graph benchmark</title>
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; background: #14121a; color: #e6e4ee; font-family: Consolas, monospace; }
+      #container { position: absolute; inset: 0; }
+      #status { position: absolute; top: 8px; left: 8px; background: rgba(20,18,26,0.9); border: 1px solid #3a3550; border-radius: 4px; padding: 6px 10px; font-size: 12px; max-width: 40vw; z-index: 10; }
+      #results-json { position: absolute; bottom: 8px; left: 8px; right: 8px; max-height: 30vh; overflow: auto; background: rgba(20,18,26,0.92); border: 1px solid #3a3550; border-radius: 4px; padding: 8px; font-size: 11px; white-space: pre-wrap; display: none; z-index: 10; }
+      .done #results-json { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div id="status">loading…</div>
+    <pre id="results-json"></pre>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

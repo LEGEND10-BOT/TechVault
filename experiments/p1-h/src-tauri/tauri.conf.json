@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "p1-h-shell",
+  "version": "0.1.0",
+  "identifier": "com.techvault.p1h.benchmark",
+  "build": {
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "TechVault P1-H graph benchmark (WebView2)",
+        "width": 1200,
+        "height": 800,
+        "url": "index.html"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": false
+  }
+}

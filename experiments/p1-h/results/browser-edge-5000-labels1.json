@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "size": 5000,
+    "labels_mode": "default(density1,threshold7)",
+    "env_tag": "edge-browser",
+    "seed": 24301,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+    "device_pixel_ratio": 1.5,
+    "hardware_concurrency": 8,
+    "webgl_renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009B41) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "started_at": "2026-11-12T19:56:02.011Z"
+  },
+  "generation": {
+    "ms": 77.9,
+    "nodes": 5000,
+    "edges": 8749,
+    "avg_degree": 3.5
+  },
+  "memory_after_generation": 33654493,
+  "first_render": {
+    "ms": 51.5,
+    "note": "refresh() -> first rendered frame (double rAF)"
+  },
+  "memory_after_first_render": 33883163,
+  "fps_20s": {
+    "frames": 114,
+    "medianMs": 16.7,
+    "meanMs": 1267.65,
+    "p5Ms": 16.5,
+    "p95Ms": 16.8,
+    "worstSecondFps": 0.37
+  },
+  "memory_after_fps": 17188493,
+  "search_index_build_ms": 2.9,
+  "search_center_ms": {
+    "median": 0,
+    "runs": 20,
+    "note": "index lookup + camera setState (instant centering)"
+  },
+  "filter_rerender_ms": {
+    "median": 28.3,
+    "runs": 5,
+    "note": "hide category 'service', refresh() wall time"
+  },
+  "progressive_batch_add": {
+    "nodes_added": 100,
+    "add_ms": 0.9,
+    "refresh_after_ms": 17.9,
+    "full_relayout_required": false
+  },
+  "forceatlas2_pass": {
+    "ms": 5675.8,
+    "iterations": 20,
+    "barnes_hut": false
+  },
+  "memory_after_fa2": 32942483,
+  "finished_at": "2026-11-12T19:58:32.689Z"
+}
