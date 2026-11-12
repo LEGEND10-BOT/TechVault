@@ -42,9 +42,9 @@ A handoff must describe the actual project state, not an assumed or planned stat
 | Changelog | Prepared (initial draft, maintained) |
 | Application source code | Not started in this project setup (production); throwaway Phase 1 PoC exists under `experiments/p1-a/` |
 | Database implementation | Not started |
-| Automated tests | Not started (Phase 1 PoC self-test suites only) |
+| Automated tests | Not started for production (Phase 1 PoC self-test suites exist: P1-A suite, P1-F 9/9 invariants, P1-G mock pipeline) |
 | Tauri Android PoC | Not started (P1-B deferred per owner instruction) |
-| Technical feasibility results | In progress — P1-A (F1-01a desktop) delivered 2026-11-12 (`docs/phase1-results/F1-01/RESULTS.md`); remaining packages per `docs/PHASE_1_STATUS_MATRIX.md` |
+| Technical feasibility results | In progress — P1-A, P1-F, P1-I complete; P1-G partial (run blocked on owner key/cap); P1-H partial (browser leg measured); remaining per `docs/PHASE_1_STATUS_MATRIX.md` |
 
 **Important:** Document preparation does not mean technical validation or implementation completion.
 
@@ -429,13 +429,23 @@ This section reflects the initial documentation stage. It must be updated after 
 
 ### Current handoff
 
-- **Phase:** Phase 1 — Feasibility and Technical Validation (execution); **Phase 0 CLOSED 2026-11-13** (`docs/PHASE_0_CLOSURE.md`, decision D-018)
-- **Status:** Phase 0 closed with all roadmap §4 exit criteria verified. Phase 1 in progress: P1-ENV + P1-A (F1-01a desktop PoC) complete and committed (`196b3bc`); P1-G/P1-H executing per owner priority (D-018); P1-B deferred (owner), P1-C/P1-D held (owner)
-- **Current workspace:** Desktop workspace `D:\TechVault` (branch `main`; verified commits `1f815b7`, `196b3bc`; no remote configured — nothing pushed externally)
+- **Phase:** Phase 1 — Feasibility and Technical Validation (execution sprint executed; **Phase 0 CLOSED 2026-11-13**, `docs/PHASE_0_CLOSURE.md`, decision D-018)
+- **Status:** Phase 1 IN_PROGRESS — completed this sprint: P1-A closure, P1-I security review, P1-F identity/merge/undo/FTS5 harness (**9/9 invariants**), P1-G dataset v0 + harness (mock-validated), P1-H browser-leg measurements (≈60 FPS @ 20k nodes). Remaining: P1-G API run (owner key/cap), P1-H WebView2 leg + soak (display time), P1-E, P1-J; P1-B deferred and P1-C/P1-D held (owner, D-018). Full matrix + exit gate: `docs/PHASE_1_STATUS_MATRIX.md`
+- **Current workspace:** Desktop workspace `D:\TechVault` (branch `main`; HEAD after sprint: see Git section below; no remote configured — nothing pushed externally)
 - **Application implementation:** Not started (production tree `src/`/`src-tauri/`/`tests/` reserved; the first production code is Phase 2). Phase 1 PoC code lives under `experiments/p1-<id>/` (P0-T05 approved convention)
-- **Current conversation role:** Implementation/verification agent executing the owner's 2026-11-13 "Phase 0 closure + Phase 1 completion sprint" directive under D-018
-- **Immediate next activity:** Execute P1-G (golden dataset v0 + harness; API run blocked on owner key/spend cap), P1-H (graph benchmark browser/WebView2 legs), remaining eligible packages (P1-I, P1-F, P1-E, P1-J per matrix); then the Phase 1 exit gate
-- **Next development phase:** Phase 2 — Core Application (owner approval gated on the Phase 1 exit review, roadmap §5)
+- **Current conversation role:** Implementation/verification agent executed the owner's 2026-11-13 "Phase 0 closure + Phase 1 completion sprint" directive under D-018
+- **Immediate next activity:** owner delivers OpenRouter key + spend cap (P1-G run), ~10–15 min display time (P1-H/P1-E runs), P1-A file-picker click-through, P-022 decision; then the Phase 1 Gate-1 owner review
+- **Next development phase:** Phase 2 — Core Application (owner approval gated on the Phase 1 exit review, roadmap §5). **No Phase 2 work was implemented in this sprint.**
+
+#### Phase 2 handoff list (prerequisites and future work only — nothing implemented)
+
+| Prerequisite for Phase 2 start | Source |
+|---|---|
+| Phase 1 Gate-1 owner review after remaining packages complete (P1-G run, P1-H remainder, P1-E, P1-J) | roadmap §5 exit criteria; `docs/PHASE_1_STATUS_MATRIX.md` §6 |
+| P-022 idle-RAM budget metric decision (recommendation: tree private bytes) | `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md` D2 |
+| Approved logo asset files (P0-T08) — needed by the application shell at the latest | D-012 |
+| Phase 3 inputs (recorded, not blocking Phase 2): P1-G live metrics → P-009/P-010/P-018; P1-H sizing caps → R-008/R-017 | results records |
+| Carry-forward security requirements: restrictive CSP, no unused permission grants, bounded evidence payloads, URL/SSRF defenses with first connector | `docs/phase1-results/P1-I/RESULTS.md` §3 |
 
 ### Current document inventory
 

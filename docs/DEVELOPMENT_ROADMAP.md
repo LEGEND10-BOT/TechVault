@@ -638,20 +638,21 @@ Each risk should have:
 
 # 18. Current Development Status
 
-At the initial roadmap baseline:
+Updated 2026-11-13 (Phase 0 closure + Phase 1 execution sprint):
 
-- Master Brain: populated by project owner.
-- Architecture document: prepared.
-- Database design: prepared.
-- Security specification: prepared.
-- UI design system: prepared.
-- API policy: prepared.
-- Development roadmap: prepared.
-- Testing strategy: prepared draft (reviewed 2026-11-12).
-- Decision log: prepared draft; decisions D-014..D-017 added 2026-11-12.
-- Phase handoff: prepared draft; current record updated 2026-11-12.
-- Changelog: prepared draft; maintained.
-- Phase 0 execution plan, Phase 1 task packages, Phase 1 feasibility plan: prepared 2026-11-12.
+- Master Brain: populated by project owner; hardware references reconciled.
+- Architecture document: prepared; §7.1 aligned (D-015); §17 reference machine corrected.
+- Database design: prepared; identity/merge/undo/FTS5 invariants validated by P1-F (9/9, `docs/phase1-results/F1-04/RESULTS.md`).
+- Security specification: prepared; Phase 1 security baseline reviewed (P1-I, no high/critical findings).
+- UI design system: prepared (not exercised in Phase 1; logo asset still pending, P0-T08).
+- API policy: prepared; extraction output contract prototyped by the P1-G harness.
+- Development roadmap: prepared; this section refreshed 2026-11-13.
+- Testing strategy: prepared draft (reviewed 2026-11-12); golden dataset v0 created under it (P1-G).
+- Decision log: prepared; decisions D-014..D-018 recorded (D-018: 2026-11-13 sprint directive).
+- Phase handoff: prepared; current record updated 2026-11-13.
+- Changelog: maintained; sprint entries added 2026-11-13.
+- Phase 0 execution plan, Phase 1 task packages, Phase 1 feasibility plan: prepared 2026-11-12; Phase 0 closed 2026-11-13 (`docs/PHASE_0_CLOSURE.md`).
+- **Phase 1 status: IN_PROGRESS** — P1-A, P1-F, P1-I complete; P1-G partial (run blocked on owner key/spend cap); P1-H partial (browser leg measured; WebView2 leg pending display time); P1-E, P1-J pending; P1-B deferred, P1-C/P1-D held (owner, D-018). See `docs/PHASE_1_STATUS_MATRIX.md`.
 
 Documentation completion does not mean technical validation is complete.
 

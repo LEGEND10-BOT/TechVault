@@ -28,11 +28,11 @@ Status vocabulary: COMPLETE_VERIFIED · COMPLETE_WITH_APPROVED_DEFERRALS · IN_P
 | P1-B | F1-01b Android PoC | Android-specific, device-dependent | P1-A + Android SDK/NDK/JDK + test device | Android toolchain install + device (NOT delivered) | **DEFERRED (owner)** | D-018 item 3; recorded 2026-11-12 in P1-A results; do not execute |
 | P1-C | F1-03a Whisper desktop | Desktop (standalone Rust harness) | P1-ENV (satisfied) | None | **HELD (owner)** | D-018 item 4 (2026-11-13). Phase 1 item per D-016; hold ≠ Phase 2 transfer. Do not execute |
 | P1-D | F1-03b Whisper Android | Android-specific, device-dependent | P1-B + P1-C (both not executed) | Test device (NOT delivered) | **HELD (owner)** | D-018 item 4; also structurally blocked by P1-B/P1-C states |
-| P1-E | F1-02 video playback | Desktop (+ optional mobile half, deferred) | P1-A (satisfied) | Optional sample URLs (public) | **ELIGIBLE — pending execution** | See §5 execution queue; local/embed legs executable; auth-restricted content excluded by policy |
-| P1-F | F1-04 database/identity | Desktop (standalone Rust+SQLite harness) | P1-ENV (satisfied) | None | **ELIGIBLE — pending execution** | See §5 execution queue; tests DATABASE_DESIGN §26–27 pending items + merge/undo invariants |
-| P1-G | F1-06 extraction golden dataset | Desktop-compatible (Node harness) | P1-ENV (satisfied) | **OpenRouter key + spend cap (NOT delivered)**; corpus authorization | **IN_PROGRESS (dataset + harness)** / run phase **BLOCKED (owner inputs)** | Dataset v0 + harness built this sprint; API run phase blocked per D-018 item 7 standing rule |
-| P1-H | F1-05 graph benchmark | Desktop (Node page + WebView2 leg); mobile leg deferred | P1-ENV (satisfied); WebView2 leg uses P1-A shell pattern | None (synthetic datasets) | **IN_PROGRESS (browser + WebView2 legs)** | Mobile leg (A6) deferred with P1-B — no Android WebView available |
-| P1-I | Security baseline review | Desktop (read-only review) | P1-A artifacts (available) | None | **ELIGIBLE — pending execution** | Reviews P1-A (+ P1-G/P1-H) artifacts; see §5 execution queue |
+| P1-E | F1-02 video playback | Desktop (+ optional mobile half, deferred) | P1-A (satisfied) | Optional sample URLs (public) | **PENDING** (executable; shell legs need display time) | Not started this sprint — display was in owner use; harness pattern ready from P1-H |
+| P1-F | F1-04 database/identity | Desktop (standalone Rust+SQLite harness) | P1-ENV (satisfied) | None | **COMPLETE_VERIFIED** (2026-11-13) | 9/9 invariants pass, rerun reproducible; commit `a34688b`; `docs/phase1-results/F1-04/RESULTS.md` |
+| P1-G | F1-06 extraction golden dataset | Desktop-compatible (Node harness) | P1-ENV (satisfied) | **OpenRouter key + spend cap (NOT delivered)**; corpus authorization | **PARTIAL** — dataset v0 + harness complete + mock-validated; API run **BLOCKED (owner inputs)** | Commit `a5d9cc8`; `docs/phase1-results/F1-06/RESULTS.md` |
+| P1-H | F1-05 graph benchmark | Desktop (Node page + WebView2 leg); mobile leg deferred | P1-ENV (satisfied); WebView2 leg uses dedicated shell | None (synthetic datasets) | **PARTIAL** — browser leg 4/8 measured (≈60 FPS @20k); WebView2 leg + soak **BLOCKED (display in owner use)** | Commit `0d15422`; `docs/phase1-results/F1-05/RESULTS.md` |
+| P1-I | Security baseline review | Desktop (read-only review) | P1-A artifacts (available) | None | **COMPLETE_VERIFIED** (2026-11-13) | No high/critical findings; 2 low + CSP carry-forward; `docs/phase1-results/P1-I/RESULTS.md` |
 | P1-J | Low-resource hardware benchmark | Desktop (reference machine) | P1-A (done) + P1-C (**held**) | Reference machine (available) | **PARTIALLY BLOCKED** | Measurement objects requiring P1-C (transcription CPU/RAM) unavailable; app-process measurements already exist from P1-A; full protocol deferred with P1-C |
 
 **Phase membership:** every package above belongs to Phase 1 (per D-017 scope of record). Nothing in this matrix is Phase 2 work. Holds/deferrals are owner instructions, not scope transfers.
@@ -78,16 +78,33 @@ No subtest of these packages was executed in this sprint, and none is silently m
 
 ## 5. Execution queue applied this sprint (per directive E1 priority)
 
-1. **P1-A administrative closure only** → `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md` (file-picker owner instructions; P-022 recommendation packet; evidence integrity; limitations restated).
-2. **P1-G** → dataset v0 + harness built; API run phase blocked on owner key/spend cap (recorded, not silently skipped).
-3. **P1-H** → benchmark page + browser leg + WebView2 leg; mobile leg deferred with P1-B.
-4. **Other eligible packages in dependency order** → P1-I (security review of produced artifacts), then P1-F (database/identity harness), then P1-E (playback validation, desktop legs), then P1-J evaluation (partially blocked by P1-C hold).
-5. **Phase 1 exit gate** → evaluated in `docs/PHASE_HANDOFF.md` §9 refresh + §6 of this document after the above complete.
+1. **P1-A administrative closure only** → `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md` (file-picker automation attempts + owner instructions; P-022 recommendation packet; evidence integrity; limitations restated).
+2. **P1-G** → dataset v0 (14 cases, 12/12 categories) + dependency-free harness built and mock-validated (commit `a5d9cc8`); API run phase **blocked on owner key/spend cap**.
+3. **P1-H** → benchmark page + WebView2 shell + CDP harness (commit `0d15422`); browser leg **4/8 measured** (vsync-locked ≈60 FPS at 20k); remaining runs + WebView2 leg + soak **blocked on display availability** (owner was actively using the machine — automation stopped deliberately); mobile leg deferred with P1-B.
+4. **Other eligible packages**: P1-I complete (`docs/phase1-results/P1-I/RESULTS.md`, no high/critical findings); P1-F complete — **9/9 identity-model invariants pass, rerun reproducible** (commit `a34688b`); P1-E pending (display-dependent shell legs); P1-J partially blocked (P1-C held).
+5. **Phase 1 exit gate** → evaluated below (§6).
 
----
+## 6. Exit-gate evaluation (2026-11-13, sprint end)
 
-## 6. Exit-gate evaluation (filled at sprint end)
+| Gate (roadmap §5 / directive G) | Verdict | Evidence |
+|---|---|---|
+| 1. Every mandatory package complete or explicitly approved deferral | **NOT MET** | P1-A/F/I complete; P1-B/C/D owner-held (D-018); P1-G run + P1-H remainder blocked on owner inputs/display (blocked ≠ owner-approved deferral); P1-E/P1-J not yet executed |
+| 2. Tauri desktop path validated | **Met (P1-A)**; playback leg (P1-E) still open | `docs/phase1-results/F1-01/RESULTS.md` |
+| 3. Android strategy from actual results | **Not decidable** — Android packages held/deferred by owner | D-018 |
+| 4. Database identity model passes critical tests | **Met (P1-F)** — 9/9 invariants incl. merge/undo/evidence/verification discipline | `docs/phase1-results/F1-04/RESULTS.md` |
+| 5. Evidence, docs, decisions updated | **Met for this sprint** | results records F1-01/04/05/06 + P1-I; DECISION_LOG D-018; CHANGELOG; this matrix; PHASE_HANDOFF §9 |
 
-*(Intentionally left for the final verification pass — see `docs/PHASE_HANDOFF.md` §9 and the sprint's final report.)*
+**Phase 1 final status: IN_PROGRESS (not closed).** Remaining work to reach the exit review: P1-G API run (owner key/cap) → P1-H completion (display session) → P1-E (display session) → P1-J (after P1-C hold decision) → owner Gate-1 review.
+
+## 7. Owner actions outstanding (unblocks ranked)
+
+| # | Action | Unblocks |
+|---|---|---|
+| 1 | OpenRouter test key + explicit spend cap (out-of-band delivery) | P1-G live run (harness ready; ~low single-digit USD estimate) |
+| 2 | ~10–15 min of undisturbed display time | P1-H remaining browser configs + WebView2 leg + 10-min soak (one command each, documented in F1-05 RESULTS) |
+| 3 | 2-minute manual click-through of the P1-A file picker | P1-A addendum D1 human half |
+| 4 | P-022 RAM-budget metric choice (recommendation packet ready) | Phase 2 budget setting |
+| 5 | Approved logo asset files (P0-T08, carried) | Phase 2 shell |
+| 6 | Optional: sample URLs for P1-E; hold-release decision for P1-C/P1-D | P1-E realism; P1-C/P1-D execution |
 
 **End of PHASE_1_STATUS_MATRIX.md**
