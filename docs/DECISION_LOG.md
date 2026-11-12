@@ -1,0 +1,458 @@
+# TechVault Decision Log
+
+**Document status:** Prepared Draft  
+**Version:** 1.0  
+**Project:** TechVault  
+**Purpose:** Maintain a traceable record of important project decisions, approvals, rejected proposals, and unresolved questions.
+
+---
+
+## 1. Why This Document Exists
+
+TechVault will evolve across multiple development phases, AI coding sessions, reviewers, and contributors.
+
+Without a central decision record, the project risks:
+
+- Reopening decisions that were already approved.
+- Treating suggestions as confirmed requirements.
+- Accidentally removing important functionality.
+- Making incompatible architectural changes.
+- Losing the reasoning behind technical choices.
+- Allowing one development phase to contradict another.
+
+This document is the project's central decision register.
+
+## 2. Decision Status Definitions
+
+| Status | Meaning |
+|---|---|
+| Approved | Explicitly accepted by the project owner |
+| Proposed | Recommended but not yet approved |
+| Pending | Requires investigation, evidence, or owner decision |
+| Rejected | Considered and explicitly declined |
+| Superseded | Replaced by a later approved decision |
+
+A proposal does not become approved through repetition, implementation, or an AI-generated recommendation.
+
+## 3. Decision-Making Rules
+
+1. Important architecture, database, security, and product-scope changes must be recorded.
+2. Owner approval must be explicit.
+3. Every major decision must include its reason and impact.
+4. Technical assumptions must be labelled as assumptions.
+5. Experimental results must be recorded separately from opinions.
+6. A decision may be changed, but its previous record must remain.
+7. No phase may silently override an approved requirement.
+8. A recommendation that conflicts with an approved requirement must explain the conflict.
+9. Security, privacy, and data-integrity decisions require particular care.
+10. AI coding agents must consult this document before proposing significant structural changes.
+
+## 4. Approved Decisions
+
+The following decisions have been explicitly approved by the project owner.
+
+### D-001: Desktop-first development
+
+**Status:** Approved
+
+**Decision:** Build the initial application for desktop. Evaluate Android compatibility in parallel.
+
+**Reason:** Desktop is the first practical target, but Android should not become an expensive architectural rewrite later.
+
+**Impact:**
+- Keep core business logic independent of the desktop UI.
+- Validate Tauri 2 Android feasibility early.
+- Do not promise Android parity before testing.
+
+**Affected documents:** `MASTER_BRAIN.md`, `ARCHITECTURE.md`, `DEVELOPMENT_ROADMAP.md`
+
+### D-002: Transcript retention
+
+**Status:** Approved
+
+**Decision:** Save transcripts by default. The user must be able to delete them.
+
+**Reason:** Transcripts support evidence, search, resource discovery, and notebook research.
+
+**Impact:**
+- Define transcript deletion behavior.
+- Avoid permanent original-video storage by default.
+- Explain retention and deletion behavior in the UI.
+
+**Affected documents:** `MASTER_BRAIN.md`, `DATABASE_DESIGN.md`, `SECURITY.md`
+
+### D-003: Default AI provider
+
+**Status:** Approved
+
+**Decision:** OpenRouter is the default AI provider direction.
+
+**Reason:** A provider abstraction makes it easier to use different models without tying the application to one vendor.
+
+**Impact:**
+- Implement a provider interface.
+- Keep model selection configurable.
+- Avoid hard-coding provider-specific behavior throughout the application.
+
+**Affected documents:** `API_POLICY.md`, `ARCHITECTURE.md`
+
+### D-004: Optional alternative providers
+
+**Status:** Approved
+
+**Decision:** Other providers may be added as optional alternatives, including Gemini, GLM, Ollama, and compatible providers.
+
+**Reason:** Flexibility, local processing options, and future provider choice.
+
+**Impact:**
+- Provider support must be capability-based.
+- Not every provider is required in the first release.
+- Exact supported models remain a separate decision.
+
+**Affected documents:** `API_POLICY.md`
+
+### D-005: Managed default API access
+
+**Status:** Approved in principle, implementation details pending
+
+**Decision:** TechVault should provisionally provide default API access so a new user does not necessarily need to supply their own API key.
+
+**Reason:** Reduce setup complexity.
+
+**Impact:**
+- The default key must never be embedded in the desktop application.
+- Managed requests must go through a protected server-side gateway.
+- Quotas, authentication, rate limits, cost controls, and abuse prevention are required.
+- Exact hosting, billing, free quota, and account policy remain pending.
+
+**Affected documents:** `API_POLICY.md`, `SECURITY.md`
+
+### D-006: No cloud sync in initial release
+
+**Status:** Approved
+
+**Decision:** Cloud synchronization is not part of the initial release.
+
+**Reason:** Keep the first version local-first and reduce infrastructure complexity.
+
+**Impact:**
+- Prioritize local storage.
+- Implement practical export and import.
+- Design data structures so synchronization can be considered later without promising it now.
+
+**Affected documents:** `MASTER_BRAIN.md`, `DATABASE_DESIGN.md`, `DEVELOPMENT_ROADMAP.md`
+
+### D-007: Export and import before cloud sync
+
+**Status:** Approved
+
+**Decision:** Provide export/import as the initial data portability approach.
+
+**Reason:** Users need control over their research data without requiring cloud infrastructure.
+
+**Impact:**
+- Define supported export formats.
+- Test backup and restore.
+- Document import conflict handling.
+
+**Affected documents:** `DATABASE_DESIGN.md`, `SECURITY.md`, `DEVELOPMENT_ROADMAP.md`
+
+### D-008: Related AI suggestions
+
+**Status:** Approved
+
+**Decision:** Related AI resource suggestions are enabled by default.
+
+**Reason:** Discovering useful connected resources is part of the product's research value.
+
+**Impact:**
+- Clearly distinguish suggestions from explicitly mentioned resources.
+- Preserve discovery type and evidence.
+- Provide controls to review and manage suggestions.
+
+**Affected documents:** `MASTER_BRAIN.md`, `DATABASE_DESIGN.md`, `API_POLICY.md`
+
+### D-009: Open-source licensing
+
+**Status:** Pending legal review, direction approved
+
+**Decision:** The project is intended to become open source, but the exact license will be selected after reviewing dependencies and legal implications.
+
+**Reason:** Dependency licenses and distribution obligations must be understood before choosing a license.
+
+**Impact:**
+- Maintain a dependency inventory.
+- Review transitive dependency licenses.
+- Do not assume Apache-2.0 or another license is already selected.
+
+**Affected documents:** `SECURITY.md`, `DEVELOPMENT_ROADMAP.md`
+
+### D-010: Android minimum version
+
+**Status:** Pending testing, decision approach approved
+
+**Decision:** Select the minimum supported Android version after compatibility and hardware testing.
+
+**Reason:** Avoid choosing a minimum version based on assumptions.
+
+**Impact:**
+- Test actual target devices.
+- Evaluate Tauri Android compatibility.
+- Record the final minimum version after evidence is available.
+
+**Affected documents:** `ARCHITECTURE.md`, `DEVELOPMENT_ROADMAP.md`, `TESTING_STRATEGY.md`
+
+### D-011: UI design system
+
+**Status:** Approved
+
+**Decision:** Use the owner-provided developer-first design system.
+
+**Key characteristics:**
+- Dark-primary visual direction with light theme support.
+- Violet accent palette.
+- Compact, high-density research workspace.
+- Subtle borders and restrained cards.
+- Geist Sans/Inter typography direction.
+- Geist Mono/JetBrains Mono for technical metadata.
+- Tailwind CSS variables.
+- Shadcn-style component patterns.
+- Lucide icons.
+- Responsive desktop and mobile layouts.
+
+**Reason:** Establish a consistent visual identity and avoid arbitrary UI decisions during development.
+
+**Impact:** UI implementation should follow `UI_DESIGN_SYSTEM.md`.
+
+### D-012: Approved logo
+
+**Status:** Approved
+
+**Decision:** Retain the supplied shield and T logo unchanged.
+
+**Reason:** The owner has approved the existing logo.
+
+**Impact:**
+- Do not redesign it without permission.
+- Use the supplied original asset.
+- Verify the actual asset file is available before integrating it.
+
+### D-013: General/Master Control chat boundary
+
+**Status:** Approved
+
+**Decision:** This conversation is the general project-control space.
+
+**Reason:** Keep project coordination separate from actual implementation tasks.
+
+**Impact:**
+- Discuss requirements, architecture, approvals, and phase coordination here.
+- Perform implementation in the dedicated phase task or development environment.
+- Do not claim that a discussion here has changed files in the local project.
+
+### D-014: Phase 0 scope definition (resolves audit finding F-01)
+
+- **Status:** Approved
+- **Date:** 2026-11-12
+- **Source:** Owner ruling via Main Controller coordination session; A2 audit finding F-01 (Critical)
+- **Context:** `MASTER_BRAIN.md` Part O defined Phase 0 as including Tauri/Svelte initialization and a first Windows build, while `DEVELOPMENT_ROADMAP.md` §4 and `PHASE_HANDOFF.md` §5 define Phase 0 as documentation/foundation only. Both cannot govern simultaneously.
+- **Options considered:** roadmap §4 documentation-only; MASTER_BRAIN Part O build-included; split with a separate build task.
+- **Decision:** The roadmap §4 documentation-only definition of Phase 0 governs. No application implementation occurs in Phase 0.
+- **Rationale:** Matches the owner's standing instruction; the environment currently lacks Node/Rust toolchains; the first build is already Phase 1 package P1-A.
+- **Evidence:** A2 audit finding F-01; verified repository state (documentation only, zero commits).
+- **Impact:** MASTER_BRAIN Part O Phase 0 items 2–5, 14–15 are deferred to Phase 1 package P1-A (toolchain/init verification, first build, size recording) and Phase 2 (production structure); item 7 (logo) awaits asset delivery (D-012). An alignment note is added to MASTER_BRAIN Part O.
+- **Affected documents:** `MASTER_BRAIN.md` (Part O note), `DEVELOPMENT_ROADMAP.md` (§4 note), `docs/PHASE_0_EXECUTION_PLAN.md` (OI-01)
+- **Next action:** none — implemented in the 2026-11-12 reconciliation pass.
+
+### D-015: Initial source-adapter priority (resolves audit finding F-02)
+
+- **Status:** Approved
+- **Date:** 2026-11-12
+- **Source:** Owner ruling via Main Controller coordination session; A2 audit finding F-02 (High)
+- **Context:** `ARCHITECTURE.md` §7.1 listed Facebook video links first with YouTube/Instagram as future adapters, conflicting with `MASTER_BRAIN.md` Part B2 tiers (YouTube metadata/captions, GitHub, Reddit, Medium in Tier 1; Facebook in Tier 2).
+- **Options considered:** MASTER_BRAIN B2 tiers govern; ARCHITECTURE §7.1 list governs.
+- **Decision:** MASTER_BRAIN Part B2 tiers govern the initial adapter priority: Tier 1 = generic websites, GitHub public repositories, YouTube metadata and permitted captions, Reddit public content, Medium accessible articles; Tier 2 = Facebook, Instagram, TikTok, X/Twitter, Telegram (conditional); Tier 3 = user-assisted (local uploads, pasted transcripts/descriptions, imported text).
+- **Rationale:** The Master Brain is the product constitution; the tiers reflect the product's video-research purpose; capability-based support is preserved.
+- **Evidence:** A2 audit finding F-02.
+- **Impact:** `ARCHITECTURE.md` §7.1 is aligned to the tier model in the 2026-11-12 reconciliation pass. Phase 1 playback validation (F1-02) and Phase 2 source-management scope follow this priority.
+- **Affected documents:** `ARCHITECTURE.md` (§7.1)
+- **Next action:** none — implemented.
+
+### D-016: Transcription integration phase placement (resolves audit finding F-03)
+
+- **Status:** Approved
+- **Date:** 2026-11-12
+- **Source:** Owner ruling via Main Controller coordination session; A2 audit finding F-03 (High)
+- **Context:** `DEVELOPMENT_ROADMAP.md` §6.6 placed the local transcription foundation (Whisper.cpp integration, model management, transcript storage/deletion) in Phase 2; `MASTER_BRAIN.md` Part O and `PHASE_HANDOFF.md` §5 placed "Transcription integration" in Phase 3.
+- **Options considered:** Phase 2 foundation; Phase 3 with AI integration.
+- **Decision:** Transcription foundation is built in Phase 2 (per roadmap §6.6); Phase 3 consumes transcripts for AI extraction and research features.
+- **Rationale:** Transcripts are core data-layer functionality tied to D-002 (retention/deletion) and the Phase 2 database work; Phase 1 already validates Whisper.cpp (packages P1-C/P1-D), de-risking a Phase 2 integration.
+- **Evidence:** A2 audit finding F-03.
+- **Impact:** `MASTER_BRAIN.md` Part O Phase 2/3 work lists and `PHASE_HANDOFF.md` §5 Phase 2/3 lists are aligned in the 2026-11-12 reconciliation pass.
+- **Affected documents:** `MASTER_BRAIN.md` (Part O Phase 2, Phase 3), `PHASE_HANDOFF.md` (§5)
+- **Next action:** none — implemented.
+
+### D-017: Phase 1 feasibility work approved (Phase 0 exit gate, P0-T11)
+
+- **Status:** Approved
+- **Date:** 2026-11-12
+- **Source:** Owner ruling via Main Controller coordination session (roadmap §4 exit criterion)
+- **Context:** Roadmap §4 requires owner approval of Phase 1 feasibility work before Phase 0 closes.
+- **Decision:** Phase 1 feasibility work is approved. The Phase 1 scope of record is packages P1-ENV and P1-A..P1-J (`docs/PHASE_1_TASK_PACKAGES.md`) with the experiment specifications in `docs/PHASE_1_FEASIBILITY_PLAN.md` and `docs/phase1-plan/` (F1-01..F1-06).
+- **Rationale:** All roadmap §4 exit criteria are met after decisions D-014..D-016; the feasibility plan passed Main Controller review (P0-T04).
+- **Evidence:** A2 audit (no unresolved critical contradiction after D-014..D-016); Main Controller review of the feasibility plan; owner approval recorded 2026-11-12.
+- **Impact:** Execution starts after the T02 reconciliation, the baseline Git commit (P0-T06), and toolchain installation (P0-T07 / P1-ENV). Spend-bearing items (OpenRouter test key, Android SDK/emulator downloads) and owner-provided resources (test device, media corpus) still require per-item authorization at Gate 0 (`PHASE_1_TASK_PACKAGES.md` §4). All numeric targets remain planning targets until measured.
+- **Affected documents:** `docs/PHASE_1_TASK_PACKAGES.md`, `docs/PHASE_1_FEASIBILITY_PLAN.md`, `docs/PHASE_0_EXECUTION_PLAN.md` (P0-T11)
+- **Next action:** P0-T06 baseline commit, then P1-ENV.
+
+## 5. Proposed Recommendations
+
+These recommendations came from the technical review process or subsequent architecture planning. They are not automatically approved merely because they appear here.
+
+| ID | Recommendation | Current status |
+|---|---|---|
+| R-001 | Use Tauri 2 for the desktop shell | Proposed, requires feasibility validation |
+| R-002 | Use Rust for the UI-independent core | Proposed |
+| R-003 | Use Svelte 5, Vite, and strict TypeScript | Proposed |
+| R-004 | Use SQLite with FTS5 | Proposed |
+| R-005 | Separate Resource and Mention entities | Strong recommendation, requires schema approval |
+| R-006 | Preserve permanent merge history and support undo | Proposed |
+| R-007 | Use Whisper.cpp for local transcription | Approved direction, implementation validation pending |
+| R-008 | Use Sigma.js and Graphology for knowledge graph | Proposed, benchmark required |
+| R-009 | Use OS secure credential storage for BYOK | Proposed |
+| R-010 | Use a managed server-side API gateway | Required by D-005, design pending |
+| R-011 | Keep embeddings out of the initial release | Proposed |
+| R-012 | Use capability-based video playback backends | Proposed |
+| R-013 | Use a golden dataset for extraction regression | Strong recommendation |
+| R-014 | Add a Data Egress Ledger | Proposed |
+| R-015 | Provide first-run Local, Cloud, and No AI choices | Proposed, exact modes need design |
+| R-016 | Keep external connectors disconnected until authorized | Proposed security requirement |
+| R-017 | Use a simplified mobile knowledge graph | Proposed |
+| R-018 | Support Markdown, JSON, and CSV export where appropriate | Proposed |
+| R-019 | Add backup and restore | Required product direction, detailed design pending |
+| R-020 | Use a command palette | Proposed |
+| R-021 | Establish per-feature resource budgets | Required before performance sign-off |
+| R-022 | Use a Flutter fallback only if Tauri Android fails | Proposed contingency |
+
+Recommendations must be reviewed against product scope, implementation cost, security, and measured feasibility.
+
+## 6. Pending Decisions and Investigations
+
+The following items must not be silently treated as settled.
+
+### Architecture and platform
+
+| ID | Pending item | Required next action |
+|---|---|---|
+| P-001 | Tauri 2 Android feasibility | Build a minimal Android proof of concept |
+| P-002 | Final frontend/backend stack | Validate build, maintenance, and platform needs |
+| P-003 | Android fallback strategy | Decide only after Tauri PoC results |
+| P-004 | Video playback strategy | Test local, embed, and external playback capabilities |
+| P-005 | Platform connector coverage | Define supported sources and limitations |
+| P-006 | FFmpeg packaging and Android dependencies | Prototype and measure |
+
+### Data and identity
+
+| ID | Pending item | Required next action |
+|---|---|---|
+| P-007 | Canonical resource identity model | Approve stable identifiers and matching rules |
+| P-008 | Automatic merge thresholds | Validate using representative identity cases |
+| P-009 | AI confidence thresholds | Evaluate against the golden dataset |
+| P-010 | Per-source extraction caps | Measure noise and recall before setting limits |
+| P-011 | Resource version/history policy | Define meaningful change events |
+| P-012 | SQLite configuration | Validate FTS5, JSON1, WAL, and migration behavior |
+| P-013 | sqlite-vec adoption | Benchmark and justify before inclusion |
+| P-014 | Database encryption | Evaluate threat model, performance, and recovery |
+
+### AI and API
+
+| ID | Pending item | Required next action |
+|---|---|---|
+| P-015 | Managed gateway hosting | Compare operational and security options |
+| P-016 | Managed API authentication | Define user identity and authorization |
+| P-017 | Free usage quota and billing | Approve sustainable usage policy |
+| P-018 | Supported model list | Validate capability, cost, and reliability |
+| P-019 | Per-task model overrides | Define settings and safe defaults |
+| P-020 | Local-only processing modes | Define exactly what runs locally |
+| P-021 | Data Egress Ledger | Decide whether and how to implement |
+
+### Release and operations
+
+| ID | Pending item | Required next action |
+|---|---|---|
+| P-022 | Performance budgets | Benchmark reference hardware |
+| P-023 | Minimum Android version | Test representative devices |
+| P-024 | Open-source license | Complete legal and dependency review |
+| P-025 | Update mechanism | Evaluate signing, verification, and rollback |
+| P-026 | Release signing | Define platform-specific release process |
+| P-027 | Source size/duration limits | Measure processing and storage behavior |
+| P-028 | Telemetry policy | Preserve no-telemetry-by-default direction and review any optional diagnostics |
+
+## 7. Decision Record Template
+
+Use this template for every significant new decision.
+
+### D-XXX: [Decision title]
+
+- **Status:** Proposed / Approved / Pending / Rejected / Superseded
+- **Date:**
+- **Owner:**
+- **Source:** Owner request / Technical audit / Prototype / Security review / Other
+- **Context:** What problem requires a decision?
+- **Options considered:**
+- **Decision:** What was selected?
+- **Rationale:** Why was it selected?
+- **Evidence:** Test results, documentation, audit findings, or measurements.
+- **Impact:** Architecture, database, security, UI, performance, or scope.
+- **Affected documents:**
+- **Dependencies:**
+- **Next action:**
+- **Approval record:**
+
+## 8. Change and Approval Procedure
+
+When a new recommendation is raised:
+
+1. Record it as Proposed or Pending.
+2. Explain its benefits, disadvantages, and risks.
+3. Identify affected documents and existing decisions.
+4. Gather evidence where needed.
+5. Present it to the project owner.
+6. Record explicit approval or rejection.
+7. Update affected project documents.
+8. Record implementation only after the relevant phase begins.
+
+When an approved decision changes:
+
+1. Do not erase the old decision.
+2. Mark it Superseded.
+3. Create a new decision record.
+4. Explain why the change is necessary.
+5. Identify migration or compatibility consequences.
+6. Update all affected documentation.
+
+## 9. AI Agent Rules
+
+Any AI coding or research agent working on TechVault must:
+
+- Read this document before major design or implementation work.
+- Respect Approved decisions.
+- Clearly label proposals and assumptions.
+- Never invent owner approval.
+- Never silently remove an approved requirement.
+- Report conflicts between requirements.
+- Identify affected files before structural changes.
+- Update this document only when a decision has actually been made.
+- Never record an unverified technical assumption as a measured fact.
+
+## 10. Current Decision Summary
+
+**Approved direction:** Desktop-first, Android evaluation in parallel, local-first initial release, transcript retention with user deletion, OpenRouter default, optional providers, provisional managed API access, export/import before cloud sync, related AI suggestions enabled by default, approved UI design system, and unchanged supplied logo. Additionally (2026-11-12): Phase 0 executed documentation-only with MASTER_BRAIN Part O items deferred (D-014), MASTER_BRAIN B2 adapter tiers govern the initial adapter priority (D-015), transcription foundation is built in Phase 2 (D-016), and Phase 1 feasibility work is approved (D-017).
+
+**Still requiring technical validation:** Tauri Android, video playback, final stack, database configuration, resource identity and merge thresholds, graph implementation, performance budgets, and release packaging.
+
+**Still requiring owner decisions:** Exact managed API usage policy, licensing, Android minimum version, optional security/privacy features, and other items listed in Section 6.
+
+---
+
+**Maintenance rule:** Append new decisions. Do not rewrite project history. Keep this document synchronized with `MASTER_BRAIN.md`, affected technical documents, and the phase handoff.

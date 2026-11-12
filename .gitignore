@@ -1,0 +1,42 @@
+# TechVault repository hygiene
+# Keep build artifacts, temporary media, secrets, and large model files out of version control.
+
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Secrets and environment files (never commit real credentials)
+.env
+.env.*
+*.pem
+*.key
+secrets.*
+
+# Node / frontend build artifacts
+node_modules/
+dist/
+*.local
+
+# Rust / Tauri build artifacts
+src-tauri/target/
+src-tauri/gen/
+
+# Downloaded AI models (Whisper etc.) - user-managed, not versioned
+models/
+*.gguf
+*.bin
+
+# Temporary processing media (never permanent video storage by default)
+tmp/
+temp/
+*.tmp
+
+# Local databases and backups (user data, not repo content)
+*.sqlite
+*.sqlite3
+*.db
+backups/
