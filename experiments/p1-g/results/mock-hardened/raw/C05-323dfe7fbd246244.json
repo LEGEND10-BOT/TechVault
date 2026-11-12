@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T21:32:06.793Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"Vite\",\"resource_type\":\"tool\",\"short_description\":\"build tool\",\"official_url\":\"https://vitejs.dev\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"05:21\",\"evidence\":\"most of that moved to Vite\",\"confidence\":0.9,\"verification_status\":\"unverified\"},{\"name\":\"Bower\",\"resource_type\":\"tool\",\"short_description\":\"package manager\",\"official_url\":\"https://bower.io\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"04:30\",\"evidence\":\"we managed front-end dependencies with Bower\",\"confidence\":0.75,\"verification_status\":\"unverified\"}]}"
+  ]
+}

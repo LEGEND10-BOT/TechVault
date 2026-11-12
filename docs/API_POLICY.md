@@ -158,6 +158,7 @@ Examples of task-specific configuration:
 - Summarization model.
 - Vision-capable model.
 - Embedding model.
+- Text-to-speech model (audio capability — same provider integration, separate capability routing; see §12.2).
 
 Per-task overrides must be optional.
 
@@ -235,6 +236,25 @@ Credentials must never be:
 For BYOK, use OS credential storage where supported.
 
 For managed access, use server-side secrets management.
+
+## 12.1 Credential Incident Handling (added 2026-11-13, decision D-019)
+
+- Any credential exposed in a conversation, log, screenshot, or repository artifact is treated as compromised: the owner revokes it in the provider dashboard and replaces it. Agents never request or transport credentials through chat.
+- Documentation and examples reference the placeholder environment variable `OPENROUTER_API_KEY`; no real key value appears in any project artifact.
+- Live provider calls (including "free" models) require explicit per-execution owner authorization; free-tier models are still third-party API usage and are not exempt from this rule.
+
+## 12.2 Provider Capability Model: Text Generation and Speech (added 2026-11-13, decision D-019)
+
+The owner has provided OpenRouter SDK examples establishing intended provider capability for two model capability classes:
+
+- **Text generation** (chat/completions): proposed model identifier `nvidia/nemotron-3.5-super-vl:free`.
+- **Text-to-speech / audio (TTS)**: proposed model identifier `fish-audio/s2.1-pro-free:free`.
+
+Rules:
+
+- Text generation and TTS are treated as **separate model capabilities within the same provider integration** where the provider supports them; they do not require separate API credentials (same OpenRouter key, capability-routed requests).
+- Both remain **configurable per capability**; the identifiers above are proposed examples from the owner, NOT verified compatibility and NOT permanent defaults.
+- Model availability and provider capability must be verified at execution time, only when live testing is explicitly authorized (currently: **not authorized** — P1-G live run is on hold, owner decision "LATER", 2026-11-13).
 
 # 13. Cloud Processing and User Consent
 

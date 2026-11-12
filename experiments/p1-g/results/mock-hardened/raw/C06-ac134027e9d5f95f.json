@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T21:32:06.794Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"Grafana\",\"resource_type\":\"tool\",\"short_description\":\"dashboards\",\"official_url\":\"https://grafana.com\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"06:02\",\"evidence\":\"the tool is Grafana\",\"confidence\":0.96,\"verification_status\":\"unverified\"},{\"name\":\"Nginx\",\"resource_type\":\"tool\",\"short_description\":\"web server\",\"official_url\":\"https://nginx.org\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"06:31\",\"evidence\":\"the official pronunciation is \\\"engine-x\\\"\",\"confidence\":0.95,\"verification_status\":\"unverified\"}]}"
+  ]
+}

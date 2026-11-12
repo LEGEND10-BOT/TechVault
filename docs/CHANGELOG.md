@@ -55,11 +55,12 @@ Do not record every minor code edit. Use Git history for detailed implementation
 - Phase 1 task packages (`docs/PHASE_1_TASK_PACKAGES.md`).
 - Phase 1 feasibility plan (`docs/PHASE_1_FEASIBILITY_PLAN.md` with experiment specifications F1-01..F1-06 under `docs/phase1-plan/`).
 - Documentation consistency audit findings (F-01..F-09) recorded and dispositioned (2026-11-12).
-- Decision records D-014..D-017 (2026-11-12).
+- Decision records D-014..D-017 (2026-11-12), D-018..D-019 (2026-11-13).
 - Phase 1 package P1-A (F1-01a desktop PoC): throwaway Tauri 2 + Svelte 5 + strict TypeScript validation shell under `experiments/p1-a/` with automated IPC, permission-scope, and measurement suite (`docs/phase1-results/F1-01/RESULTS.md`) (2026-11-12).
 - Phase 0 baseline checkpoint commit (P0-T06) created after owner-supplied repo-local Git identity (2026-11-12).
 - Phase 0 closure (`docs/PHASE_0_CLOSURE.md`, 2026-11-13): roadmap §4 exit criteria verified, stale references reconciled, D-018 owner directive recorded.
 - Phase 1 sprint (2026-11-13, per owner directive D-018): P1-A closure addendum; P1-G golden dataset v0 (14 cases, 12/12 categories) + dependency-free extraction harness, mock-validated with byte-identical reruns; P1-H Sigma.js/Graphology benchmark page + WebView2 shell + CDP harness with browser-leg measurements; P1-F identity/merge/undo/FTS5 harness (9/9 invariants); P1-I security baseline review (no high/critical findings). Records under `docs/phase1-results/` (F1-01 addendum, F1-04, F1-05, F1-06, P1-I) and `docs/PHASE_1_STATUS_MATRIX.md`.
+- Phase 1 continuation (2026-11-13, per owner directive D-019): P1-E desktop playback validation measured in WebView2 (`docs/phase1-results/F1-02/RESULTS.md` — MP4/WebM local playback, YouTube IFrame play + error detection, scheme allowlist); P1-G hardened-prompt mock matrix (deterministic; live run owner-deferred "LATER"); P1-J protocol consolidation (`docs/phase1-results/P1-J/RESULTS.md`); Gate-1 readiness report (`docs/PHASE_1_GATE1_READINESS.md`); D-drive enforcement record (matrix §8); credential-incident handling added to `SECURITY.md` §6.4 and `API_POLICY.md` §12.1, provider capability model (text + TTS) in `API_POLICY.md` §12.2/§8.
 
 ### Changed
 - Established a documentation-first workflow before implementation.

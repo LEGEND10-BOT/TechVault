@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T21:32:06.792Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"GitHub Actions\",\"resource_type\":\"service\",\"short_description\":\"CI\",\"official_url\":\"https://github.com/features/actions\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"02:10\",\"evidence\":\"I combine GitHub Actions with Dependabot\",\"confidence\":0.95,\"verification_status\":\"unverified\"},{\"name\":\"Dependabot\",\"resource_type\":\"service\",\"short_description\":\"dependency updates\",\"official_url\":\"https://github.com/dependabot\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"02:10\",\"evidence\":\"GitHub Actions with Dependabot\",\"confidence\":0.9,\"verification_status\":\"unverified\"},{\"name\":\"ESLint\",\"resource_type\":\"tool\",\"short_description\":\"linter\",\"official_url\":\"https://eslint.org\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"02:10\",\"evidence\":\"lint with ESLint\",\"confidence\":0.95,\"verification_status\":\"unverified\"},{\"name\":\"Git\",\"resource_type\":\"tool\",\"short_description\":\"version control\",\"official_url\":\"https://git-scm.com\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"02:10\",\"evidence\":\"every commit to Git\",\"confidence\":0.93,\"verification_status\":\"unverified\"}]}"
+  ]
+}

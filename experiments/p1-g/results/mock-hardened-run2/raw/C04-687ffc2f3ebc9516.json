@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-12T21:32:06.904Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"PostgREST\",\"resource_type\":\"tool\",\"short_description\":\"REST layer for Postgres\",\"official_url\":\"https://postgrest.org\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"03:18\",\"evidence\":\"We put PostgREST in front of the database\",\"confidence\":0.93,\"verification_status\":\"unverified\"},{\"name\":\"Postman\",\"resource_type\":\"tool\",\"short_description\":\"API client\",\"official_url\":\"https://www.postman.com\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"03:44\",\"evidence\":\"Some people in chat asked about Postman\",\"confidence\":0.7,\"verification_status\":\"unverified\"}]}"
+  ]
+}

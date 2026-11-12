@@ -1,0 +1,5 @@
+# Media fixtures are not retained in Git (AGENTS.md §7) — reproduce via MANIFEST.md sources
+*.mp4
+*.webm
+*.mkv
+*.ogg

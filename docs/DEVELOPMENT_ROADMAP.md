@@ -652,7 +652,7 @@ Updated 2026-11-13 (Phase 0 closure + Phase 1 execution sprint):
 - Phase handoff: prepared; current record updated 2026-11-13.
 - Changelog: maintained; sprint entries added 2026-11-13.
 - Phase 0 execution plan, Phase 1 task packages, Phase 1 feasibility plan: prepared 2026-11-12; Phase 0 closed 2026-11-13 (`docs/PHASE_0_CLOSURE.md`).
-- **Phase 1 status: IN_PROGRESS** — P1-A, P1-F, P1-I complete; P1-G partial (run blocked on owner key/spend cap); P1-H partial (browser leg measured; WebView2 leg pending display time); P1-E, P1-J pending; P1-B deferred, P1-C/P1-D held (owner, D-018). See `docs/PHASE_1_STATUS_MATRIX.md`.
+- **Phase 1 status: IN_PROGRESS (Gate-1 readiness: READY WITH APPROVED DEFERRALS — see `docs/PHASE_1_GATE1_READINESS.md`)** — P1-A, P1-F, P1-I complete; P1-E complete on the desktop leg (curated restriction cases + visible smoothness pending owner inputs); P1-G dataset/harness complete with live run owner-deferred (D-019 "LATER"); P1-H browser leg measured (WebView2 leg pending display time); P1-J consolidated (transcription items NOT RUN per hold); P1-B deferred, P1-C/P1-D held (owner, D-018/D-019). See `docs/PHASE_1_STATUS_MATRIX.md`.
 
 Documentation completion does not mean technical validation is complete.
 

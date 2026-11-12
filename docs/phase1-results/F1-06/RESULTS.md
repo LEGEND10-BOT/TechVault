@@ -4,7 +4,7 @@
 **Executor:** Implementation/verification agent (owner directive 2026-11-13, D-018)
 **Environment:** Windows 11 Pro, i5-10310U/32 GB reference machine; Node v24.20.0 (no runtime dependencies added); harness at `experiments/p1-g/harness/`, dataset at `experiments/p1-g/dataset/v0/`
 
-**Overall status:** Dataset v0 and harness **complete**; live API run matrix **BLOCKED on owner inputs** (OpenRouter test key + explicit spend cap — Gate 0 item 3a, standing rule D-018 item 7: no paid API usage without owner-supplied credentials and cap). This record does not contain any model-quality results, because no model was called.
+**Overall status:** Dataset v0 and harness **complete**; both prompt variants (baseline + hardened) mock-validated offline with byte-identical reruns; live API run matrix **owner-deferred "LATER" (decision D-019, 2026-11-13)** — no live API calls or quota consumption are authorized in the current execution, and the key exposed in a conversation is treated as compromised (revocation protocol: `SECURITY.md` §6.4). This record does not contain any model-quality results, because no model was called.
 
 ## Measurements
 

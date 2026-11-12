@@ -326,6 +326,27 @@ The following decisions have been explicitly approved by the project owner.
 - **Affected documents:** `docs/PHASE_0_CLOSURE.md`, `docs/PHASE_0_EXECUTION_PLAN.md`, `docs/PHASE_1_STATUS_MATRIX.md`, `docs/PHASE_HANDOFF.md`, `docs/CHANGELOG.md`
 - **Next action:** Execute P1-G (dataset + harness) and P1-H (benchmark) per directive; record blocked items honestly.
 
+### D-019: Owner decisions on P-022, Phase 1 holds, live-API timing, and provider capability (2026-11-13)
+
+- **Status:** Approved
+- **Date:** 2026-11-13
+- **Owner:** Project owner (Phase 1 execution-continuation directive)
+- **Source:** Owner directive "Phase 1 Execution Continuation"; decisions recorded verbatim as instructed
+- **Context:** Remaining Phase 1 execution needed explicit rulings on the RAM-budget metric, held packages, live-API timing, and the intended provider capability model after an API-key exposure incident.
+- **Decision (recorded exactly as directed by the owner):**
+  1. **P-022: Option A APPROVED** — private bytes are the primary RAM-budget metric with the **150 MB planning target**; working-set measurements remain supplementary diagnostic information. (Resolves the decision request in `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md` D2.)
+  2. **P1-C: HOLD — do not execute.**
+  3. **P1-D: HOLD — do not execute.**
+  4. **P1-G live OpenRouter benchmark: LATER** — no live API calls and no API-quota consumption in the current execution; the completed dataset and mock harness are preserved.
+  5. **OpenRouter SDK example (owner-provided):** establishes intended provider capability for general text-model and audio/TTS integration — it is **not** permission for live testing or spending. Text generation and TTS are documented as separate model capabilities using the same provider integration where supported (no separate credentials required); both stay configurable. Proposed model identifiers from the owner — `nvidia/nemotron-3.5-super-vl:free` (text) and `fish-audio/s2.1-pro-free:free` (TTS) — are proposals, not verified compatibility or permanent defaults; verify availability when live testing is explicitly authorized.
+  6. **API-key incident (security):** the OpenRouter key exposed in a conversation is treated as **compromised**. It must not be copied, stored, tested, committed, logged, printed, or reused by any agent; the owner must revoke it and generate a replacement out-of-band. Replacement credentials are never requested in chat; documentation uses the placeholder `OPENROUTER_API_KEY`. BYOK credentials use secure OS credential storage; managed shared keys remain server-side and never enter the desktop application. No live API calls in this execution.
+  7. **D-drive policy:** project-related applications, tools, caches, models, temporary files, and generated outputs live on D: (project repository `D:\TechVault` contains repository files only). Migration follows vendor-supported reinstall where safe; Windows-managed components stay documented on C:. (Implementation record: D-drive audit + actions in the Phase 1 continuation report and `docs/PHASE_1_STATUS_MATRIX.md`.)
+- **Rationale:** Owner rulings resolve P-022 (previously owner-decision-required), confirm holds, defer spend-bearing work, and establish the credential-incident protocol.
+- **Evidence:** Owner directive text (2026-11-13); verified repository state (HEAD `8817d3e` before this decision).
+- **Impact:** `SECURITY.md` §6.4 and `API_POLICY.md` §12.1/§12.2/§8 updated; P-022 moves from Pending to resolved-by-decision in §6; P1-G run phase remains gated on a future explicit owner authorization; P1-C/P1-D remain held; D-drive migration tasks authorized with the documented safeguards.
+- **Affected documents:** `docs/DECISION_LOG.md`, `docs/SECURITY.md`, `docs/API_POLICY.md`, `docs/PHASE_1_STATUS_MATRIX.md`, `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md` (P-022 outcome note)
+- **Next action:** continue Phase 1 execution under these decisions; no live API usage.
+
 ## 5. Proposed Recommendations
 
 These recommendations came from the technical review process or subsequent architecture planning. They are not automatically approved merely because they appear here.
@@ -401,7 +422,7 @@ The following items must not be silently treated as settled.
 
 | ID | Pending item | Required next action |
 |---|---|---|
-| P-022 | Performance budgets | Benchmark reference hardware |
+| P-022 | Performance budgets | **Resolved for the idle-RAM metric by decision D-019 (2026-11-13): primary metric = private bytes, 150 MB planning target; working set supplementary.** Numeric per-feature budgets continue to be set from measurements (roadmap §16) |
 | P-023 | Minimum Android version | Test representative devices |
 | P-024 | Open-source license | Complete legal and dependency review |
 | P-025 | Update mechanism | Evaluate signing, verification, and rollback |

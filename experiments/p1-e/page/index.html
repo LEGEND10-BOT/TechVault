@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TechVault P1-E playback capability test</title>
+<style>
+  body { background: #14121a; color: #e6e4ee; font: 12px Consolas, monospace; margin: 12px; }
+  video { width: 320px; height: 180px; display: block; margin: 6px 0; }
+  #log { white-space: pre-wrap; color: #9d96b8; max-height: 40vh; overflow: auto; }
+  iframe { width: 320px; height: 180px; border: 0; display: block; margin: 6px 0; }
+</style>
+</head>
+<body>
+<h3 style="color:#b8a6ff">P1-E playback capability page (throwaway evidence tooling)</h3>
+<div id="log">starting…</div>
+<div id="media"></div>
+<div id="embeds"></div>
+<script>
+// F1-02 (P1-E) desktop playback feasibility — self-instrumenting, all numbers measured.
+// Audio is muted throughout; the page performs programmatic play/pause/seek/rate checks.
+const R = { meta: { started_at: new Date().toISOString(), user_agent: navigator.userAgent,
+                   webview2_ua_chrome: (navigator.userAgent.match(/Chrome\/[\d.]+/) || [null])[0] },
+            canplay_matrix: {}, local_playback: {}, embeds: {}, external_handoff: {}, memory_delta: {}, failures: [] };
+const logEl = document.getElementById("log");
+function log(m) { logEl.textContent += "\n" + m; }
+function heap() { const pm = performance.memory; return pm ? pm.usedJSHeapSize : null; }
+
+// ---------- A5 logic: minimal scheme allowlist (security-baseline contribution) ----------
+const ALLOWED_SCHEMES = ["http:", "https:"];
+function schemeAllowed(url) {
+  try { const u = new URL(url, "http://placeholder.local/"); return ALLOWED_SCHEMES.includes(u.protocol); }
+  catch { return false; }
+}
+R.external_handoff = {
+  cases: {
+    "https://example.org/video": schemeAllowed("https://example.org/video"),
+    "http://example.org/video": schemeAllowed("http://example.org/video"),
+    "file:///C:/Windows/win.ini": schemeAllowed("file:///C:/Windows/win.ini"),
+    "javascript:alert(1)": schemeAllowed("javascript:alert(1)"),
+    "data:text/html,hi": schemeAllowed("data:text/html,hi"),
+  },
+  note: "JS-level allowlist logic only; the Tauri opener-plugin shell path is production wiring (Phase 2).",
+};
+R.external_handoff.pass = R.external_handoff.cases["https://example.org/video"] === true
+  && R.external_handoff.cases["file:///C:/Windows/win.ini"] === false
+  && R.external_handoff.cases["javascript:alert(1)"] === false;
+
+// ---------- canPlayType matrix ----------
+(function () {
+  const v = document.createElement("video");
+  const probe = (t) => v.canPlayType(t);
+  R.canplay_matrix = {
+    "video/mp4; codecs=avc1.42E01E, mp4a.40.2": probe("video/mp4; codecs=avc1.42E01E, mp4a.40.2"),
+    "video/webm; codecs=vp8, vorbis": probe("video/webm; codecs=vp8, vorbis"),
+    "video/webm; codecs=vp9, opus": probe("video/webm; codecs=vp9, opus"),
+    "video/ogg; codecs=theora, vorbis": probe("video/ogg; codecs=theora, vorbis"),
+    "video/x-matroska; codecs=avc1": probe("video/x-matroska; codecs=avc1"),
+    "video/mp4; codecs=hev1": probe("video/mp4; codecs=hev1"),
+  };
+})();
+
+function timeout(ms, label) {
+  return new Promise((_, rej) => setTimeout(() => rej(new Error(label + " timeout " + ms + "ms")), ms));
+}
+
+// ---------- local playback programmatic test (A1) ----------
+async function testLocal(file) {
+  const rec = { file, muted_play: false, time_advanced: false, seek: false, rate: false, decode_error: null };
+  try {
+    const v = document.createElement("video");
+    v.muted = true; v.volume = 0; v.preload = "auto"; v.playsInline = true;
+    v.src = "/fixtures/" + file;
+    document.getElementById("media").appendChild(v);
+    await new Promise((res, rej) => {
+      v.addEventListener("loadedmetadata", res, { once: true });
+      v.addEventListener("error", () => rej(new Error("load/decode error: " + (v.error ? v.error.code + "/" + v.error.message : "unknown"))), { once: true });
+      setTimeout(() => rej(new Error("loadedmetadata timeout 10s")), 10000);
+    });
+    rec.duration_s = Math.round(v.duration * 100) / 100;
+    await v.play();
+    rec.muted_play = true;
+    const t0 = v.currentTime;
+    await new Promise((res) => {
+      const iv = setInterval(() => {
+        if (v.currentTime > t0 + 0.15) { clearInterval(iv); res(); }
+      }, 100);
+      setTimeout(() => { clearInterval(iv); res(); }, 6000);
+    });
+    rec.time_advanced = v.currentTime > t0 + 0.15;
+    rec.playback_rate_measured = Math.round((v.currentTime - t0) / 2 * 100) / 100;
+    v.currentTime = Math.min(rec.duration_s - 0.5, v.currentTime + 1.0);
+    await new Promise((res) => { v.addEventListener("seeked", res, { once: true }); setTimeout(res, 3000); });
+    rec.seek = Math.abs(v.currentTime - 0) > 0;
+    v.playbackRate = 1.5;
+    rec.rate = v.playbackRate === 1.5;
+    v.pause();
+    v.remove();
+  } catch (e) { rec.decode_error = String(e.message || e).slice(0, 160); }
+  return rec;
+}
+
+// ---------- YouTube IFrame API embed test (A3/A4) ----------
+function testYouTubeEmbed(containerId, videoId, expectError) {
+  return new Promise((res) => {
+    const rec = { video_id: videoId, expect_error: !!expectError, player_ready: false, state_events: [], error_code: null };
+    const div = document.createElement("div");
+    div.id = containerId;
+    document.getElementById("embeds").appendChild(div);
+    let settled = false;
+    const finish = () => { if (!settled) { settled = true; res(rec); } };
+    try {
+      const pl = new YT.Player(containerId, {
+        videoId,
+        playerVars: { autoplay: 0, mute: 1, playsinline: 1 },
+        events: {
+          onReady: () => { rec.player_ready = true; try { pl.mute(); pl.playVideo(); } catch (e2) { rec.error = "playVideo: " + String(e2).slice(0, 80); } },
+          onStateChange: (e) => { rec.state_events.push(e.data); if (e.data === 1) finish(); },
+          onError: (e) => { rec.error_code = e.data; finish(); },
+        },
+      });
+      R.embeds["_players_" + containerId] = "created";
+      setTimeout(finish, 20000);
+    } catch (e) { rec.error = String(e.message || e).slice(0, 120); finish(); }
+  });
+}
+
+(async () => {
+  R.memory_delta.page_start_heap = heap();
+  log("local playback tests…");
+  R.local_playback["flower.mp4 (CC0, MDN shared-assets)"] = await testLocal("flower.mp4");
+  R.local_playback["flower.webm (CC0, MDN shared-assets)"] = await testLocal("flower.webm");
+  R.local_playback["broken.mp4 (controlled decode-failure fixture)"] = await testLocal("broken.mp4");
+  log("youtube embed tests…");
+  if (!window.YT || !window.YT.Player) {
+    await new Promise((res, rej) => {
+      const done = () => { if (window.YT && window.YT.Player) res(); };
+      window.onYouTubeIframeAPIReady = done;
+      if (!document.querySelector('script[src*="iframe_api"]')) {
+        const s = document.createElement("script");
+        s.src = "https://www.youtube.com/iframe_api";
+        s.onerror = () => rej(new Error("iframe_api script failed to load"));
+        document.head.appendChild(s);
+      }
+      // poll until the widget JS actually defines YT.Player (bootstrap fires ready only after that,
+      // but resolving on script onload alone races it)
+      const iv = setInterval(done, 250);
+      setTimeout(() => { clearInterval(iv); if (!(window.YT && window.YT.Player)) rej(new Error("YT.Player never defined within 20s")); else res(); }, 20000);
+    });
+  }
+  R.embeds.youtube_api_loaded = !!window.YT && !!window.YT.Player;
+  R.embeds.normal = await testYouTubeEmbed("yt-ok", "aqz-KE-bpKQ", false);
+  R.embeds.invalid_id = await testYouTubeEmbed("yt-bad", "zzzzzzzzzzz", true);
+  R.memory_delta.page_end_heap = heap();
+  R.memory_delta.delta_bytes = heap() !== null ? heap() - R.memory_delta.page_start_heap : null;
+  R.finished_at = new Date().toISOString();
+  log("DONE");
+  window.__RESULTS = R;
+  document.title = "BENCH_DONE";
+})();
+</script>
+</body>
+</html>

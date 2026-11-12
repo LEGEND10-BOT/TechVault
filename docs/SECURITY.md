@@ -213,6 +213,15 @@ For optional BYOK:
 - Do not include credentials in exported project data.
 - Provide a way to replace or remove a stored credential.
 
+## 6.4 Credential Incident Handling (added 2026-11-13, decision D-019)
+
+An OpenRouter API key was accidentally exposed in a project conversation and is treated as compromised. Standing rules from this incident:
+
+- A credential exposed in any conversation, log, screenshot, or repository artifact is **compromised** and must be revoked by its owner and replaced. Revocation happens in the provider dashboard by the owner — never by an agent.
+- Agents must never request, receive, store, test, commit, log, print, or reuse credentials delivered through chat. Replacement credentials are configured by the owner directly (environment variable or secure OS storage), never sent in conversation.
+- Documentation and examples use the placeholder environment variable name `OPENROUTER_API_KEY` and never contain a real key.
+- Live provider calls require explicit owner authorization per execution (spend-bearing actions are individually gated; see decision D-019 and `API_POLICY.md` §12).
+
 ## 6.4 Credential Rotation
 
 The system must support revocation and replacement of credentials.

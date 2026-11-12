@@ -28,12 +28,12 @@ Status vocabulary: COMPLETE_VERIFIED · COMPLETE_WITH_APPROVED_DEFERRALS · IN_P
 | P1-B | F1-01b Android PoC | Android-specific, device-dependent | P1-A + Android SDK/NDK/JDK + test device | Android toolchain install + device (NOT delivered) | **DEFERRED (owner)** | D-018 item 3; recorded 2026-11-12 in P1-A results; do not execute |
 | P1-C | F1-03a Whisper desktop | Desktop (standalone Rust harness) | P1-ENV (satisfied) | None | **HELD (owner)** | D-018 item 4 (2026-11-13). Phase 1 item per D-016; hold ≠ Phase 2 transfer. Do not execute |
 | P1-D | F1-03b Whisper Android | Android-specific, device-dependent | P1-B + P1-C (both not executed) | Test device (NOT delivered) | **HELD (owner)** | D-018 item 4; also structurally blocked by P1-B/P1-C states |
-| P1-E | F1-02 video playback | Desktop (+ optional mobile half, deferred) | P1-A (satisfied) | Optional sample URLs (public) | **PENDING** (executable; shell legs need display time) | Not started this sprint — display was in owner use; harness pattern ready from P1-H |
+| P1-E | F1-02 video playback | Desktop (+ optional mobile half, deferred) | P1-A (satisfied) | Optional sample URLs (public) | **COMPLETE (desktop leg) with PARTIAL criteria** (2026-11-13) | Local MP4/WebM playback + YouTube IFrame play/error detection measured in WebView2 (commit, `docs/phase1-results/F1-02/RESULTS.md`); A4 curated restriction cases pending owner URL list; visible-window smoothness pending display time; A6 deferred with P1-B |
 | P1-F | F1-04 database/identity | Desktop (standalone Rust+SQLite harness) | P1-ENV (satisfied) | None | **COMPLETE_VERIFIED** (2026-11-13) | 9/9 invariants pass, rerun reproducible; commit `a34688b`; `docs/phase1-results/F1-04/RESULTS.md` |
-| P1-G | F1-06 extraction golden dataset | Desktop-compatible (Node harness) | P1-ENV (satisfied) | **OpenRouter key + spend cap (NOT delivered)**; corpus authorization | **PARTIAL** — dataset v0 + harness complete + mock-validated; API run **BLOCKED (owner inputs)** | Commit `a5d9cc8`; `docs/phase1-results/F1-06/RESULTS.md` |
+| P1-G | F1-06 extraction golden dataset | Desktop-compatible (Node harness) | P1-ENV (satisfied) | **OpenRouter key + spend cap (NOT delivered)**; corpus authorization | **PARTIAL per owner decision D-019 ("LATER")** — dataset v0 + harness complete; both prompt variants mock-validated, deterministic; live run deferred by owner | Commits `a5d9cc8` + continuation; `docs/phase1-results/F1-06/RESULTS.md` |
 | P1-H | F1-05 graph benchmark | Desktop (Node page + WebView2 leg); mobile leg deferred | P1-ENV (satisfied); WebView2 leg uses dedicated shell | None (synthetic datasets) | **PARTIAL** — browser leg 4/8 measured (≈60 FPS @20k); WebView2 leg + soak **BLOCKED (display in owner use)** | Commit `0d15422`; `docs/phase1-results/F1-05/RESULTS.md` |
 | P1-I | Security baseline review | Desktop (read-only review) | P1-A artifacts (available) | None | **COMPLETE_VERIFIED** (2026-11-13) | No high/critical findings; 2 low + CSP carry-forward; `docs/phase1-results/P1-I/RESULTS.md` |
-| P1-J | Low-resource hardware benchmark | Desktop (reference machine) | P1-A (done) + P1-C (**held**) | Reference machine (available) | **PARTIALLY BLOCKED** | Measurement objects requiring P1-C (transcription CPU/RAM) unavailable; app-process measurements already exist from P1-A; full protocol deferred with P1-C |
+| P1-J | Low-resource hardware benchmark | Desktop (reference machine) | P1-A (done) + P1-C (**held**) | Reference machine (available) | **PARTIAL (consolidated)** — all protocol items possible without P1-C/D recorded; transcription items NOT RUN per D-019 hold | `docs/phase1-results/P1-J/RESULTS.md`; P-022 resolved by D-019 (tree private 135.97 MB within 150 MB target) |
 
 **Phase membership:** every package above belongs to Phase 1 (per D-017 scope of record). Nothing in this matrix is Phase 2 work. Holds/deferrals are owner instructions, not scope transfers.
 
@@ -96,15 +96,30 @@ No subtest of these packages was executed in this sprint, and none is silently m
 
 **Phase 1 final status: IN_PROGRESS (not closed).** Remaining work to reach the exit review: P1-G API run (owner key/cap) → P1-H completion (display session) → P1-E (display session) → P1-J (after P1-C hold decision) → owner Gate-1 review.
 
-## 7. Owner actions outstanding (unblocks ranked)
+## 7. Owner actions outstanding (unblocks ranked, post-D-019)
 
 | # | Action | Unblocks |
 |---|---|---|
-| 1 | OpenRouter test key + explicit spend cap (out-of-band delivery) | P1-G live run (harness ready; ~low single-digit USD estimate) |
-| 2 | ~10–15 min of undisturbed display time | P1-H remaining browser configs + WebView2 leg + 10-min soak (one command each, documented in F1-05 RESULTS) |
+| 1 | Revoke the exposed OpenRouter key (provider dashboard) and hold the replacement out-of-band | Security hygiene (D-019 §6); future P1-G run |
+| 2 | ~10–15 min of undisturbed display time | P1-H remaining browser configs + WebView2 leg + 10-min soak; P1-E visible-window confirmation (one command each, documented in the results records) |
 | 3 | 2-minute manual click-through of the P1-A file picker | P1-A addendum D1 human half |
-| 4 | P-022 RAM-budget metric choice (recommendation packet ready) | Phase 2 budget setting |
+| 4 | Gate-1 review decision (approve, or record remaining holds as formal deferrals) | Phase 1 closure → Phase 2 start |
 | 5 | Approved logo asset files (P0-T08, carried) | Phase 2 shell |
-| 6 | Optional: sample URLs for P1-E; hold-release decision for P1-C/P1-D | P1-E realism; P1-C/P1-D execution |
+| 6 | Optional: curated restriction-URL list for P1-E A4; hold-release decision for P1-C/P1-D; P1-G live-run scheduling | P-004 closure; §5.3 evidence; P-009/P-010/P-018 inputs |
+
+## 8. D-drive enforcement record (D-019, audited 2026-11-13)
+
+| Item | Current path | Size | D-drive policy disposition |
+|---|---|---|---|
+| Repository | `D:\TechVault` | — | Compliant (repository files only; `src/`,`src-tauri/`,`tests/` empty placeholders) |
+| Rust/Cargo/rustup homes | `D:\dev-caches` | 2.1 GB | **Compliant** — this directory serves the DevCache role (established with owner authorization during P1-ENV; renaming would break the toolchain, so the name is retained and mapped) |
+| npm cache | `D:\dev-caches\npm-cache` | — | **Compliant** (verified via `npm config get cache`; the C: user cache is 0 MB) |
+| Node.js | `C:\Program Files\nodejs` | 101.6 MB | **Documented exception** — per-machine MSI install in the Windows-managed location; relocation requires uninstall/reinstall for marginal gain (cache, the large component, is already on D:) |
+| P1-A installed app | `C:\Users\REDEYE\AppData\Local\p1-a` | 4.9 MB | **Relocation investigated, owner action required**: NSIS silent `/S /D=D:\Apps\p1-a` **hangs** (finding recorded); MSI `INSTALLDIR=D:\Apps\p1-a /qn` fails **1603** (per-machine, needs elevation). Recommended: owner runs the NSIS installer interactively choosing `D:\Apps\p1-a`, or the elevated MSI command. The abortive wizard attempt removed the Start-Menu entry; it was restored to the C: install. The old C: install was not removed (rule 9) |
+| PoC build artifacts inside the repo | `experiments/p1-*/target*` | ~7.5 GB (p1-a 6.1 + p1-h 1.3 + p1-f 0.1) | **Recommendation pending owner approval**: user env var `CARGO_TARGET_DIR=D:\Builds\cargo-target` is now SET for future builds; the existing 7.5 GB of regenerable artifacts inside the repo need owner approval before deletion (they are caches, not data — deleting costs one recompile) |
+| VS Build Tools | `C:\Program Files (x86)\Microsoft Visual Studio` | 3.6 GB | **Documented exception** — system-managed toolchain required by the MSVC Rust host (directive rule 5); stays |
+| WebView2 Runtime | `C:\Program Files (x86)\Microsoft\EdgeWebView` | 2.6 GB | **Documented exception** — Windows system component (Evergreen runtime); stays |
+| Docker data | `C:\Users\REDEYE\AppData\Local\Docker` | 2.9 GB | Owner-managed app (Docker Desktop program files not found — app appears uninstalled, data remains); outside project scope; owner decision on cleanup/move |
+| New D: skeleton | `D:\Apps`, `D:\DevTools`, `D:\Models`, `D:\Temp`, `D:\Builds\cargo-target` | empty | Created empty per the D-019 separation; future artifacts directed accordingly |
 
 **End of PHASE_1_STATUS_MATRIX.md**
