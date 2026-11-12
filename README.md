@@ -8,7 +8,7 @@ Instead of manually watching every saved video to find a tool, application, GitH
 
 The goal is to turn scattered technical content into an organized, searchable research library.
 
-> **Project status:** Pre-development planning and documentation. Application implementation has not started.
+> **Project status:** Phase 0 (foundation/documentation) closed 2026-11-13; Phase 1 (feasibility and technical validation) in progress. The production application has **not** been implemented — `src/`, `src-tauri/`, and `tests/` are reserved placeholders. The only executed code is the throwaway Phase 1 PoC under `experiments/p1-a/` (Tauri 2 desktop proof of concept), which is evidence, not product code.
 
 ---
 

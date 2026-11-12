@@ -912,9 +912,7 @@ Any future optional telemetry must be transparent, minimal and user-controlled.
 
 ## K2. Hardware testing
 
-Include the project owner's Intel Core i5-6300U machine in performance testing.
-
-RAM capacity still needs confirmation.
+Include the project owner's reference machine in performance testing: Intel Core i5-10310U, 32 GB RAM, Windows 11 Pro (owner-confirmed 2026-11-12; supersedes the earlier i5-6300U reference — alignment edit per the 2026-11-13 Phase 0 closure pass).
 
 ## K3. Preliminary size targets
 

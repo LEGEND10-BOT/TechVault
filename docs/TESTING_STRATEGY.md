@@ -382,7 +382,7 @@ A security test pass is not a guarantee of complete security.
 
 TechVault must remain usable on modest hardware.
 
-The known reference CPU is Intel Core i5-6300U. RAM capacity and storage configuration still need confirmation.
+The reference machine is owner-confirmed: Intel Core i5-10310U (4C/8T), 32 GB RAM, Windows 11 Pro (confirmed 2026-11-12, resolving the earlier i5-6300U reference and the unknown-RAM item OI-03). Storage configuration: single NVMe SSD (Samsung MZVLB512HAJQ, 512 GB) hosting C: (system/tools), D: (repository + toolchain caches), E: (bulk data). This machine is the measurement reference; it does not define minimum supported hardware.
 
 Measure:
 

@@ -305,6 +305,27 @@ The following decisions have been explicitly approved by the project owner.
 - **Affected documents:** `docs/PHASE_1_TASK_PACKAGES.md`, `docs/PHASE_1_FEASIBILITY_PLAN.md`, `docs/PHASE_0_EXECUTION_PLAN.md` (P0-T11)
 - **Next action:** P0-T06 baseline commit, then P1-ENV.
 
+### D-018: Phase 0 closure authorization and Phase 1 execution priorities (2026-11-13 owner directive)
+
+- **Status:** Approved
+- **Date:** 2026-11-13
+- **Owner:** Project owner (execution directive "Phase 0 Closure + Phase 1 Completion Sprint")
+- **Source:** Owner directive delivered to the implementation/verification agent; verified repository state (commits `1f815b7`, `196b3bc` on `main`)
+- **Context:** Phase 0 work was complete in substance but the closure was never formally recorded; handover statements conflicted about P1-B/P1-C/P1-D status; the owner directed a completion sprint instead of further planning.
+- **Decision (recorded as directed by the owner):**
+  1. Phase 0 is authorized to close once the mandatory roadmap §4 exit criteria are verified satisfied; P0-T08 (logo asset delivery) remains an owner-input item and is not an exit criterion.
+  2. P0-T05 repository conventions are approved (§6 of `PHASE_0_EXECUTION_PLAN.md`, including `experiments/p1-<id>/` and `docs/phase1-results/` locations).
+  3. P1-B (Tauri Android PoC) remains deferred — Android SDK/NDK and a test device remain undelivered/unauthorized (Gate 0 inputs).
+  4. P1-C/P1-D (Whisper.cpp desktop/Android validation) are **on hold** by owner direction. They remain Phase 1 items (D-016 placement unchanged); the hold is a pause, not a move to Phase 2.
+  5. Phase 1 execution priority: **P1-G, then P1-H**, then other eligible packages in dependency order.
+  6. The directive also records an owner direction "Cloud Rust approved" (verbatim). Interpretation — Rust toolchain use authorized in the Z.ai Cloud workspace — is noted but unconfirmed in detail; it has no operational effect on the Desktop workspace (`D:\TechVault`) work recorded here.
+  7. Standing rules re-affirmed: no paid API usage without owner-supplied credentials and an explicit spend cap; no external Git push; one active workspace at a time.
+- **Rationale:** Owner explicitly authorized closure and set execution priorities; repeated planning cycles were rejected by the owner.
+- **Evidence:** Owner directive text (2026-11-13); Git history (`1f815b7` Phase 0 baseline, `196b3bc` P1-A); `docs/phase1-results/F1-01/RESULTS.md`.
+- **Impact:** `docs/PHASE_0_CLOSURE.md` created; Phase 0 statuses reconciled; Phase 1 execution proceeds with P1-G dataset+harness (API run phase blocked pending owner key/spend cap per item 7) and P1-H benchmark; P1-B/C/D not executed.
+- **Affected documents:** `docs/PHASE_0_CLOSURE.md`, `docs/PHASE_0_EXECUTION_PLAN.md`, `docs/PHASE_1_STATUS_MATRIX.md`, `docs/PHASE_HANDOFF.md`, `docs/CHANGELOG.md`
+- **Next action:** Execute P1-G (dataset + harness) and P1-H (benchmark) per directive; record blocked items honestly.
+
 ## 5. Proposed Recommendations
 
 These recommendations came from the technical review process or subsequent architecture planning. They are not automatically approved merely because they appear here.
@@ -447,7 +468,7 @@ Any AI coding or research agent working on TechVault must:
 
 ## 10. Current Decision Summary
 
-**Approved direction:** Desktop-first, Android evaluation in parallel, local-first initial release, transcript retention with user deletion, OpenRouter default, optional providers, provisional managed API access, export/import before cloud sync, related AI suggestions enabled by default, approved UI design system, and unchanged supplied logo. Additionally (2026-11-12): Phase 0 executed documentation-only with MASTER_BRAIN Part O items deferred (D-014), MASTER_BRAIN B2 adapter tiers govern the initial adapter priority (D-015), transcription foundation is built in Phase 2 (D-016), and Phase 1 feasibility work is approved (D-017).
+**Approved direction:** Desktop-first, Android evaluation in parallel, local-first initial release, transcript retention with user deletion, OpenRouter default, optional providers, provisional managed API access, export/import before cloud sync, related AI suggestions enabled by default, approved UI design system, and unchanged supplied logo. Additionally (2026-11-12): Phase 0 executed documentation-only with MASTER_BRAIN Part O items deferred (D-014), MASTER_BRAIN B2 adapter tiers govern the initial adapter priority (D-015), transcription foundation is built in Phase 2 (D-016), and Phase 1 feasibility work is approved (D-017). Additionally (2026-11-13): Phase 0 closure authorized with repository conventions approved and Phase 1 priorities set to P1-G → P1-H; P1-B remains deferred; P1-C/P1-D are held (D-018).
 
 **Still requiring technical validation:** Tauri Android, video playback, final stack, database configuration, resource identity and merge thresholds, graph implementation, performance budgets, and release packaging.
 

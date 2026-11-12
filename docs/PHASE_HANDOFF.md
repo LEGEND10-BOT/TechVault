@@ -40,11 +40,11 @@ A handoff must describe the actual project state, not an assumed or planned stat
 | Decision log | Draft prepared |
 | Phase handoff | Draft prepared |
 | Changelog | Prepared (initial draft, maintained) |
-| Application source code | Not started in this project setup |
+| Application source code | Not started in this project setup (production); throwaway Phase 1 PoC exists under `experiments/p1-a/` |
 | Database implementation | Not started |
-| Automated tests | Not started |
-| Tauri Android PoC | Not started |
-| Technical feasibility results | Pending |
+| Automated tests | Not started (Phase 1 PoC self-test suites only) |
+| Tauri Android PoC | Not started (P1-B deferred per owner instruction) |
+| Technical feasibility results | In progress — P1-A (F1-01a desktop) delivered 2026-11-12 (`docs/phase1-results/F1-01/RESULTS.md`); remaining packages per `docs/PHASE_1_STATUS_MATRIX.md` |
 
 **Important:** Document preparation does not mean technical validation or implementation completion.
 
@@ -429,13 +429,13 @@ This section reflects the initial documentation stage. It must be updated after 
 
 ### Current handoff
 
-- **Phase:** Phase 0 — Architecture and Foundation (final stage)
-- **Status:** Documentation reconciled per owner decisions D-014..D-016; Phase 1 feasibility work approved (D-017); planning artifacts promoted to `docs/`
-- **Current workspace:** TechVault project folder (Git initialized on branch `main`; no commits yet — Git identity pending)
-- **Application implementation:** Not started (per D-014; the first build is Phase 1 package P1-A)
-- **Current conversation role:** Main Controller coordinating SubAgents A1/A2/A3 (file-ownership rules: `docs/PHASE_0_EXECUTION_PLAN.md` §3)
-- **Immediate next activity:** Owner supplies Git identity (unblocks baseline commit P0-T06), approved logo/TSX assets (P0-T08), and the reference machine RAM spec (P0-T09); then toolchain installation (P0-T07 / P1-ENV) and Phase 1 start
-- **Next development phase:** Phase 1 — Feasibility and Technical Validation (approved, decision D-017)
+- **Phase:** Phase 1 — Feasibility and Technical Validation (execution); **Phase 0 CLOSED 2026-11-13** (`docs/PHASE_0_CLOSURE.md`, decision D-018)
+- **Status:** Phase 0 closed with all roadmap §4 exit criteria verified. Phase 1 in progress: P1-ENV + P1-A (F1-01a desktop PoC) complete and committed (`196b3bc`); P1-G/P1-H executing per owner priority (D-018); P1-B deferred (owner), P1-C/P1-D held (owner)
+- **Current workspace:** Desktop workspace `D:\TechVault` (branch `main`; verified commits `1f815b7`, `196b3bc`; no remote configured — nothing pushed externally)
+- **Application implementation:** Not started (production tree `src/`/`src-tauri/`/`tests/` reserved; the first production code is Phase 2). Phase 1 PoC code lives under `experiments/p1-<id>/` (P0-T05 approved convention)
+- **Current conversation role:** Implementation/verification agent executing the owner's 2026-11-13 "Phase 0 closure + Phase 1 completion sprint" directive under D-018
+- **Immediate next activity:** Execute P1-G (golden dataset v0 + harness; API run blocked on owner key/spend cap), P1-H (graph benchmark browser/WebView2 legs), remaining eligible packages (P1-I, P1-F, P1-E, P1-J per matrix); then the Phase 1 exit gate
+- **Next development phase:** Phase 2 — Core Application (owner approval gated on the Phase 1 exit review, roadmap §5)
 
 ### Current document inventory
 

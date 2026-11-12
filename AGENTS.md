@@ -275,7 +275,7 @@ Avoid:
 
 Use measurements to justify performance claims.
 
-The known reference CPU is Intel Core i5-6300U. RAM capacity still needs confirmation.
+The owner-confirmed reference machine is Windows 11 Pro, Intel Core i5-10310U (4C/8T), 32 GB RAM (confirmed 2026-11-12; supersedes the earlier i5-6300U reference). This is the reference machine for measurements; it does not define minimum supported hardware.
 
 Measure startup, memory, CPU, disk usage, search, transcription, and graph performance where relevant.
 

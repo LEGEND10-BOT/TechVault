@@ -5,8 +5,8 @@ All notable changes to TechVault should be documented in this file.
 The format is based on Keep a Changelog principles. Version numbers may follow Semantic Versioning when actual releases begin.
 
 **Project:** TechVault  
-**Current stage:** Pre-development documentation  
-**Changelog status:** Initial draft
+**Current stage:** Phase 1 — Feasibility and Technical Validation (Phase 0 closed 2026-11-13)  
+**Changelog status:** Maintained
 
 ---
 
@@ -64,7 +64,7 @@ Do not record every minor code edit. Use Git history for detailed implementation
 - Established separate project-control and phase-implementation workflows.
 - Clarified the distinction between approved decisions and technical proposals.
 - Documentation set reconciled per owner decisions D-014..D-016: roadmap §4 governs Phase 0 (documentation-only), MASTER_BRAIN B2 adapter tiers govern ARCHITECTURE §7.1, transcription foundation set in Phase 2.
-- Repository initialized on branch `main` with `.gitignore`; baseline commit pending Git identity.
+- Repository initialized on branch `main` with `.gitignore`; baseline commit created after owner-supplied repo-local Git identity (`1f815b7`, 2026-11-12).
 
 ### Validated
 - P1-A / F1-01a (desktop, 2026-11-12, i5-10310U reference machine, evidence in `docs/phase1-results/F1-01/RESULTS.md`): Tauri 2 + Rust + Svelte 5 + Vite + strict TS builds and runs on Windows 11 (dev + release + NSIS/MSI installers); IPC round-trip median 1.60 ms release / 2.50 ms dev, 200/200 calls stable (target ≤10 ms); HMR functional; warm startup median 74.5 ms; idle RAM tree working set 327.14 MB / private 135.97 MB (measure-then-decide vs ≤150 MB planning target); installers 1.51–2.23 MB (below 20–60 MB planning range); **fs permission scope rejected `C:\Windows\win.ini` and `C:\Windows\system.ini` reads (mandatory security negative test passed)**. Android half (F1-01b / P1-B) not executed — deferred per owner instruction.
@@ -82,6 +82,7 @@ Do not record every minor code edit. Use Git history for detailed implementation
 - Approved logo asset and TSX UI reference are not yet in the repository (D-012 delivery pending).
 - Reference-machine RAM capacity unconfirmed (required for performance baselines, P0-T09 / P1-J).
   - Update 2026-11-12: the active reference machine measures 32 GB RAM with an i5-10310U CPU; owner confirmed this machine as the reference (documents naming i5-6300U await Main Controller correction). Idle-RAM working-set budget outcome is a measure-then-decide item for the owner (P-022).
+  - Resolution 2026-11-13: item closed — OI-03/P0-T09 resolved (i5-10310U, 32 GB confirmed); all stale i5-6300U references corrected across AGENTS.md, ARCHITECTURE, MASTER_BRAIN, TESTING_STRATEGY, and the Phase 1 task packages in the Phase 0 closure pass. The idle-RAM budget definition itself remains a P-022 owner decision (see `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md`).
 - P1-A PoC records CSP unset (template default, throwaway shell) — any real application must define a CSP.
 - Dialog-based file-pick flow of P1-A implemented but not yet exercised by a human (A5 human half pending owner verification).
 

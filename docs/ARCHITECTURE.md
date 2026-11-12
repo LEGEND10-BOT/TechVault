@@ -767,7 +767,7 @@ The following targets must be measured rather than assumed:
 - Transcription throughput.
 - AI processing latency.
 
-The known Intel Core i5-6300U system should be included in practical performance testing.
+The owner-confirmed reference machine (Intel Core i5-10310U, 32 GB RAM, Windows 11 Pro — confirmed 2026-11-12, supersedes the earlier i5-6300U reference) is the target for practical performance testing.
 
 Exact RAM budgets and acceptance thresholds remain pending hardware measurements.
 
