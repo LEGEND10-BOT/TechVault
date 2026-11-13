@@ -452,6 +452,7 @@ The following items must not be silently treated as settled.
 - **Next action:** ~~Run `experiments/p1-c/Run-P1C-Desktop.ps1` on the Windows reference workstation~~ **DONE 2026-11-13** — executed on the Windows reference machine: build PASS at pinned commit `371b5a7` (`371b5a75…4727b`), tiny/base/small/medium transcription PASS, corrected RTF (base 0.292; medium 2.589 non-real-time), corrupted-input PASS. Evidence: `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`, `P1-C-RUNNER-FIX-REPORT.md` (runner fixes verified 8/8), `P1-C-desktop-results.json` + logs. P1-C remains open only for A5 cancellation + definitive long-duration RTF (owner-authorized fixture) and optional multilingual quality.
 - **Approval record:** Explicit owner instruction in this conversation, 2026-11-13.
 - **Addendum (2026-11-13, execution):** the historical evidence line above ("Actual Windows execution evidence is not present") was true when recorded and is now superseded by the Windows execution same day. Original JSON `realtime_factor` fields are invalid (pre-fix WAV-duration parser defect); use the audit report's corrected figures.
+- **Addendum (2026-11-13, D-REG-9 execution):** closure-state commit created — **hash `4dba5af`** on `main` ("phase-1: Gate-1 owner acceptance (D-021/D-REG-1) — Phase 1 closure package committed (D-REG-9)", 66 files, no push).
 
 ### R-023 / R-024 disposition (owner-delegated adoption)
 

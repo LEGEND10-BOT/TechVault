@@ -86,7 +86,7 @@ Six exception decisions (§B of `PHASE1-REMAINING-ACTIONS.md`) and six physical/
 
 ### Commit record (D-REG-9)
 
-- Closure-state commit: hash recorded in `docs/DECISION_LOG.md` D-021 and in the final mission report; created 2026-11-13, one descriptive commit, no push.
+- Closure-state commit: **`4dba5af`** on `main` (2026-11-13) — "phase-1: Gate-1 owner acceptance (D-021/D-REG-1) — Phase 1 closure package committed (D-REG-9)" — 66 files, +5771/−93, no push. Hash-bookkeeping edit recorded in a follow-up commit.
 
 ### P1-A click-through (automation investigation result)
 
