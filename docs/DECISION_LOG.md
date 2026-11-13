@@ -433,6 +433,48 @@ The following items must not be silently treated as settled.
 | P-027 | Source size/duration limits | Measure processing and storage behavior |
 | P-028 | Telemetry policy | Preserve no-telemetry-by-default direction and review any optional diagnostics |
 
+
+
+### D-020: Authorize P1-C desktop-only Whisper feasibility execution
+
+- **Status:** Approved
+- **Date:** 2026-11-13
+- **Owner:** Project owner (explicit chat directive)
+- **Source:** Owner instruction: “A: P1-C desktop Whisper verification abhi execute karo.”
+- **Context:** P1-C was previously held in D-018 and R-025 requested a choice. The owner has now selected Option A.
+- **Options considered:** R-025 A (desktop-only execution), B (defer to Phase 2), C (build-only partial).
+- **Decision:** Execute P1-C desktop-only. P1-D remains HELD; no Android work is authorized by this decision. Use the existing approved whisper.cpp direction (R-007), not an alternative engine.
+- **Rationale:** Obtain measured build, transcription, resource, timestamp and interruption evidence before Phase 2 transcription implementation.
+- **Evidence:** Owner directive. Execution harness added at `experiments/p1-c/`. Actual Windows execution evidence is not present in this workspace; therefore P1-C is **AUTHORIZED / EXECUTION PACKAGE PREPARED**, not COMPLETE.
+- **Impact:** Adds a standalone feasibility experiment only. No production application integration, no Phase 2 implementation, no background service. Models are downloaded only on explicit execution and stored under `D:\Models\whisper`.
+- **Affected documents:** `docs/WHISPER_CORE_PLAN.md`, `docs/PHASE_1_STATUS_MATRIX.md`, `docs/PHASE_1_GATE1_READINESS.md`, `docs/PHASE_HANDOFF.md`, `docs/phase1-plan/F1-03-whisper-cpp.md`.
+- **Dependencies:** Windows MSVC/CMake/Git toolchain; owner-authorized longer speech fixture for A5 and meaningful multilingual/quality testing.
+- **Next action:** ~~Run `experiments/p1-c/Run-P1C-Desktop.ps1` on the Windows reference workstation~~ **DONE 2026-11-13** — executed on the Windows reference machine: build PASS at pinned commit `371b5a7` (`371b5a75…4727b`), tiny/base/small/medium transcription PASS, corrected RTF (base 0.292; medium 2.589 non-real-time), corrupted-input PASS. Evidence: `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`, `P1-C-RUNNER-FIX-REPORT.md` (runner fixes verified 8/8), `P1-C-desktop-results.json` + logs. P1-C remains open only for A5 cancellation + definitive long-duration RTF (owner-authorized fixture) and optional multilingual quality.
+- **Approval record:** Explicit owner instruction in this conversation, 2026-11-13.
+- **Addendum (2026-11-13, execution):** the historical evidence line above ("Actual Windows execution evidence is not present") was true when recorded and is now superseded by the Windows execution same day. Original JSON `realtime_factor` fields are invalid (pre-fix WAV-duration parser defect); use the audit report's corrected figures.
+
+### R-023 / R-024 disposition (owner-delegated adoption)
+
+- **R-023 API configuration structure:** Adopt the documented provider registry/schema as a Phase 2 reference design. This is configuration architecture only; no API keys, live calls, or provider adapters are authorized by this adoption.
+- **R-024 Whisper Core plan:** Adopt `docs/WHISPER_CORE_PLAN.md` as the Phase 2 reference design, subject to P1-C desktop evidence. This does not authorize production transcription integration during Phase 1.
+
+### D-021: Phase 1 Gate-1 acceptance approved by owner (D-REG-1) and closure-state commit authorized (D-REG-9)
+
+- **Status:** Approved
+- **Date:** 2026-11-13
+- **Owner:** Project owner (explicit chat directive)
+- **Source:** Owner directive finalizing the Phase 1 owner approval package (`docs/PHASE1-OWNER-APPROVAL-PACKAGE.md`)
+- **Decision (recorded exactly as authorized):**
+  1. **D-REG-1 APPROVED** — Phase 1 Gate-1 acceptance is approved with all remaining exceptions and deferred work transparently documented (P1-B DEFERRED; P1-D HELD; P1-G live benchmark LATER under D-019; P1-C A5 cancellation/long-duration RTF and Urdu quality pending owner fixture; P1-E A4 PARTIAL; P0-T08 logo pending for the Phase 2 shell; P1-A human file-picker click-through remains NOT RUN pending owner verification).
+  2. **D-REG-9 AUTHORIZED** — the reviewed Phase 1 closure-package state is committed (one descriptive commit; no push).
+  3. **API configuration stays disabled** — all providers remain disabled; no activation, live calls, or key generation/replacement. Disabled configuration does **not** revoke the previously exposed OpenRouter key: revocation remains a separate owner security action.
+  4. **P1-A click-through** — automation investigated against the existing harness and WebView2 UIA capabilities; **not safely automatable in the session environment** (8+ documented attempts including a free-display retry; one non-reproducible historical success). Status remains **NOT RUN** with exact owner instructions in `docs/phase1-results/F1-01/CLOSURE-ADDENDUM.md` D1.
+  5. **Outstanding work register** — recorded in `docs/PHASE1-REMAINING-ACTIONS.md` and the owner approval package; no incomplete item is promoted to PASS.
+- **Evidence:** `docs/PHASE1-OWNER-APPROVAL-PACKAGE.md` (verification record + decision register); `docs/GATE1-FINAL-ACCEPTANCE-REPORT.md`; `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`; regression suite results (runner-fix 8/8, P1-F 9/9, P1-G mock reproduced, svelte-check 0/0, security scan clean).
+- **Impact:** Phase 1 is formally accepted by the owner (Gate-1 CLOSED by owner approval). Phase 2 planning/authorization proceeds per the recommended order; the deferrals and security action carry into Phase 2.
+- **Affected documents:** `docs/DECISION_LOG.md`, `docs/PHASE1-OWNER-APPROVAL-PACKAGE.md`, `docs/PHASE1-REMAINING-ACTIONS.md`, `docs/PHASE_1_STATUS_MATRIX.md`, `docs/PHASE_HANDOFF.md`, `docs/CHANGELOG.md`.
+- **Next action:** owner security action (revoke the exposed OpenRouter key); Phase 2 kickoff per the Gate-1 report §I when the owner initiates it.
+
 ## 7. Decision Record Template
 
 Use this template for every significant new decision.
@@ -492,7 +534,7 @@ Any AI coding or research agent working on TechVault must:
 
 ## 10. Current Decision Summary
 
-**Approved direction:** Desktop-first, Android evaluation in parallel, local-first initial release, transcript retention with user deletion, OpenRouter default, optional providers, provisional managed API access, export/import before cloud sync, related AI suggestions enabled by default, approved UI design system, and unchanged supplied logo. Additionally (2026-11-12): Phase 0 executed documentation-only with MASTER_BRAIN Part O items deferred (D-014), MASTER_BRAIN B2 adapter tiers govern the initial adapter priority (D-015), transcription foundation is built in Phase 2 (D-016), and Phase 1 feasibility work is approved (D-017). Additionally (2026-11-13): Phase 0 closure authorized with repository conventions approved and Phase 1 priorities set to P1-G → P1-H; P1-B remains deferred; P1-C/P1-D are held (D-018).
+**Approved direction:** Desktop-first, Android evaluation in parallel, local-first initial release, transcript retention with user deletion, OpenRouter default, optional providers, provisional managed API access, export/import before cloud sync, related AI suggestions enabled by default, approved UI design system, and unchanged supplied logo. Additionally (2026-11-12): Phase 0 executed documentation-only with MASTER_BRAIN Part O items deferred (D-014), MASTER_BRAIN B2 adapter tiers govern the initial adapter priority (D-015), transcription foundation is built in Phase 2 (D-016), and Phase 1 feasibility work is approved (D-017). Additionally (2026-11-13): Phase 0 closure authorized with repository conventions approved and Phase 1 priorities set to P1-G → P1-H; P1-B remains deferred; P1-C/P1-D were held by D-018. **D-020 supersedes the P1-C hold only:** P1-C desktop-only execution is now authorized under R-025 Option A; P1-D remains held. R-023 and R-024 are adopted as Phase 2 reference designs.
 
 **Still requiring technical validation:** Tauri Android, video playback, final stack, database configuration, resource identity and merge thresholds, graph implementation, performance budgets, and release packaging.
 

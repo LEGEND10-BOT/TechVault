@@ -1,0 +1,244 @@
+Cloning into 'D:\Builds\whisper.cpp-p1c'...
+Updating files:   0% (1/2186)Updating files:   1% (22/2186)Updating files:   2% (44/2186)Updating files:   3% (66/2186)Updating files:   4% (88/2186)Updating files:   5% (110/2186)Updating files:   6% (132/2186)Updating files:   7% (154/2186)Updating files:   8% (175/2186)Updating files:   9% (197/2186)Updating files:  10% (219/2186)Updating files:  11% (241/2186)Updating files:  12% (263/2186)Updating files:  13% (285/2186)Updating files:  14% (307/2186)Updating files:  15% (328/2186)Updating files:  16% (350/2186)Updating files:  17% (372/2186)Updating files:  18% (394/2186)Updating files:  19% (416/2186)Updating files:  20% (438/2186)Updating files:  21% (460/2186)Updating files:  22% (481/2186)Updating files:  23% (503/2186)Updating files:  24% (525/2186)Updating files:  25% (547/2186)Updating files:  26% (569/2186)Updating files:  27% (591/2186)Updating files:  28% (613/2186)Updating files:  29% (634/2186)Updating files:  30% (656/2186)Updating files:  31% (678/2186)Updating files:  32% (700/2186)Updating files:  33% (722/2186)Updating files:  34% (744/2186)Updating files:  35% (766/2186)Updating files:  36% (787/2186)Updating files:  37% (809/2186)Updating files:  38% (831/2186)Updating files:  39% (853/2186)Updating files:  40% (875/2186)Updating files:  41% (897/2186)Updating files:  42% (919/2186)Updating files:  43% (940/2186)Updating files:  44% (962/2186)Updating files:  45% (984/2186)Updating files:  46% (1006/2186)Updating files:  47% (1028/2186)Updating files:  48% (1050/2186)Updating files:  49% (1072/2186)Updating files:  50% (1093/2186)Updating files:  50% (1095/2186)Updating files:  51% (1115/2186)Updating files:  52% (1137/2186)Updating files:  53% (1159/2186)Updating files:  54% (1181/2186)Updating files:  55% (1203/2186)Updating files:  56% (1225/2186)Updating files:  57% (1247/2186)Updating files:  58% (1268/2186)Updating files:  59% (1290/2186)Updating files:  60% (1312/2186)Updating files:  61% (1334/2186)Updating files:  62% (1356/2186)Updating files:  63% (1378/2186)Updating files:  64% (1400/2186)Updating files:  65% (1421/2186)Updating files:  66% (1443/2186)Updating files:  67% (1465/2186)Updating files:  68% (1487/2186)Updating files:  69% (1509/2186)Updating files:  70% (1531/2186)Updating files:  71% (1553/2186)Updating files:  72% (1574/2186)Updating files:  73% (1596/2186)Updating files:  74% (1618/2186)Updating files:  75% (1640/2186)Updating files:  76% (1662/2186)Updating files:  77% (1684/2186)Updating files:  78% (1706/2186)Updating files:  79% (1727/2186)Updating files:  80% (1749/2186)Updating files:  81% (1771/2186)Updating files:  82% (1793/2186)Updating files:  83% (1815/2186)Updating files:  84% (1837/2186)Updating files:  85% (1859/2186)Updating files:  86% (1880/2186)Updating files:  87% (1902/2186)Updating files:  88% (1924/2186)Updating files:  89% (1946/2186)Updating files:  90% (1968/2186)Updating files:  91% (1990/2186)Updating files:  92% (2012/2186)Updating files:  93% (2033/2186)Updating files:  94% (2055/2186)Updating files:  95% (2077/2186)Updating files:  96% (2099/2186)Updating files:  97% (2121/2186)Updating files:  98% (2143/2186)Updating files:  99% (2165/2186)Updating files: 100% (2186/2186)Updating files: 100% (2186/2186), done.
+HEAD is now at 371b5a75 release : v1.9.3 (#4000)
+-- Building for: Visual Studio 17 2022
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.26200.
+-- The C compiler identification is MSVC 19.44.35230.0
+-- The CXX compiler identification is MSVC 19.44.35230.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- whisper.cpp version: 1.9.3-dev
+-- Found Git: D:/Git/ucrt64/bin/git.exe (found version "2.56.0.windows.4")
+-- The ASM compiler identification is MSVC
+-- Found assembler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - not found
+-- Found Threads: TRUE
+-- Warning: ccache not found - consider installing it for faster compilation or disable this warning with GGML_CCACHE=OFF
+-- CMAKE_SYSTEM_PROCESSOR: AMD64
+-- CMAKE_GENERATOR_PLATFORM: 
+-- GGML_SYSTEM_ARCH: x86
+-- Found OpenMP_C: -openmp (found version "2.0")
+-- Found OpenMP_CXX: -openmp (found version "2.0")
+-- Found OpenMP: TRUE (found version "2.0")
+-- Including CPU backend
+-- x86 detected
+-- Performing Test HAS_AVX_1
+-- Performing Test HAS_AVX_1 - Success
+-- Performing Test HAS_AVX2_1
+-- Performing Test HAS_AVX2_1 - Success
+-- Performing Test HAS_FMA_1
+-- Performing Test HAS_FMA_1 - Success
+-- Performing Test HAS_AVX512_1
+-- Performing Test HAS_AVX512_1 - Failed
+-- Performing Test HAS_AVX512_2
+-- Performing Test HAS_AVX512_2 - Failed
+-- Adding CPU backend variant ggml-cpu: /arch:AVX2 GGML_AVX2;GGML_FMA;GGML_F16C
+-- ggml version: 0.20.2
+-- ggml commit:  371b5a75
+-- Configuring done (64.1s)
+-- Generating done (0.7s)
+-- Build files have been written to: D:/Builds/whisper.cpp-p1c/build
+MSBuild version 17.14.60+43b635718 for .NET Framework
+
+  1>Checking Build System
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/deprecation-warning/CMakeLists.txt
+  deprecation-warning.cpp
+  bench.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\bench.exe
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/ggml/src/CMakeLists.txt
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/deprecation-warning/CMakeLists.txt
+  ggml.c
+  deprecation-warning.cpp
+  main.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\main.exe
+  ggml.cpp
+  ggml-alloc.c
+  ggml-quants.c
+  Generating Code...
+  ggml-backend.cpp
+  ggml-backend-meta.cpp
+  ggml-opt.cpp
+  ggml-threading.cpp
+  gguf.cpp
+  Generating Code...
+     Creating library D:/Builds/whisper.cpp-p1c/build/ggml/src/Release/ggml-base.lib and object D:/Builds/whisper.cpp-p1c/build/ggml/src/Release/ggml-base.exp
+  ggml-base.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\ggml-base.dll
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/ggml/src/CMakeLists.txt
+  ggml-cpu.c
+  ggml-cpu.cpp
+  repack.cpp
+  hbm.cpp
+  traits.cpp
+  amx.cpp
+  mmq.cpp
+  binary-ops.cpp
+  unary-ops.cpp
+  vec.cpp
+  ops.cpp
+  Generating Code...
+  quants.c
+  quants.c
+  repack.cpp
+     Creating library D:/Builds/whisper.cpp-p1c/build/ggml/src/Release/ggml-cpu.lib and object D:/Builds/whisper.cpp-p1c/build/ggml/src/Release/ggml-cpu.exp
+  ggml-cpu.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\ggml-cpu.dll
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/ggml/src/CMakeLists.txt
+  ggml-backend-dl.cpp
+  ggml-backend-reg.cpp
+  Generating Code...
+     Creating library D:/Builds/whisper.cpp-p1c/build/ggml/src/Release/ggml.lib and object D:/Builds/whisper.cpp-p1c/build/ggml/src/Release/ggml.exp
+  ggml.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\ggml.dll
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/src/CMakeLists.txt
+  whisper.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/src/CMakeLists.txt
+  parakeet.cpp
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(493,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(494,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(504,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(504,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(651,75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1371,44): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1371,28): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1590,35): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1590,24): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1591,35): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1591,24): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1592,35): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1592,24): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1605,39): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1605,28): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1723,81): warning C4244: 'argument': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1770,84): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1792,81): warning C4244: 'argument': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1849,32): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1873,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(1964,32): warning C4244: '=': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2018,40): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2018,23): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2019,40): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2019,23): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2047,41): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2047,23): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2048,41): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2048,23): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2064,50): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2064,31): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2077,48): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2077,31): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2172,36): warning C4244: 'initializing': conversion from 'int64_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2172,21): warning C4244: 'initializing': conversion from 'int64_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2779,51): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2779,51): warning C4244:         with [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2779,51): warning C4244:         [ [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2779,51): warning C4244:             _Ty=float [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2779,51): warning C4244:         ] [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2787,43): warning C4244: '=': conversion from 'const double' to '_Ty', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2787,43): warning C4244:         with [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2787,43): warning C4244:         [ [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2787,43): warning C4244:             _Ty=float [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2787,43): warning C4244:         ] [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2808,50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2808,27): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(2826,67): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3340,20): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3407,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3418,21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3774,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3778,39): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3806,52): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+D:\Builds\whisper.cpp-p1c\src\parakeet.cpp(3810,57): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\src\parakeet.vcxproj]
+  Auto build dll exports
+     Creating library D:/Builds/whisper.cpp-p1c/build/src/Release/parakeet.lib and object D:/Builds/whisper.cpp-p1c/build/src/Release/parakeet.exp
+  parakeet.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\parakeet.dll
+  Auto build dll exports
+     Creating library D:/Builds/whisper.cpp-p1c/build/src/Release/whisper.lib and object D:/Builds/whisper.cpp-p1c/build/src/Release/whisper.exp
+  whisper.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\whisper.dll
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/bench/CMakeLists.txt
+  bench.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/CMakeLists.txt
+  common.cpp
+  whisper-bench.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\whisper-bench.exe
+  common-ggml.cpp
+  common-whisper.cpp
+  grammar-parser.cpp
+  Generating Code...
+  common.vcxproj -> D:\Builds\whisper.cpp-p1c\build\examples\Release\common.lib
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/cli/CMakeLists.txt
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/server/CMakeLists.txt
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/parakeet-cli/CMakeLists.txt
+  server.cpp
+  cli.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/quantize/CMakeLists.txt
+  quantize.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/vad-speech-segments/CMakeLists.txt
+  parakeet-cli.cpp
+  speech.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+  test-vad-full.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+  test-vad.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+  test-parakeet-full.cpp
+D:\Builds\whisper.cpp-p1c\examples\common.h(267,41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\examples\vad-speech-segments\whisper-vad-speech-segments.vcxproj]
+D:\Builds\whisper.cpp-p1c\examples\common.h(267,41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\examples\quantize\whisper-quantize.vcxproj]
+D:\Builds\whisper.cpp-p1c\tests\test-vad-full.cpp(40,5): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\tests\test-vad-full.vcxproj]
+  (compiling source file '../../examples/vad-speech-segments/speech.cpp')
+  
+D:\Builds\whisper.cpp-p1c\examples\vad-speech-segments\speech.cpp(121,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\examples\vad-speech-segments\whisper-vad-speech-segments.vcxproj]
+  (compiling source file '../../examples/quantize/quantize.cpp')
+  
+D:\Builds\whisper.cpp-p1c\tests\test-vad.cpp(74,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\tests\test-vad.vcxproj]
+D:\Builds\whisper.cpp-p1c\examples\parakeet-cli\parakeet-cli.cpp(35,40): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\Builds\whisper.cpp-p1c\build\examples\parakeet-cli\parakeet-cli.vcxproj]
+D:\Builds\whisper.cpp-p1c\examples\parakeet-cli\parakeet-cli.cpp(174,78): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\examples\parakeet-cli\parakeet-cli.vcxproj]
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+  test-parakeet-full.cpp
+D:\Builds\whisper.cpp-p1c\tests\test-parakeet-full.cpp(84,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\tests\test-parakeet-full-jfk.vcxproj]
+  whisper-vad-speech-segments.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\whisper-vad-speech-segments.exe
+  parakeet-cli.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\parakeet-cli.exe
+  whisper-quantize.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\whisper-quantize.exe
+D:\Builds\whisper.cpp-p1c\tests\test-parakeet-full.cpp(84,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\tests\test-parakeet-full-gb1.vcxproj]
+  test-vad.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-vad.exe
+  test-parakeet-full-jfk.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-parakeet-full-jfk.exe
+  test-vad-full.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-vad-full.exe
+  test-parakeet-full-gb1.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-parakeet-full-gb1.exe
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+  test-parakeet-full.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+  test-parakeet.cpp
+D:\Builds\whisper.cpp-p1c\tests\test-parakeet.cpp(103,77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\tests\test-parakeet.vcxproj]
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/tests/CMakeLists.txt
+D:\Builds\whisper.cpp-p1c\tests\test-parakeet-full.cpp(84,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data [D:\Builds\whisper.cpp-p1c\build\tests\test-parakeet-full-diffusion.vcxproj]
+  test-common-utf8.cpp
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/examples/parakeet-quantize/CMakeLists.txt
+  parakeet-quantize.cpp
+  test-parakeet.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-parakeet.exe
+  test-parakeet-full-diffusion.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-parakeet-full-diffusion.exe
+D:\Builds\whisper.cpp-p1c\examples\parakeet-quantize\parakeet-quantize.cpp(172,47): warning C4244: 'initializing': conversion from 'int64_t' to 'int32_t', possible loss of data [D:\Builds\whisper.cpp-p1c\build\examples\parakeet-quantize\parakeet-quantize.vcxproj]
+D:\Builds\whisper.cpp-p1c\examples\parakeet-quantize\parakeet-quantize.cpp(172,31): warning C4244: 'initializing': conversion from 'int64_t' to 'const int32_t', possible loss of data [D:\Builds\whisper.cpp-p1c\build\examples\parakeet-quantize\parakeet-quantize.vcxproj]
+  whisper-cli.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\whisper-cli.exe
+  test-common-utf8.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\test-common-utf8.exe
+  parakeet-quantize.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\parakeet-quantize.exe
+  whisper-server.vcxproj -> D:\Builds\whisper.cpp-p1c\build\bin\Release\whisper-server.exe
+  Building Custom Rule D:/Builds/whisper.cpp-p1c/CMakeLists.txt
+P1-C evidence written to: D:\TechVault\experiments\p1-c\results\P1-C-desktop-results.json
+Review build/transcription logs under: D:\TechVault\experiments\p1-c\results\logs
+RUNNER-EXIT=0

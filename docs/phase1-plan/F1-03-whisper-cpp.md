@@ -21,7 +21,7 @@ evidence).
 ## 1. Objective
 
 Measure whether whisper.cpp can transcribe real-length audio on the reference desktop
-hardware (Intel Core i5-6300U, RAM unknown until measured) at acceptable speed, memory and
+hardware (Intel Core i5-10310U, 32 GB RAM (owner-confirmed 2026-11-12; supersedes earlier i5-10310U reference)) at acceptable speed, memory and
 timestamp quality for the models the architecture designates (Tiny through Medium as the
 normal initial range, `docs/ARCHITECTURE.md` §7.4), and whether interrupted runs can preserve
 partial results. Separately, establish whether whisper.cpp runs at all on the Android test
@@ -49,8 +49,8 @@ Questions this experiment must answer by evidence:
 1. Desktop: build/integration path — CLI binary directly, or a Rust binding crate? (Both are
    candidates; the binding choice is a documented dependency recommendation for Phase 2, not
    a decision made here.)
-2. Desktop: realtime factor (audio seconds / processing seconds) per model (tiny, base,
-   small; medium only if RAM allows) on the i5-6300U, for clear-speech and noisy fixtures.
+2. Desktop: realtime factor (processing seconds / audio seconds; RTF <= 1.0 means at least real-time) per model (tiny, base,
+   small; medium only if RAM allows) on the i5-10310U, for clear-speech and noisy fixtures.
 3. Desktop: peak RAM and CPU per model (planning inputs for P-022 and for the unknown-RAM
    question).
 4. Timestamp quality: are segment timestamps accurate enough to support evidence links to
@@ -65,8 +65,7 @@ Questions this experiment must answer by evidence:
 
 ## 3. Dependencies
 
-- F1-03a is independent of other experiments (needs only Rust toolchain; optionally the
-  Tauri shell is NOT required — a plain CLI harness suffices).
+- F1-03a is independent of other experiments (needs Git, CMake, and a C++ compiler/toolchain such as MSVC; Rust and the Tauri shell are NOT required — a plain whisper.cpp CLI harness suffices).
 - F1-03b needs F1-01b (device + Android toolchain ready) and Android Studio.
 - **OWNER-PROVIDED:** audio fixtures — ideally derived from the F1-02 media corpus or
   separately supplied: (a) clear single-speaker technical speech 5–10 min, (b) noisy/multi-
@@ -178,3 +177,8 @@ Planning targets — validate by measurement; memory-dependent criteria are expl
 
 **Effort:** F1-03a M; F1-03b M–L. F1-03a parallelizable immediately.
 **Costs/owner approvals:** fixture corpus (overview §9 item 5); device access; no API costs.
+
+
+## 11. Owner authorization update (D-020, 2026-11-13)
+
+The owner selected R-025 Option A. Execute F1-03a desktop-only using the runner at `experiments/p1-c/`. F1-03b Android remains outside this authorization because P1-B is deferred and P1-D remains held. The current session did not execute Windows build/transcription tests; the runner's output must be reviewed and the results recorded before P1-C can be marked complete.

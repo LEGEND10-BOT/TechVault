@@ -1,0 +1,130 @@
+﻿{
+    "schema_version":  1,
+    "task":  "P1-C desktop whisper.cpp feasibility",
+    "started_local":  "2026-11-13T04:22:10.3339400+05:00",
+    "host":  {
+                 "os":  "Microsoft Windows 11 Pro",
+                 "os_version":  "10.0.26200",
+                 "cpu":  "Intel(R) Core(TM) i5-10310U CPU @ 1.70GHz",
+                 "logical_processors":  8,
+                 "total_ram_bytes":  34122080256,
+                 "powershell":  "5.1.26100.9711",
+                 "cmake":  "cmake version 3.31.6-msvc6",
+                 "git":  "git version 2.56.0.windows.4",
+                 "ffmpeg":  ""
+             },
+    "source":  {
+                   "url":  "https://github.com/ggml-org/whisper.cpp.git",
+                   "pinned_commit":  "371b5a7",
+                   "actual_commit":  "371b5a7561823ab2bb32142d2751e35e7534727b"
+               },
+    "fixture":  {
+                    "path":  "D:\\Builds\\whisper.cpp-p1c\\samples\\jfk.wav",
+                    "sha256":  "59DFB9A4ACB36FE2A2AFFC14BACBEE2920FF435CB13CC314A08C13F66BA7860E",
+                    "duration_seconds":  0.001,
+                    "provenance":  "Official whisper.cpp sample jfk.wav unless owner fixture supplied",
+                    "language":  "auto"
+                },
+    "audio_decode":  {
+                         "attempted":  false,
+                         "source":  "",
+                         "output":  "",
+                         "elapsed_seconds":  null,
+                         "exit_code":  null
+                     },
+    "models":  [
+                   {
+                       "model":  "tiny",
+                       "model_path":  "D:\\Models\\whisper\\ggml-tiny.bin",
+                       "model_bytes":  77691713,
+                       "model_sha256":  "BE07E048E1E599AD46341C8D2A135645097A538221678B7ACDD1B1919C6E1B21",
+                       "measurement":  {
+                                           "exit_code":  null,
+                                           "peak_working_set_bytes":  202092544,
+                                           "peak_private_bytes":  714235904,
+                                           "cpu_seconds":  7.688,
+                                           "wall_seconds":  2.572
+                                       },
+                       "realtime_factor":  2572,
+                       "segment_count":  1,
+                       "json_output":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\tiny.json",
+                       "stdout":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\tiny.stdout.txt",
+                       "stderr":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\tiny.stderr.txt"
+                   },
+                   {
+                       "model":  "base",
+                       "model_path":  "D:\\Models\\whisper\\ggml-base.bin",
+                       "model_bytes":  147951465,
+                       "model_sha256":  "60ED5BC3DD14EEA856493D334349B405782DDCAF0028D4B5DF4088345FBA2EFE",
+                       "measurement":  {
+                                           "exit_code":  null,
+                                           "peak_working_set_bytes":  317313024,
+                                           "peak_private_bytes":  831131648,
+                                           "cpu_seconds":  19.328,
+                                           "wall_seconds":  3.21
+                                       },
+                       "realtime_factor":  3210,
+                       "segment_count":  1,
+                       "json_output":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\base.json",
+                       "stdout":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\base.stdout.txt",
+                       "stderr":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\base.stderr.txt"
+                   },
+                   {
+                       "model":  "small",
+                       "model_path":  "D:\\Models\\whisper\\ggml-small.bin",
+                       "model_bytes":  487601967,
+                       "model_sha256":  "1BE3A9B2063867B937E64E2EC7483364A79917E157FA98C5D94B5C1FFFEA987B",
+                       "measurement":  {
+                                           "exit_code":  null,
+                                           "peak_working_set_bytes":  807084032,
+                                           "peak_private_bytes":  1322160128,
+                                           "cpu_seconds":  61.484,
+                                           "wall_seconds":  9.807
+                                       },
+                       "realtime_factor":  9807,
+                       "segment_count":  1,
+                       "json_output":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\small.json",
+                       "stdout":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\small.stdout.txt",
+                       "stderr":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\small.stderr.txt"
+                   },
+                   {
+                       "model":  "medium",
+                       "model_path":  "D:\\Models\\whisper\\ggml-medium.bin",
+                       "model_bytes":  1533763059,
+                       "model_sha256":  "6C14D5ADEE5F86394037B4E4E8B59F1673B6CEE10E3CF0B11BBDBEE79C156208",
+                       "measurement":  {
+                                           "exit_code":  null,
+                                           "peak_working_set_bytes":  2189189120,
+                                           "peak_private_bytes":  2708242432,
+                                           "cpu_seconds":  173.891,
+                                           "wall_seconds":  28.48
+                                       },
+                       "realtime_factor":  28480,
+                       "segment_count":  1,
+                       "json_output":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\medium.json",
+                       "stdout":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\medium.stdout.txt",
+                       "stderr":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\medium.stderr.txt"
+                   }
+               ],
+    "cancellation":  {
+                         "requested":  false,
+                         "status":  "NOT_RUN",
+                         "reason":  "Requires an owner-authorized long-form fixture of at least 90 seconds."
+                     },
+    "corrupted_input":  {
+                            "status":  "PASS_CHILD_PROCESS_REJECTED_INPUT",
+                            "exit_code":  null,
+                            "log":  "D:\\TechVault\\experiments\\p1-c\\results\\logs\\invalid.stderr.txt"
+                        },
+    "notes":  [
+                  "FFmpeg not found; non-WAV conversion test skipped.",
+                  "RTF = fixture audio seconds / measured wall seconds; values \u003e1 indicate faster-than-real-time.",
+                  "Models tested: Tiny, Base, Small; Medium is included when detected RAM is at least 16 GiB or -IncludeMedium is supplied.",
+                  "Language defaults to auto-detection; use -Language ur (or another supported language code) for a forced-language comparison.",
+                  "Peak Working Set and Private Bytes are sampled every 250 ms; brief peaks may be missed. Private Bytes is the primary memory comparison metric per D-019/P1-J.",
+                  "The SHA-256 values record downloaded artifact identity; they are not a publisher signature verification.",
+                  "A1 build, A2 quality, A3 RTF, A4 memory, A6 malformed-input behavior and A9 timestamp accuracy require human review of saved evidence. A5 needs a long-form fixture and explicit interruption run."
+              ],
+    "finished_local":  "2026-11-13T05:28:38.0958302+05:00",
+    "duration_seconds":  3987.77
+}

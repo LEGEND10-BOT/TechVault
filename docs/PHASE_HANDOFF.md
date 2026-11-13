@@ -430,11 +430,11 @@ This section reflects the initial documentation stage. It must be updated after 
 ### Current handoff
 
 - **Phase:** Phase 1 — Feasibility and Technical Validation (execution sprint executed; **Phase 0 CLOSED 2026-11-13**, `docs/PHASE_0_CLOSURE.md`, decision D-018)
-- **Status:** Phase 1 IN_PROGRESS — consolidated Gate-1 readiness report delivered (`docs/PHASE_1_GATE1_READINESS.md`, A–J format): recommendation **GATE-1 READY WITH EXPLICIT DEFERRALS — owner approval outstanding**. Completed with evidence: P1-A (+P1-H R-008 ADOPT, P1-F 9/9, P1-I + architecture-preservation review 16/16, P1-E desktop leg, P1-G offline matrix, P1-J consolidation, API configuration structure (R-023, placeholders, offline-validated), Whisper Core plan (R-024; tiers 2–4 not performed), D-drive reconciliation (matrix §8/§8.1). Owner decisions outstanding: Gate-1 approval; R-025 (P1-C/P1-D resolution); P1-G live scheduling; logo asset. Task-level statuses: `docs/PHASE_1_STATUS_MATRIX.md` §9.
+- **Status:** Phase 1 IN_PROGRESS — consolidated Gate-1 readiness report delivered (`docs/PHASE_1_GATE1_READINESS.md`, A–J format): recommendation **GATE-1 READY WITH EXPLICIT DEFERRALS — owner approval outstanding**. Completed with evidence: P1-A (+P1-H R-008 ADOPT, P1-F 9/9, P1-I + architecture-preservation review 16/16, P1-E desktop leg, P1-G offline matrix, P1-J consolidation + P1-C transcription figures, **P1-C desktop leg executed 2026-11-13** (build PASS @ `371b5a7`, 4-model transcription, corrected RTF, runner fixes verified 8/8 — `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`), API configuration structure (R-023, placeholders, offline-validated), Whisper Core plan (R-024; tiers 2–3 measured, tier-4 long-fixture RTF + A5 pending owner fixture), D-drive reconciliation (matrix §8/§8.1). Owner decisions outstanding: Gate-1 approval; P1-G live scheduling; logo asset. Task-level statuses: `docs/PHASE_1_STATUS_MATRIX.md` §9.
 - **Current workspace:** Desktop workspace `D:\TechVault` (branch `main`; HEAD after sprint: see Git section below; no remote configured — nothing pushed externally)
 - **Application implementation:** Not started (production tree `src/`/`src-tauri/`/`tests/` reserved; the first production code is Phase 2). Phase 1 PoC code lives under `experiments/p1-<id>/` (P0-T05 approved convention)
 - **Current conversation role:** Implementation/verification agent executed the owner's 2026-11-13 "Phase 0 closure + Phase 1 completion sprint" directive under D-018
-- **Immediate next activity:** owner delivers OpenRouter key + spend cap (P1-G run), ~10–15 min display time (P1-H/P1-E runs), P1-A file-picker click-through, P-022 decision; then the Phase 1 Gate-1 owner review
+- **Immediate next activity (update 2026-11-13):** ~~execute the authorized P1-C desktop runner~~ **DONE** — Windows execution evidence produced (`experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`; runner fixes verified 8/8). Remaining: revoke exposed OpenRouter key; complete P1-A human file-picker click-through; provide ≥90 s owner fixture for P1-C A5/long-duration RTF if desired; then owner Gate-1 review. P1-G live run remains LATER; P1-B deferred; P1-D held.
 - **Next development phase:** Phase 2 — Core Application (owner approval gated on the Phase 1 exit review, roadmap §5). **No Phase 2 work was implemented in this sprint.**
 
 #### Phase 2 handoff list (prerequisites and future work only — nothing implemented)
@@ -500,3 +500,10 @@ It must never:
 - Assume that a document was saved merely because its contents were generated in a chat.
 
 **The next phase begins from verified reality, not from optimistic assumptions.**
+
+
+## 12. Owner-directed P1-C execution update (2026-11-13, D-020)
+
+Owner selected R-025 Option A. Desktop-only P1-C is authorized; P1-D remains HELD and P1-B remains DEFERRED. The standalone runner and runbook are at `experiments/p1-c/`. Execute on the Windows reference workstation and attach `P1-C-desktop-results.json`, per-model stdout/stderr, transcript JSON, fixture provenance, and cancellation evidence. This chat's Linux environment could not execute Windows/MSVC tests or access the owner's D: drive, so P1-C is not complete yet.
+
+R-023 and R-024 have been adopted as Phase 2 reference designs under the owner's delegated instruction. Phase 2 is still gated by Gate-1 review and unresolved physical/security inputs; do not start Phase 2 implementation from this handoff alone.

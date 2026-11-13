@@ -78,3 +78,15 @@
 ---
 
 **End of F1-06 RESULTS.md**
+
+
+## Closure review rerun (2026-11-13)
+
+The dependency-free harness was rerun from the repository snapshot during the final closure review:
+
+- `node --check harness/index.mjs` — PASS.
+- `node --check harness/validate.mjs` — PASS.
+- `node harness/index.mjs --mock --prompt baseline --out results/closure-2026-11-13/baseline` — executed; output and summary retained.
+- `node harness/index.mjs --mock --prompt hardened --out results/closure-2026-11-13/hardened` — executed; output and summary retained.
+
+Both mock runs produced precision 0.7778, recall 0.9655, FPR 0.2222, miss rate 0.0345, six D-008 violations, one verification violation, and injection tripwire C12. These are mock-harness pipeline metrics, **not live model quality metrics** and do not supersede the owner's D-019 LATER decision for live API testing.

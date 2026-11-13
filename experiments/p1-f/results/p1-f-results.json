@@ -1,6 +1,6 @@
 {
-  "executed_at": "1794516322",
-  "wall_ms": 906,
+  "executed_at": "1794583920",
+  "wall_ms": 1248,
   "passed": 9,
   "total": 9,
   "checks": [
@@ -11,7 +11,7 @@
     {"name": "merge-does-not-upgrade-verification", "pass": true, "detail": "winner verification_status after merge = 'unverified' (must stay unverified)"},
     {"name": "merge-undo-restores-state", "pass": true, "detail": "undo ok=true | loser restored=1 (exp 1) | mentions re-pointed=1 (exp 1) | evidence traceable again=1 (exp 1) | history marked undone=1 (exp 1)"},
     {"name": "migration-additive-and-guarded", "pass": true, "detail": "v2 applied=true | unguarded re-run correctly fails=true | version guard recorded=true"},
-    {"name": "fts5-search-5000-resources", "pass": true, "detail": "fill 5000 rows in 188 ms; search median 0.009 ms, p95 0.014 ms (20 runs)"},
-    {"name": "fts5-search-20000-resources", "pass": true, "detail": "fill 20000 rows in 654 ms; search median 0.005 ms, p95 0.008 ms (20 runs)"}
+    {"name": "fts5-search-5000-resources", "pass": true, "detail": "fill 5000 rows in 408 ms; search median 0.007 ms, p95 0.011 ms (20 runs)"},
+    {"name": "fts5-search-20000-resources", "pass": true, "detail": "fill 20000 rows in 766 ms; search median 0.009 ms, p95 0.014 ms (20 runs)"}
   ]
 }

@@ -1,0 +1,4 @@
+# Runtime/build artefacts stay outside source control unless selected as final evidence.
+results/logs/
+results/invalid-input.wav
+results/fixture-16k-mono.wav

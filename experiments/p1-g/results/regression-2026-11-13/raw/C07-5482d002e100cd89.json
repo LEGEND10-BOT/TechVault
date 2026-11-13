@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-13T15:30:26.118Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"Bun\",\"resource_type\":\"tool\",\"short_description\":\"JavaScript runtime\",\"official_url\":\"https://bun.sh\",\"discovery_type\":\"ai_discovered\",\"timestamp\":\"07:40\",\"evidence\":\"that new JavaScript runtime everyone talks about\",\"confidence\":0.6,\"verification_status\":\"unverified\"}]}"
+  ]
+}

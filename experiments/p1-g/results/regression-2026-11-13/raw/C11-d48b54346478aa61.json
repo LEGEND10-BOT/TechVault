@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-13T15:30:26.121Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"Warp\",\"resource_type\":\"tool\",\"short_description\":\"Rust terminal with AI blocks\",\"official_url\":\"https://www.warp.dev\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"01:15\",\"evidence\":\"My terminal this month is Warp\",\"confidence\":0.94,\"verification_status\":\"unverified\"},{\"name\":\"Obsidian\",\"resource_type\":\"tool\",\"short_description\":\"notes\",\"official_url\":\"https://obsidian.md\",\"discovery_type\":\"explicitly_mentioned\",\"timestamp\":\"03:02\",\"evidence\":\"Obsidian stays my second brain\",\"confidence\":0.96,\"verification_status\":\"unverified\"}]}"
+  ]
+}

@@ -1,0 +1,42 @@
+﻿[
+    {
+        "test":  "A1 duration with LIST chunk",
+        "pass":  true,
+        "detail":  "got 0.5 s (expected 0.5)"
+    },
+    {
+        "test":  "A2 real jfk.wav",
+        "pass":  true,
+        "detail":  "got 11 s (expected 11.0)"
+    },
+    {
+        "test":  "A3 plain WAV",
+        "pass":  true,
+        "detail":  "got 0.25 s (expected 0.25)"
+    },
+    {
+        "test":  "A4 wrong sample rate rejected",
+        "pass":  true,
+        "detail":  "threw: Fixture must be 16 kHz, mono, PCM 16-bit WAV. Convert using: ffmpeg -i input -ar 16000 -ac 1 -c:a pcm_s16le fixture.wav"
+    },
+    {
+        "test":  "A5 non-WAV returns null",
+        "pass":  true,
+        "detail":  "returned: "
+    },
+    {
+        "test":  "B1 successful process exit_code=0",
+        "pass":  true,
+        "detail":  "exit_code=0 (previously null)"
+    },
+    {
+        "test":  "B2 failing process exit_code=7",
+        "pass":  true,
+        "detail":  "exit_code=7 (previously null)"
+    },
+    {
+        "test":  "B3 null never equals pass (sanity)",
+        "pass":  true,
+        "detail":  "both exit codes non-null"
+    }
+]

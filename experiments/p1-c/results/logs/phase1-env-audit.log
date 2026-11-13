@@ -1,0 +1,22 @@
+===WHERE-CL===
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
+===CL-BANNER===
+Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35230 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+usage: cl [ option... ] filename... [ /link linkoption... ]
+===WHERE-CMAKE===
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe
+===CMAKE-VERSION===
+cmake version 3.31.6-msvc6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+===WHERE-GIT===
+D:\Git\ucrt64\bin\git.exe
+D:\Git\cmd\git.exe
+===GIT-VERSION===
+git version 2.56.0.windows.4
+===WHERE-FFMPEG===
+INFO: Could not find files for the given pattern(s).
+===WHERE-VSWHERE===
+INFO: Could not find files for the given pattern(s).

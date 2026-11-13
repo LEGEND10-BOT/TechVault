@@ -2,7 +2,7 @@
 
 **Document status:** Active — Phase 1 closure deliverable (owner directive 82417, 2026-11-13; recommendation R-024)
 **Version:** 1.0
-**Scope:** architecture and verification planning for whisper.cpp integration ("Whisper Core"). **No code, no model downloads, no dependency additions** — the transcription foundation itself is Phase 2 scope (`DEVELOPMENT_ROADMAP.md` §6.6, decision D-016); the feasibility experiment is package P1-C (currently **HELD** by owner, D-018/D-019 — status unchanged by this document).
+**Scope:** architecture and verification planning for whisper.cpp integration ("Whisper Core"). **No code, no model downloads, no dependency additions** — the transcription foundation itself is Phase 2 scope (`DEVELOPMENT_ROADMAP.md` §6.6, decision D-016); the feasibility experiment is package P1-C (owner selected **R-025 Option A** and authorized desktop-only execution under D-020; runtime evidence remains pending).
 
 ---
 
@@ -42,17 +42,17 @@ whisper.cpp integration · local transcription · model management · download-o
 | Verification tier | Status | Evidence / prerequisite |
 |---|---|---|
 | 1. **Architecture verification** (this plan vs requirements) | **COMPLETE (this document)** — every directive §4 item is mapped (§1.2/§1.3); aligned with F1-03 spec, D-016 Phase 2 placement, D-002 retention, R-007 engine choice, D-drive policy | This document; cross-checked against `docs/phase1-plan/F1-03-whisper-cpp.md` |
-| 2. **Build & compatibility verification** (whisper.cpp builds on Windows at a pinned commit; binding vs CLI decision evidence) | **NOT PERFORMED — requires P1-C release** (F1-03a A1) | P1-C held by owner (D-019); needs whisper.cpp checkout + build + optional binding crate — heavy dependency work explicitly excluded while held |
-| 3. **Actual transcription verification** (usable transcripts, timestamps, interruption/partial preservation, error behavior) | **NOT PERFORMED — requires P1-C release + owner-authorized fixtures** (F1-03a A2/A5/A6/A9; fixtures are OWNER-PROVIDED per F1-03 §3) | Same hold |
-| 4. **Performance benchmarking** (RTF per model, peak RAM/CPU — the P-022/P-027 inputs) | **NOT PERFORMED — requires P1-C release + model downloads with consent** (F1-03a A3/A4) | Same hold; model files would go to `D:\Models\whisper\` |
+| 2. **Build & compatibility verification** (whisper.cpp builds on Windows at a pinned commit; binding vs CLI decision evidence) | **COMPLETE** — built on Windows 2026-11-13 at pinned commit `371b5a7` (`371b5a75…4727b` verified; MSVC 19.44/CMake 3.31.6); CLI feasibility path used, Rust binding comparison remains optional (F1-03a A1 PASS) | `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md` §4; build log `results/logs/p1c-run-console.log` |
+| 3. **Actual transcription verification** (usable transcripts, timestamps, interruption/partial preservation, error behavior) | **COMPLETE except A5** — tiny/base/small/medium transcribed correctly (A2 PASS); timestamps spot-check PASS (A9); corrupted input rejected cleanly (A6 PASS); **A5 cancellation NOT_RUN** (needs owner-authorized ≥90 s fixture) | `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`; per-model stdout/stderr in `results/logs/` |
+| 4. **Performance benchmarking** (RTF per model, peak RAM/CPU — the P-022/P-027 inputs) | **MEASURED (11 s fixture)** — corrected RTF: tiny 0.234 / base 0.292 / small 0.892 / **medium 2.589 (non-real-time finding)**; peak private 681–2583 MB; **definitive long-fixture RTF pending** (owner 5–10 min fixture) | `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md` §4; CPU-only confirmed (`no GPU found`); models under `D:\Models\whisper\`; Private Bytes primary per D-019 |
 
-Nothing in tiers 2–4 is claimed, implied, or marked passed. The prerequisite for all three is an explicit owner decision releasing P1-C (see §3).
+Tiers 2–3 are measured as of the 2026-13 Windows execution (D-020); the only open items are A5 cancellation, the definitive long-fixture RTF, and optional multilingual quality — all owner-fixture-gated.
 
-## 3. P1-C / P1-D resolution recommendation (owner decision required — R-025)
+## 3. P1-C / P1-D resolution record (R-025, D-020)
 
-**Current status (unchanged):** P1-C (Whisper desktop validation) and P1-D (Whisper Android) are **HELD** by owner decisions D-018/D-019. This document does not change them.
+**Current status:** The owner selected **Option A** under D-020: P1-C desktop-only was authorized **and executed 2026-11-13** (build + 4-model transcription + corrected RTF + corrupted-input; evidence in `experiments/p1-c/results/P1-C-AI-AUDIT-REPORT.md`). P1-D remains **HELD**; P1-B remains **DEFERRED**. Remaining open: A5 cancellation probe and definitive long-duration RTF (owner-authorized fixture); Urdu/multilingual untested.
 
-**Options for the owner at Gate 1:**
+**Options considered; Option A is selected:**
 
 | Option | What happens | Evidence gained | Cost/impact |
 |---|---|---|---|
@@ -60,10 +60,15 @@ Nothing in tiers 2–4 is claimed, implied, or marked passed. The prerequisite f
 | **B — Formally defer P1-C to Phase 2** | Record the hold as an owner-approved deferral; Phase 2 §6.6 begins with the feasibility matrix as its first task | None now; Phase 2 planning absorbs the risk | No Phase 1 cost; Phase 2 transcription foundation starts with unmeasured RTF/RAM (D-016's de-risking intent is not fulfilled before the phase that consumes it) |
 | **C — Partial verification (build-only)** | Release the hold only for tier 2 (build + pinned-commit record), no model downloads, no transcription | A1 evidence cheaply (does whisper.cpp even build on this toolchain?) | Build time + ~1 GB source tree; still leaves tiers 3–4 open |
 
-**Recommendation (labeled as such):** **Option A** if the owner intends Phase 2 to start soon — the D-016 rationale (Phase 1 validates before Phase 2 builds) argues for desktop feasibility evidence before the transcription foundation. Option C is the minimal-risk middle ground if fixture sourcing is the blocker. **P1-D (Android) is recommended to remain held/deferred regardless** — it additionally requires the Android toolchain and test device (P1-B track, deferred).
+**Selected:** Option A, per D-020. **P1-D (Android) remains held** because it additionally requires the Android toolchain and test device (P1-B track, deferred).
 
-**Prerequisites if released:** fixture corpus (owner-authorized or CC-licensed — F1-03 §3), consent for model downloads to `D:\Models\whisper\`, whisper.cpp source location on D: (`D:\DevTools\whisper-src` or `D:\dev-caches\build-sources`).
+**Execution prerequisites:** Windows CMake/MSVC/Git toolchain; explicit model download consent is satisfied by the owner launching the runner; owner-authorized long-form fixture for A5 and meaningful multilingual quality testing. Source/build cache is directed to `D:\Builds\whisper.cpp-p1c`; models to `D:\Models\whisper\`.
 
 ---
 
 **End of WHISPER_CORE_PLAN.md**
+
+
+## 4. Owner decision update — D-020 (2026-11-13)
+
+R-025 Option A is now selected: run the P1-C desktop feasibility experiment only. The execution package is `experiments/p1-c/`. P1-D remains HELD and P1-B remains DEFERRED. The architecture in this document is adopted as the Phase 2 reference design (R-024), but the adapter choice, model defaults, and runtime expectations remain evidence-dependent. No product integration or background service is authorized in this Phase 1 pass.

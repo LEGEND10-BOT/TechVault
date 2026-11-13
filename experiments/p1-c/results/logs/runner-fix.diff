@@ -1,0 +1,82 @@
+diff --git a/Run-P1C-Desktop.ps1.original b/Run-P1C-Desktop.ps1
+index 749e7db..b05f277 100644
+--- a/Run-P1C-Desktop.ps1.original
++++ b/Run-P1C-Desktop.ps1
+@@ -52,13 +52,26 @@ function Get-CommandVersion([string]$Name, [string[]]$VersionArgs=@("--version")
+ }
+ function Get-WavDuration([string]$Path) {
+     $bytes = [IO.File]::ReadAllBytes($Path)
+-    if ($bytes.Length -lt 44 -or [Text.Encoding]::ASCII.GetString($bytes,0,4) -ne "RIFF") { return $null }
+-    $channels = [BitConverter]::ToInt16($bytes,22)
+-    $sampleRate = [BitConverter]::ToInt32($bytes,24)
+-    $byteRate = [BitConverter]::ToInt32($bytes,28)
+-    $bitsPerSample = [BitConverter]::ToInt16($bytes,34)
+-    $dataSize = [BitConverter]::ToInt32($bytes,40)
+-    if ($byteRate -le 0 -or $sampleRate -ne 16000 -or $channels -ne 1 -or $bitsPerSample -ne 16) {
++    if ($bytes.Length -lt 44 -or [Text.Encoding]::ASCII.GetString($bytes,0,4) -ne "RIFF" -or [Text.Encoding]::ASCII.GetString($bytes,8,4) -ne "WAVE") { return $null }
++    # Walk RIFF chunks to locate 'data' correctly even when LIST or other chunks precede it (P1-C audit fix 1).
++    $sampleRate = 0; $byteRate = 0; $channels = 0; $bitsPerSample = 0; $dataSize = $null
++    $offset = 12
++    while ($offset + 8 -le $bytes.Length) {
++        $chunkId = [Text.Encoding]::ASCII.GetString($bytes,$offset,4)
++        $chunkSize = [BitConverter]::ToInt32($bytes,$offset+4)
++        if ($chunkSize -lt 0) { throw "Malformed RIFF chunk size at offset $offset in: $Path" }
++        if ($chunkId -eq "fmt ") {
++            $channels = [BitConverter]::ToInt16($bytes,$offset+10)
++            $sampleRate = [BitConverter]::ToInt32($bytes,$offset+12)
++            $byteRate = [BitConverter]::ToInt32($bytes,$offset+16)
++            $bitsPerSample = [BitConverter]::ToInt16($bytes,$offset+22)
++        } elseif ($chunkId -eq "data") {
++            $dataSize = $chunkSize
++            break
++        }
++        $offset += 8 + $chunkSize + ($chunkSize % 2)
++    }
++    if ($null -eq $dataSize -or $byteRate -le 0 -or $sampleRate -ne 16000 -or $channels -ne 1 -or $bitsPerSample -ne 16) {
+         throw "Fixture must be 16 kHz, mono, PCM 16-bit WAV. Convert using: ffmpeg -i input -ar 16000 -ac 1 -c:a pcm_s16le fixture.wav"
+     }
+     return [math]::Round($dataSize / $byteRate, 3)
+@@ -68,6 +81,7 @@ function Invoke-MeasuredProcess([string]$Exe, [string[]]$Arguments, [string]$Std
+     $timer = [Diagnostics.Stopwatch]::StartNew()
+     $p = Start-Process -FilePath $Exe -ArgumentList $quoted -PassThru -NoNewWindow `
+         -RedirectStandardOutput $Stdout -RedirectStandardError $Stderr
++    try { [void]$p.Handle } catch {}  # cache the process handle now so ExitCode is readable after exit (P1-C audit fix 2)
+     $peak = 0L; $peakPrivate = 0L; $cpuStart = 0.0
+     try { $cpuStart = $p.TotalProcessorTime.TotalSeconds } catch {}
+     while (-not $p.HasExited) {
+@@ -78,12 +92,15 @@ function Invoke-MeasuredProcess([string]$Exe, [string[]]$Arguments, [string]$Std
+         } catch {}
+         Start-Sleep -Milliseconds 250
+     }
++    try { [void]$p.WaitForExit(5000) } catch {}
+     $p.Refresh()
++    $exitCode = $null
++    try { $exitCode = $p.ExitCode } catch {}
+     $timer.Stop()
+     $elapsed = [math]::Max(0.001, $timer.Elapsed.TotalSeconds)
+     $cpu = 0.0
+     try { $cpu = $p.TotalProcessorTime.TotalSeconds - $cpuStart } catch {}
+-    return [ordered]@{ exit_code=$p.ExitCode; peak_working_set_bytes=$peak; peak_private_bytes=$peakPrivate; cpu_seconds=[math]::Round($cpu,3); wall_seconds=[math]::Round($elapsed,3) }
++    return [ordered]@{ exit_code=$exitCode; peak_working_set_bytes=$peak; peak_private_bytes=$peakPrivate; cpu_seconds=[math]::Round($cpu,3); wall_seconds=[math]::Round($elapsed,3) }
+ }
+ 
+ function Invoke-CancellationProbe([string]$Exe, [string]$Model, [string]$Audio, [string]$OutFile, [int]$ThreadCount) {
+@@ -219,7 +236,8 @@ try {
+     $badRun = Invoke-MeasuredProcess $Cli @("-m",(Join-Path $ModelsRoot "ggml-tiny.bin"),"-f",$bad,"-t","2") $badOut $badErr
+     $Report.corrupted_input.exit_code = $badRun.exit_code
+     $Report.corrupted_input.log = $badErr
+-    $Report.corrupted_input.status = if ($badRun.exit_code -ne 0) { "PASS_CHILD_PROCESS_REJECTED_INPUT" } else { "REVIEW_UNEXPECTED_SUCCESS" }
++    # Null exit code must never count as a PASS (P1-C audit fix 2).
++    $Report.corrupted_input.status = if ($null -eq $badRun.exit_code) { "UNKNOWN_EXIT_CODE_NOT_VERIFIED" } elseif ($badRun.exit_code -ne 0) { "PASS_CHILD_PROCESS_REJECTED_INPUT" } else { "REVIEW_UNEXPECTED_SUCCESS" }
+ 
+     if ($RunCancellation) {
+         if ($duration -lt 90) {
+@@ -233,7 +251,7 @@ try {
+         }
+     }
+ 
+-    $Report.notes += "RTF = fixture audio seconds / measured wall seconds; values >1 indicate faster-than-real-time."
++    $Report.notes += "RTF = measured processing wall seconds / fixture audio duration; RTF <= 1 means real-time or faster."
+     $Report.notes += "Models tested: Tiny, Base, Small; Medium is included when detected RAM is at least 16 GiB or -IncludeMedium is supplied."
+     $Report.notes += "Language defaults to auto-detection; use -Language ur (or another supported language code) for a forced-language comparison."
+     $Report.notes += "Peak Working Set and Private Bytes are sampled every 250 ms; brief peaks may be missed. Private Bytes is the primary memory comparison metric per D-019/P1-J."

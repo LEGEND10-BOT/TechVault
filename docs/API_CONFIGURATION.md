@@ -1,6 +1,6 @@
 # TechVault API Configuration Architecture
 
-**Document status:** Active — Phase 1 closure deliverable (owner directive 82417, 2026-11-13; recommendation R-023)
+**Document status:** Adopted Phase 2 reference design (D-020, 2026-11-13; recommendation R-023). Placeholders only; no live credentials or calls.
 **Version:** 1.0
 **Scope:** configuration **structure and placeholders only**. No application code, no live calls, no credentials. Actual provider integration is a later implementation stage (Phase 3 per `DEVELOPMENT_ROADMAP.md` §7).
 

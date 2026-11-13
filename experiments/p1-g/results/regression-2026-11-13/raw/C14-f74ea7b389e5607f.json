@@ -1,0 +1,7 @@
+{
+  "cached_at": "2026-11-13T15:30:26.127Z",
+  "mock": true,
+  "responses": [
+    "{\"candidates\":[{\"name\":\"OBS Studio\",\"resource_type\":\"tool\",\"short_desc"
+  ]
+}
