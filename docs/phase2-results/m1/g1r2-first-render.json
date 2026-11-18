@@ -1,0 +1,14 @@
+    1037,
+    1037
+  ],
+  "boot_median_ms": 1037,
+  "shell_page_relative_samples_ms": [
+    117,
+    145,
+    124,
+    121,
+    125
+  ],
+  "shell_page_relative_median_ms": 124,
+  "note": "measure-only; M1-P2 guard (<=300 ms warm) applied in the report against the shell page-relative median"
+}

@@ -1,0 +1,5 @@
+=== per-process median private MB (M0 vs G1, same session) ===
+msedgewebview2         M0    24.47 | G1       33 | delta     8.53 | count 6->6
+techvault              M0     4.32 | G1     4.37 | delta     0.05 | count 1->1
+SUM of medians: M0 28.79 G1 37.37 delta 8.58
+tree totals median: M0 142.81 G1 158.84

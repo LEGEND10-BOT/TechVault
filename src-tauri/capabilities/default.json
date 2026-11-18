@@ -1,0 +1,9 @@
+{
+  "$schema": "./gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "TechVault capability. Least-privilege per PHASE_2_MILESTONES M0/P1-I: the frontend uses application-defined commands (never ACL-gated) plus exactly the core APIs it uses. G1 (owner zoom directive): core:webview:allow-set-zoom grants ONLY the document zoom scale — no window, filesystem, or network surface. Later milestones add exactly the permissions they use.",
+  "windows": ["main"],
+  "permissions": [
+    "core:webview:allow-set-webview-zoom"
+  ]
+}

@@ -1,0 +1,36 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.58s
+     Running unittests src\lib.rs (D:\Builds\cargo-target\debug\deps\techvault_lib-0778c4938a425661.exe)
+
+running 17 tests
+test commands::app::tests::app_info_reports_the_application_identity ... ok
+test commands::app::tests::ping_success_envelope_has_expected_shape ... ok
+test commands::app::tests::ping_failure_envelope_carries_typed_validation_error ... ok
+test commands::app::tests::validate_ping_rejects_overlong_message_with_typed_error ... ok
+test domain::errors::tests::display_is_category_code_message ... ok
+test domain::errors::tests::categories_serialize_to_the_stable_wire_strings ... ok
+test domain::errors::tests::error_serializes_details_when_present ... ok
+test commands::app::tests::validate_ping_accepts_none_and_within_bounds ... ok
+test domain::errors::tests::error_serializes_without_details_when_absent ... ok
+test infrastructure::logging::tests::rotated_paths_are_numbered ... ok
+test infrastructure::logging::tests::timestamp_formats_known_epochs ... ok
+test ipc::tests::failure_fixture_deserializes_back_to_the_sample ... ok
+test ipc::tests::failure_serializes_to_the_canonical_fixture ... ok
+test infrastructure::logging::tests::logger_writes_and_rotates_under_the_size_cap ... ok
+test ipc::tests::malformed_envelopes_are_rejected_on_deserialization ... ok
+test ipc::tests::success_fixture_deserializes_back_to_the_sample ... ok
+test ipc::tests::success_serializes_to_the_canonical_fixture ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src\main.rs (D:\Builds\cargo-target\debug\deps\techvault-156f6358ce3a82ac.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests techvault_lib
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

@@ -43,3 +43,7 @@ temp/
 *.sqlite3
 *.db
 backups/
+
+# SvelteKit/Vite generated (M0)
+.svelte-kit/
+build/

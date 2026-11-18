@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/*
+	TechVault G1 design-token foundation (full token set).
+
+	Governs itself by UI_DESIGN_SYSTEM.md (D-011) as amended by the owner's
+	2026-11-14 G1 correction directive:
+	- **Dark theme (primary direction) is NEUTRAL**: near-black workspace,
+	  charcoal sidebar, slightly lighter charcoal cards, subtle grey borders,
+	  off-white primary text, muted grey secondary text, and a restrained
+	  purple interactive accent (see the dated amendment note in
+	  UI_DESIGN_SYSTEM.md §4.2). The purple accent appears only on
+	  interactive/selected states — large surfaces are neutral.
+	- Light theme (§4.1) is preserved unchanged; the `light` class on <html>
+	  switches tokens (the class is the only theme mechanism — no inline
+	  styles anywhere, per the A-6 rule (DP-04/D-026)).
+	- Semantic colors (§4.3) always accompany labels/icons; never the sole
+	  status carrier.
+	- Fonts: system stacks only — DP-11 (D-026) approved system fonts for M1;
+	  no Geist bundling.
+	- Radius direction: 0.625rem (§8).
+
+	Light values are EXACT from UI_DESIGN_SYSTEM.md §4.1 — do not adjust
+	without an owner-approved change to that document.
+*/
+
+:root {
+	/* Dark theme (primary direction) — neutral palette per the owner's
+	   2026-11-14 G1 correction directive (UI_DESIGN_SYSTEM §4.2 amendment) */
+	--tv-bg: #0b0b0d; /* near-black workspace */
+	--tv-sidebar: #191a1c; /* charcoal sidebar */
+	--tv-surface: #232427; /* slightly lighter charcoal cards */
+	--tv-surface-border: #2f3033; /* subtle grey borders */
+	--tv-muted: #2a2b2e; /* hover/selected fills */
+	--tv-text: #f2f2f3; /* off-white primary text */
+	--tv-text-muted: #9d9ea6; /* muted grey secondary text */
+	--tv-accent: #8b5cf6; /* restrained purple interactive accent */
+	--tv-accent-hover: #7c3aed;
+	/* Semantic colors — UI_DESIGN_SYSTEM.md §4.3 (dark row) */
+	--tv-success: #22c55e;
+	--tv-warning: #f59e0b;
+	--tv-error: #ef4444;
+	--tv-info: #3b82f6;
+	/* Shape */
+	--tv-radius: 0.625rem;
+	color-scheme: dark;
+}
+
+html.light {
+	/* Light theme — UI_DESIGN_SYSTEM.md §4.1 (preserved unchanged) */
+	--tv-bg: #fafafa;
+	--tv-sidebar: #ffffff;
+	--tv-surface: #ffffff;
+	--tv-surface-border: #e2e8f0;
+	--tv-muted: #f1f5f9;
+	--tv-text: #1e1b2e;
+	--tv-text-muted: color-mix(in srgb, #1e1b2e 62%, transparent);
+	--tv-accent: #7c3aed;
+	--tv-accent-hover: #5b21b6;
+	/* Semantic colors — UI_DESIGN_SYSTEM.md §4.3 (light row) */
+	--tv-success: #15803d;
+	--tv-warning: #b45309;
+	--tv-error: #b91c1c;
+	--tv-info: #1d4ed8;
+	color-scheme: light;
+}
+
+.tv-body-host {
+	display: contents;
+}
+
+@theme inline {
+	--color-bg: var(--tv-bg);
+	--color-sidebar: var(--tv-sidebar);
+	--color-surface: var(--tv-surface);
+	--color-surface-border: var(--tv-surface-border);
+	--color-muted: var(--tv-muted);
+	--color-text: var(--tv-text);
+	--color-text-muted: var(--tv-text-muted);
+	--color-accent: var(--tv-accent);
+	--color-accent-hover: var(--tv-accent-hover);
+	--color-success: var(--tv-success);
+	--color-warning: var(--tv-warning);
+	--color-error: var(--tv-error);
+	--color-info: var(--tv-info);
+
+	--radius-card: var(--tv-radius);
+
+	--font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
+		sans-serif;
+	--font-mono: ui-monospace, "Cascadia Mono", Consolas, "Courier New",
+		monospace;
+}
+
+body {
+	background-color: var(--tv-bg);
+	color: var(--tv-text);
+	font-family: var(--font-sans);
+}
+
+/*
+	Reduced motion (UI_DESIGN_SYSTEM.md §9): remove transitions and
+	animations rather than slowing them.
+*/
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}

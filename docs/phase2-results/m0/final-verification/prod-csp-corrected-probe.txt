@@ -1,0 +1,7 @@
+page origin: http://tauri.localhost/
+PASS  remote fetch blocked  — BLOCKED: Failed to fetch
+PASS  inline script blocked  — BLOCKED: did not run
+PASS  string-eval blocked  — timer string NOT_EXECUTED
+PASS  IPC invoke works  — IPC_OK:TechVault:release
+PASS  ungranted core API denied  — DENIED: Command plugin:app|version not allowed by ACL
+CORRECTED PROBE: ALL PASSED

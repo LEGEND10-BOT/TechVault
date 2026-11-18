@@ -1,0 +1,317 @@
+﻿{
+    "tool":  "scripts/measure-baseline.ps1",
+    "methodology":  [
+                        "startup = time from Start-Process until MainWindowHandle != 0, polled every 15 ms (P1-A method)",
+                        "idle RAM = PrivateMemorySize64 (private bytes, D-019 primary metric) summed over the complete app process tree: main process + WebView2 children (two parent levels); WorkingSet64 recorded as supplementary",
+                        "sampled after 6 s of idle; no jobs run (M0 has none)",
+                        "run 1 is cold (WebView2 user-data cache cleared) when -Cold is given; remaining runs are warm",
+                        "this script measures only; it never asserts pass/fail against a budget"
+                    ],
+    "environment":  {
+                        "host":  "CICADA_3301",
+                        "cpu":  "Intel(R) Core(TM) i5-10310U CPU @ 1.70GHz",
+                        "cpu_cores":  4,
+                        "cpu_threads":  8,
+                        "ram_gb":  31.8,
+                        "os_caption":  "Microsoft Windows 11 Pro",
+                        "os_version":  "10.0.26200",
+                        "measured_at":  "2026-11-14T13:24:55.3655837+05:00",
+                        "exe":  "D:\\Builds\\cargo-target\\release\\techvault.exe",
+                        "runs":  5,
+                        "idle_wait_s":  6,
+                        "cold_note":  "no WebView2 user-data dir found (first-ever launch)"
+                    },
+    "startup_runs":  [
+                         {
+                             "run":  1,
+                             "kind":  "cold",
+                             "to_main_window_ms":  10815
+                         },
+                         {
+                             "run":  2,
+                             "kind":  "warm",
+                             "to_main_window_ms":  134
+                         },
+                         {
+                             "run":  3,
+                             "kind":  "warm",
+                             "to_main_window_ms":  134
+                         },
+                         {
+                             "run":  4,
+                             "kind":  "warm",
+                             "to_main_window_ms":  104
+                         },
+                         {
+                             "run":  5,
+                             "kind":  "warm",
+                             "to_main_window_ms":  103
+                         }
+                     ],
+    "idle_samples":  [
+                         {
+                             "run":  1,
+                             "tree_private_mb":  129.98,
+                             "tree_working_set_mb":  344.88,
+                             "process_count":  7,
+                             "processes":  [
+                                               {
+                                                   "Name":  "techvault.exe",
+                                                   "Pid":  14252,
+                                                   "WorkingSetMB":  20.88,
+                                                   "PrivateMB":  3.44
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  22064,
+                                                   "WorkingSetMB":  120.11,
+                                                   "PrivateMB":  36.18
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  10516,
+                                                   "WorkingSetMB":  12.94,
+                                                   "PrivateMB":  2.49
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  8312,
+                                                   "WorkingSetMB":  68.02,
+                                                   "PrivateMB":  42.9
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  11884,
+                                                   "WorkingSetMB":  40.36,
+                                                   "PrivateMB":  11.04
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  12340,
+                                                   "WorkingSetMB":  21.48,
+                                                   "PrivateMB":  7.04
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  1328,
+                                                   "WorkingSetMB":  61.09,
+                                                   "PrivateMB":  26.89
+                                               }
+                                           ]
+                         },
+                         {
+                             "run":  2,
+                             "tree_private_mb":  127.81,
+                             "tree_working_set_mb":  342.85,
+                             "process_count":  7,
+                             "processes":  [
+                                               {
+                                                   "Name":  "techvault.exe",
+                                                   "Pid":  6992,
+                                                   "WorkingSetMB":  20.78,
+                                                   "PrivateMB":  3.45
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  6436,
+                                                   "WorkingSetMB":  120.84,
+                                                   "PrivateMB":  36.68
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  20956,
+                                                   "WorkingSetMB":  12.94,
+                                                   "PrivateMB":  2.49
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  7800,
+                                                   "WorkingSetMB":  68,
+                                                   "PrivateMB":  42.91
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  19632,
+                                                   "WorkingSetMB":  40.37,
+                                                   "PrivateMB":  11.05
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  11968,
+                                                   "WorkingSetMB":  21.48,
+                                                   "PrivateMB":  7.04
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  10624,
+                                                   "WorkingSetMB":  58.44,
+                                                   "PrivateMB":  24.19
+                                               }
+                                           ]
+                         },
+                         {
+                             "run":  3,
+                             "tree_private_mb":  127.33,
+                             "tree_working_set_mb":  343.27,
+                             "process_count":  7,
+                             "processes":  [
+                                               {
+                                                   "Name":  "techvault.exe",
+                                                   "Pid":  20388,
+                                                   "WorkingSetMB":  20.74,
+                                                   "PrivateMB":  3.48
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  11392,
+                                                   "WorkingSetMB":  121.04,
+                                                   "PrivateMB":  36.96
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  17728,
+                                                   "WorkingSetMB":  12.94,
+                                                   "PrivateMB":  2.49
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  19468,
+                                                   "WorkingSetMB":  68.28,
+                                                   "PrivateMB":  43.14
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  2328,
+                                                   "WorkingSetMB":  40.35,
+                                                   "PrivateMB":  11.02
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  7756,
+                                                   "WorkingSetMB":  21.47,
+                                                   "PrivateMB":  7.02
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  20800,
+                                                   "WorkingSetMB":  58.45,
+                                                   "PrivateMB":  23.22
+                                               }
+                                           ]
+                         },
+                         {
+                             "run":  4,
+                             "tree_private_mb":  126.39,
+                             "tree_working_set_mb":  342.47,
+                             "process_count":  7,
+                             "processes":  [
+                                               {
+                                                   "Name":  "techvault.exe",
+                                                   "Pid":  19292,
+                                                   "WorkingSetMB":  20.71,
+                                                   "PrivateMB":  3.34
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  16612,
+                                                   "WorkingSetMB":  120.4,
+                                                   "PrivateMB":  36.24
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  18564,
+                                                   "WorkingSetMB":  12.93,
+                                                   "PrivateMB":  2.48
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  13040,
+                                                   "WorkingSetMB":  68.17,
+                                                   "PrivateMB":  43.03
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  12980,
+                                                   "WorkingSetMB":  40.37,
+                                                   "PrivateMB":  11.07
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  20944,
+                                                   "WorkingSetMB":  21.51,
+                                                   "PrivateMB":  7.03
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  7740,
+                                                   "WorkingSetMB":  58.38,
+                                                   "PrivateMB":  23.2
+                                               }
+                                           ]
+                         },
+                         {
+                             "run":  5,
+                             "tree_private_mb":  126.46,
+                             "tree_working_set_mb":  342.4,
+                             "process_count":  7,
+                             "processes":  [
+                                               {
+                                                   "Name":  "techvault.exe",
+                                                   "Pid":  8448,
+                                                   "WorkingSetMB":  20.73,
+                                                   "PrivateMB":  3.45
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  2568,
+                                                   "WorkingSetMB":  120.43,
+                                                   "PrivateMB":  36.3
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  22220,
+                                                   "WorkingSetMB":  12.95,
+                                                   "PrivateMB":  2.5
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  10204,
+                                                   "WorkingSetMB":  68.06,
+                                                   "PrivateMB":  42.93
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  22360,
+                                                   "WorkingSetMB":  40.32,
+                                                   "PrivateMB":  11.02
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  14848,
+                                                   "WorkingSetMB":  21.5,
+                                                   "PrivateMB":  7.05
+                                               },
+                                               {
+                                                   "Name":  "msedgewebview2.exe",
+                                                   "Pid":  20024,
+                                                   "WorkingSetMB":  58.41,
+                                                   "PrivateMB":  23.21
+                                               }
+                                           ]
+                         }
+                     ],
+    "summary":  {
+                    "startup_median_warm_ms":  104,
+                    "startup_p95_warm_ms":  134,
+                    "idle_private_mb_all_runs":  [
+                                                     126.39,
+                                                     126.46,
+                                                     127.33,
+                                                     127.81,
+                                                     129.98
+                                                 ],
+                    "idle_private_median_mb":  127.33,
+                    "idle_private_p95_mb":  129.98,
+                    "note":  "baseline only - no pass/fail (PHASE_2_PERFORMANCE_BUDGET.md Â§6: M0 row)"
+                }
+}

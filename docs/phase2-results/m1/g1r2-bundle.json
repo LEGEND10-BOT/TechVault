@@ -1,0 +1,143 @@
+{
+  "tool": "scripts/measure-bundle.mjs",
+  "route_nodes": [
+    {
+      "file": "nodes/0.DABIC2LP.js",
+      "raw_kb": 10.49,
+      "gzip_kb": 3.75
+    },
+    {
+      "file": "nodes/1.DMKYPGRZ.js",
+      "raw_kb": 0.35,
+      "gzip_kb": 0.25
+    },
+    {
+      "file": "nodes/2.R3BUSBoy.js",
+      "raw_kb": 0.39,
+      "gzip_kb": 0.28
+    },
+    {
+      "file": "nodes/3.Flnd2Jkw.js",
+      "raw_kb": 0.36,
+      "gzip_kb": 0.25
+    },
+    {
+      "file": "nodes/4.BcVnpF5B.js",
+      "raw_kb": 0.35,
+      "gzip_kb": 0.24
+    },
+    {
+      "file": "nodes/5.F3rxaxlp.js",
+      "raw_kb": 0.41,
+      "gzip_kb": 0.28
+    },
+    {
+      "file": "nodes/6.Bg-O31RW.js",
+      "raw_kb": 0.4,
+      "gzip_kb": 0.28
+    },
+    {
+      "file": "nodes/7.CouDfhHM.js",
+      "raw_kb": 0.42,
+      "gzip_kb": 0.29
+    },
+    {
+      "file": "nodes/8.DYqfe3AP.js",
+      "raw_kb": 9.38,
+      "gzip_kb": 3.55
+    },
+    {
+      "file": "nodes/9.DKDFd_hM.js",
+      "raw_kb": 0.39,
+      "gzip_kb": 0.28
+    }
+  ],
+  "shared_chunks": [
+    {
+      "file": "chunks/1f9AWnvw.js",
+      "raw_kb": 33.9,
+      "gzip_kb": 11.05
+    },
+    {
+      "file": "chunks/9PKa4u2n.js",
+      "raw_kb": 0.02,
+      "gzip_kb": 0.04
+    },
+    {
+      "file": "chunks/B5oFWKGD.js",
+      "raw_kb": 4.46,
+      "gzip_kb": 2
+    },
+    {
+      "file": "chunks/Bjy-W4x2.js",
+      "raw_kb": 1.33,
+      "gzip_kb": 0.64
+    },
+    {
+      "file": "chunks/BnAc9nKr.js",
+      "raw_kb": 0.46,
+      "gzip_kb": 0.34
+    },
+    {
+      "file": "chunks/BnUTnCs_.js",
+      "raw_kb": 0.41,
+      "gzip_kb": 0.31
+    },
+    {
+      "file": "chunks/BR_6lE4A.js",
+      "raw_kb": 1.08,
+      "gzip_kb": 0.64
+    },
+    {
+      "file": "chunks/C0Uo-nq0.js",
+      "raw_kb": 0.93,
+      "gzip_kb": 0.48
+    },
+    {
+      "file": "chunks/CAJMEubI.js",
+      "raw_kb": 49.47,
+      "gzip_kb": 18.77
+    },
+    {
+      "file": "chunks/CB0PnunA.js",
+      "raw_kb": 38.61,
+      "gzip_kb": 14.13
+    },
+    {
+      "file": "chunks/cJBluqxg.js",
+      "raw_kb": 0.57,
+      "gzip_kb": 0.34
+    },
+    {
+      "file": "chunks/CxDi5lKY.js",
+      "raw_kb": 21.62,
+      "gzip_kb": 5.36
+    },
+    {
+      "file": "chunks/D4fCWGMJ.js",
+      "raw_kb": 0.64,
+      "gzip_kb": 0.4
+    },
+    {
+      "file": "chunks/DclECHGd.js",
+      "raw_kb": 1.59,
+      "gzip_kb": 0.81
+    },
+    {
+      "file": "chunks/DzMre3Vv.js",
+      "raw_kb": 0.54,
+      "gzip_kb": 0.32
+    },
+    {
+      "file": "chunks/YgrY63YJ.js",
+      "raw_kb": 0.45,
+      "gzip_kb": 0.31
+    }
+  ],
+  "summary": {
+    "route_node_count": 10,
+    "worst_route_node_gzip_kb": 3.75,
+    "total_client_js_gzip_kb": 65.39
+  },
+  "note": "measure-only; M1-P3 guard (no route node > 300 KB gzipped) applied in the report"
+}

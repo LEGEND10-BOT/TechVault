@@ -1,0 +1,45 @@
+
+> techvault@0.1.0 check:csp
+> node scripts/check-csp.mjs
+
+PASS  prod.csp-present  — app.security.csp must be a non-empty string (P1-I carry-forward: csp: null is forbidden)
+PASS  prod.default-src-self  — default-src must include 'self' (got: 'self')
+PASS  prod.script-src-self  — script-src must explicitly include 'self'
+PASS  prod.no-remote-origins.default-src  — default-src has no remote http(s) origins
+PASS  prod.no-remote-origins.script-src  — script-src has no remote http(s) origins
+PASS  prod.no-remote-origins.style-src  — style-src has no remote http(s) origins
+PASS  prod.no-remote-origins.img-src  — img-src has no remote http(s) origins
+PASS  prod.no-remote-origins.font-src  — font-src has no remote http(s) origins
+PASS  prod.no-remote-origins.worker-src  — worker-src has no remote http(s) origins
+PASS  prod.no-remote-origins.object-src  — object-src has no remote http(s) origins
+PASS  prod.no-remote-origins.frame-src  — frame-src has no remote http(s) origins
+PASS  prod.no-unsafe.default-src  — default-src has no unsafe-eval/unsafe-inline
+PASS  prod.no-unsafe.script-src  — script-src has no unsafe-eval/unsafe-inline
+PASS  prod.no-unsafe.style-src  — style-src has no unsafe-eval/unsafe-inline
+PASS  prod.no-unsafe.img-src  — img-src has no unsafe-eval/unsafe-inline
+PASS  prod.no-unsafe.font-src  — font-src has no unsafe-eval/unsafe-inline
+PASS  prod.no-unsafe.connect-src  — connect-src has no unsafe-eval/unsafe-inline
+PASS  prod.connect-src-ipc-only  — connect-src limited to 'self' + Tauri IPC allowances
+PASS  prod.no-websocket  — no ws:// allowances in production
+PASS  prod.no-asset-protocol  — asset protocol absent (add deliberately and scoped when a feature needs it)
+PASS  prod.font-src-self  — font-src must include 'self' (self-hosted/bundled fonts only, no CDN)
+PASS  prod.img-src-self  — img-src must include 'self'
+PASS  dev.csp-present  — app.security.devCsp must be a non-empty string
+PASS  build.devUrl-valid  — build.devUrl must be a valid URL for deriving dev allowances (got: "http://localhost:1420")
+PASS  dev.no-extra.default-src  — default-src is identical to production
+PASS  dev.script-src-inline-only  — script-src adds only 'unsafe-inline' for the dev runtime
+PASS  dev.style-src-inline-only  — style-src adds only 'unsafe-inline' for the dev runtime
+PASS  dev.no-extra.img-src  — img-src is identical to production
+PASS  dev.no-extra.font-src  — font-src is identical to production
+PASS  dev.connect-src-hmr-only  — connect-src adds only the dev-server origin and HMR websocket
+PASS  dev.keeps-base.default-src  — default-src preserved in devCsp
+PASS  dev.keeps-base.script-src  — script-src preserved in devCsp
+PASS  dev.keeps-base.style-src  — style-src preserved in devCsp
+PASS  dev.keeps-base.img-src  — img-src preserved in devCsp
+PASS  dev.keeps-base.font-src  — font-src preserved in devCsp
+PASS  dev.keeps-base.connect-src  — connect-src preserved in devCsp
+PASS  prod.no-dev-allowances  — no dev-only allowance appears in the production CSP
+PASS  caps.default.json.m0-allowlist  — default.json: 0 permission(s), all core:* within the M0 allowlist
+PASS  caps.default.json.windows  — default.json targets only the declared app windows: main
+
+check-csp: ALL 39 CHECKS PASSED

@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "data": {
+    "message": "pong",
+    "echoed": "hello",
+    "server_time_unix_ms": 1763078400000
+  }
+}

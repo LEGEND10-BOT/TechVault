@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "error": {
+    "code": "validation.message_too_long",
+    "category": "validation",
+    "message": "Message exceeds the maximum allowed length of 1000 characters."
+  }
+}

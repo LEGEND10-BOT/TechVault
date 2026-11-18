@@ -71,6 +71,20 @@ Use CSS variables through Tailwind CSS 4.
 
 ## 4.2 Dark Theme
 
+**Amended 2026-11-14 (owner G1 correction directive — supersedes the v1.0 dark palette):** the dark theme is **neutral**, not navy/purple-dominant — near-black workspace background, charcoal sidebar, slightly lighter charcoal cards, subtle grey borders, off-white primary text, muted grey secondary text, and a **restrained purple interactive accent** (accent used only on interactive/selected states; large surfaces stay neutral). The canonical dark values live in the centralized token layer `src/app.css` (`:root` block); light theme values below are unchanged.
+
+| Token | v1.0 value (superseded) | Current source of truth |
+|---|---|---|
+| Background | #0F172A | `--tv-bg: #0b0b0d` (`src/app.css`) |
+| Surface | #1E1B4B | `--tv-surface: #232427` (`src/app.css`) |
+| Foreground | #F8FAFC | `--tv-text: #f2f2f3` (`src/app.css`) |
+| Border | #312E81 | `--tv-surface-border: #2f3033` (`src/app.css`) |
+| Muted | #312E81 | `--tv-muted: #2a2b2e` (`src/app.css`) |
+| Primary | #A78BFA | `--tv-accent: #8b5cf6` (`src/app.css`) |
+| Primary Dark | #7C3AED | `--tv-accent-hover: #7c3aed` (`src/app.css`) |
+
+The v1.0 table is preserved below for history.
+
 | Token | Value |
 |---|---|
 | Background | #0F172A |

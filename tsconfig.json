@@ -1,0 +1,29 @@
+{
+  // SvelteKit 3: extend the generated config through the `$app` virtual
+  // package (the old ./.svelte-kit/tsconfig.json extension is no longer
+  // valid). The base sets no `include` — scoped here to the application
+  // sources so svelte-check does not sweep unrelated trees (experiments/,
+  // scripts/, docs/). `#lib` is resolved at build/dev time through the
+  // package.json `imports` field (kit 3 convention); explicit `paths` keep
+  // svelte-check/tsc on the same mapping.
+  "extends": "$app/tsconfig",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "moduleResolution": "bundler",
+    "paths": {
+      "#lib": ["./src/lib/index.ts"],
+      "#lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": ["src", "tests"]
+}

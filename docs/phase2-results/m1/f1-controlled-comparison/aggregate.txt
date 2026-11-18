@@ -1,0 +1,6 @@
+M0 samples: 142.81, 141.1, 140.78, 143.57, 139.58, 144.89 | median 142.81 | min 139.58 | max 144.89
+G1 samples: 154.97, 158.43, 155.77, 158.84, 160.25, 160.56 | median 158.84 | min 154.97 | max 160.56
+median delta (G1-M0): 16.03 MB
+adjacent-pair deltas: M0->G1 +12.16 | G1->M0 +17.33 | M0->G1 +14.99 | G1->M0 +15.27 | M0->G1 +20.67 | G1->M0 +15.67
+min pair delta: 12.16 | mean pair delta: 16.02
+process counts: M0 7,7,7,7,7,7 | G1 7,7,7,7,7,7

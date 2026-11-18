@@ -1,0 +1,4 @@
+PASS  smoke-view self-check badges rendered OK,OK,OK  — OK,OK,OK
+PASS  ungranted core API denied (plugin:app|version)  — DENIED: Command plugin:app|version not allowed by ACL
+PASS  app command allowed (control)  — ALLOWED:TechVault
+probe: ALL PASSED

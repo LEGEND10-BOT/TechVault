@@ -1,0 +1,20 @@
+captured 2 console entries
+----
+[error] (security) Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.
+  url: http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js line 0 col ?
+  at Tr http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:25053
+  at (anon) http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:25294
+  at le http://tauri.localhost/_app/immutable/chunks/CB0PnunA.js:1:16956
+  at (anon) http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:1:2176
+  at tr http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:20673
+  at ar http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:21811
+  at V http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:17150
+  at H http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:18097
+----
+[error] (security) Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.
+  url: http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js line 0 col ?
+  at Tr http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:25053
+  at (anon) http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:0:25294
+  at le http://tauri.localhost/_app/immutable/chunks/CB0PnunA.js:1:16956
+  at (anon) http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js:1:2176
+  at tr http://tauri.localhost/_app/immutable/chunks/CAJMEubI.j

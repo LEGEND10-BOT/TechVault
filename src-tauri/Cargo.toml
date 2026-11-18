@@ -1,0 +1,45 @@
+[package]
+name = "techvault"
+version = "0.1.0"
+description = "TechVault desktop application (Phase 2 M0 production scaffold)"
+authors = ["TechVault project"]
+edition = "2024"
+
+[lib]
+# The `_lib` suffix keeps the lib name from conflicting with the bin name on
+# Windows (https://github.com/rust-lang/cargo/issues/8519). The three crate
+# types keep the core Android-compatible by design (D-001); Android work
+# itself is deferred.
+name = "techvault_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+# Pinned to the Phase 1 (P1-A) validated line, per PHASE_2_DEPENDENCY_REVIEW.md §3.
+tauri-build = { version = ">=2.7.4, <2.8.0", features = [] }
+
+[dependencies]
+# Pinned to the Phase 1 (P1-A) validated line, per PHASE_2_DEPENDENCY_REVIEW.md §3.
+tauri = { version = ">=2.12.5, <2.13.0", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Secret-free logging facade (SEC-15); the rotating file sink lives in
+# infrastructure/logging.rs — no third-party sink dependency in M0.
+log = { version = "0.4", features = ["std"] }
+
+# Read more about Tauri's size optimization:
+# https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+unwrap_used = "warn"
+expect_used = "warn"

@@ -1,0 +1,10 @@
+WebView2 subprocesses per run: 6 (both binaries)
+role position (size-desc) — median private MB across runs:
+  #1 M0 53.80 | G1 59.90 | delta 6.10
+  #2 M0 36.82 | G1 37.21 | delta 0.39
+  #3 M0 25.64 | G1 34.08 | delta 8.44
+  #4 M0 10.98 | G1 11.37 | delta 0.39
+  #5 M0 7.12 | G1 7.12 | delta 0.00
+  #6 M0 2.47 | G1 2.46 | delta -0.01
+webview sum: M0 138.47 G1 154.60 delta 16.13
+main exe: M0 4.32 G1 4.37

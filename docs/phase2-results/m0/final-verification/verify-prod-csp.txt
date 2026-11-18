@@ -1,0 +1,7 @@
+verify-prod-csp against: D:/Builds/cargo-target/release/techvault.exe
+PASS  page origin  — 
+FAIL  remote fetch blocked (connect-src)  — BLOCKED: Failed to fetch | no CSP violation logged
+FAIL  inline script blocked (script-src 'self')  — EXECUTED
+FAIL  string-eval blocked (no unsafe-eval)  — timer string EXECUTED: EVAL_EXECUTED
+FAIL  IPC invoke works  — IPC_ERR: Origin header is not a valid URL
+verify-prod-csp: FAILED

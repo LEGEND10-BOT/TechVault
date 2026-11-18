@@ -1,0 +1,7 @@
+verify-prod-csp against: D:\Builds\cargo-target\release\techvault.exe
+PASS  page origin  — http://tauri.localhost/
+PASS  remote fetch blocked (connect-src)  — BLOCKED: Failed to fetch | console: "Fetch API cannot load https://example.com/. Refused to connect because it violates the document's Content Security Policy."
+PASS  inline script blocked (script-src 'self')  — BLOCKED: inline script did not run
+PASS  string-eval blocked (no unsafe-eval)  — timer string was never executed (blocked)
+PASS  IPC invoke works  — IPC_OK:{"ok":true,"data":{"app_name":"TechVault","version":"0.1.0","tauri_version":"2.12.5","os":"windows","arch":"x86_64","build_profile":"release","data_dir":"C:\\Users\\REDEYE\\AppData\\Roaming\\com.techvault.app"}}
+verify-prod-csp: ALL RUNTIME CHECKS PASSED

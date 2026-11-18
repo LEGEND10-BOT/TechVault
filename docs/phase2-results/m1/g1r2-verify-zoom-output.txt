@@ -1,0 +1,9 @@
+PASS  ctrl+plus zooms in  — innerWidth 1100 -> 1000 (CSS px shrink = zoom applied)
+PASS  zoom persists to settings.json  — persisted appearance.zoom = 1.1
+PASS  ctrl+minus zooms out  — innerWidth 1000 -> 1100
+PASS  ctrl+0 resets to 100%  — innerWidth 1100 === baseline 1100
+PASS  minimum bound holds (50%)  — persisted zoom at bound = 0.5 (innerWidth 2200)
+PASS  maximum bound holds (200%)  — persisted zoom at bound = 2
+PASS  typing is not intercepted  — plain keydown in an input: clean
+
+verify-zoom: ALL 7 RUNTIME CHECKS PASSED

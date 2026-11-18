@@ -1,0 +1,4 @@
+captured 1 startup console entries
+----
+[error] (security) Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-S8qMpvofo
+  url: http://tauri.localhost/_app/immutable/chunks/CAJMEubI.js
